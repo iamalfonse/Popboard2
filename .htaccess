@@ -1,0 +1,154 @@
+# secure htaccess file
+<Files .htaccess>
+ order allow,deny
+ deny from all
+</Files>
+
+# disable directory browsing
+Options All -Indexes
+
+# preserve bandwidth for PHP enabled servers
+<ifmodule mod_php4.c>
+ php_value zlib.output_compression 16386
+</ifmodule>
+
+# disable the server signature
+#ServerSignature Off
+
+# set the default character set
+AddDefaultCharset UTF-8
+
+#set custom 404 error page
+ErrorDocument 404 /404.php 
+
+#=================== Rewrite Rules =========================
+# Turn on the rewriting engine
+RewriteEngine On 
+
+#Handle requests for the main page
+RewriteRule ^$ index.php [NC,L]
+
+# Handle requests for "register"
+RewriteRule ^register(\/)?$ signup.php [NC,L]
+
+# Handle requests for "checkusername"
+RewriteRule ^checkusername(\/)?$ checkusername.php [NC,L]
+
+# Handle requests for "success"
+RewriteRule ^success(\/)?$ reg_success.php [NC,L]
+
+# Handle requests for "login"
+RewriteRule ^login(\/)?$ login.php [NC,L]
+
+# Handle requests for "signin"
+RewriteRule ^signin(\/)?$ signin.php [NC,L]
+
+# Handle requests for "setup"
+RewriteRule ^setup(\/)?$ setup.php [NC,L]
+
+# Handle requests for "setupsubmit"
+RewriteRule ^setupsubmit(\/)?$ setupsubmit.php [NC,L]
+
+# Handle requests for "posts" (This is the main Blog Wall area)
+RewriteRule ^posts(\/)?([A-Za-z0-9\-]+)?\/?(\&start)?$ posts.php?category=$2$3 [NC,L]
+
+# Handle requests for "post/id" (This is the actual post with title)
+RewriteRule ^post\/([0-9]+)\/([A-Za-z0-9\-]+)$ post.php?post_id=$1&title=$2 [NC,L]
+
+# Handle requests for "submitcomment/id/posturl"
+RewriteRule ^submitcomment\/([0-9]+)\/([A-Za-z0-9\-]+)$ submitcomment.php?post_id=$1&title=$2 [NC,L]
+
+# Handle requests for "home"
+RewriteRule ^home(\/)?$ posts.php?category=general [NC,L]
+
+# Handle requests for "categories"
+RewriteRule ^categories(\/)?$ categories.php [NC,L]
+
+# Handle requests for "profile"
+RewriteRule ^profile(\/)?([a-z0-9-]+)?$ profile.php?username=$2 [NC,L]
+
+# Handle requests for "updateprofile"
+RewriteRule ^updateprofile(\/)?$ updateprofile.php [NC,L]
+
+# Handle requests for "crews"
+RewriteRule ^crews(\/)?$ crews.php [NC,L]
+
+# Handle requests for "crew/crewname"
+RewriteRule ^crew(\/)?([a-z0-9-]+)?$ crew.php?crewurl=$2 [NC,L]
+
+# Handle requests for "createcrew"
+RewriteRule ^createcrew(\/)?$ createcrew.php [NC,L]
+
+# Handle requests for "submitcreatecrew"
+RewriteRule ^submitcreatecrew(\/)?$ submitcreatecrew.php [NC,L]
+
+# Handle requests for "submitcrewsetup"
+RewriteRule ^submitcrewsetup(\/)?$ submitcrewsetup.php [NC,L]
+
+# Handle requests for "crewsetup"
+RewriteRule ^crewsetup(\/)?([a-z0-9-]+)?$ crewsetup.php?crewname=$2 [NC,L]
+
+# Handle requests for "joincrew"
+RewriteRule ^joincrew(\/)?$ joincrew.php [NC,L]
+
+# Handle requests for "events"
+RewriteRule ^events(\/)?$ events.php [NC,L]
+
+# Handle requests for "topposts"
+RewriteRule ^topposts(\/)?$ topposts.php [NC,L]
+
+# Handle requests for "notifications"
+RewriteRule ^notifications(\/)?$ notifications.php [NC,L]
+
+# Handle requests for "update_notifications"
+RewriteRule ^update_notifications(\/)?$ update_notifications.php [NC,L]
+
+# Handle requests for "invites"
+RewriteRule ^invites(\/)?$ invites.php [NC,L]
+
+# Handle requests for "update_invite"
+RewriteRule ^update_invite(\/)?$ update_invite.php [NC,L]
+
+# Handle requests for "createpost"
+RewriteRule ^createpost(\/)?$ createpost.php [NC,L]
+
+# Handle requests for "submitpost"
+RewriteRule ^submitpost(\/)?$ submitpost.php [NC,L]
+
+# Handle requests for "createcategory"
+RewriteRule ^createcategory(\/)?$ createcategory.php [NC,L]
+
+# Handle requests for "submitcreatecategory"
+RewriteRule ^submitcreatecategory(\/)?$ submitcreatecategory.php [NC,L]
+
+# Handle requests for "myposts", "myposts/newest" or "mypost/oldest"
+RewriteRule ^myposts(\/)?(newest|oldest|crewposts)?$ myposts.php?sortby=$2 [NC,L]
+
+# Handle requests for "like_posts" (used for liking posts)
+RewriteRule ^likepost(\/)?([0-9]+)?\/?$ like_post.php?postid=$2 [NC,L]
+
+# Handle requests for "editpost"
+RewriteRule ^editpost\/([0-9]+)\/?([A-Za-z0-9-]+)?\/?$ editpost.php?post_id=$1&blog_title=$2 [NC,L]
+
+# Handle requests for "deletepost"
+RewriteRule ^deletepost\/([0-9]+)\/?([A-Za-z0-9-]+)?\/?$ deletepost.php?post_id=$1&blog_title=$2 [NC,L]
+
+# Handle requests for "logout"
+RewriteRule ^logout(\/)?$ logout.php [NC,L]
+
+# Handle requests for "privacypolicy"
+RewriteRule ^privacypolicy(\/)?$ privacypolicy.php [NC,L]
+
+# Handle requests for "terms"
+RewriteRule ^terms(\/)?$ terms.php [NC,L]
+
+# Handle requests for "forgotpassword"
+RewriteRule ^forgotpassword(\/)?$ forgotpassword.php [NC,L]
+
+# Handle requests for "reset"
+RewriteRule ^reset(\/)?$ reset.php [NC,L]
+
+# Handle requests for "resetpassword"
+RewriteRule ^resetpassword(\/)?$ resetpassword.php [NC,L]
+
+

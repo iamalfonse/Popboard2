@@ -1,0 +1,119 @@
+@import "var","mixins","fontface";
+.cleditorMain {
+	padding:0 1px 1px;
+}
+.cleditorMain iframe {
+	border:1px solid #ccc;
+	margin:0;
+	padding:0;
+	background: white;
+	@include border-radius(4px);
+	@include box-shadow(0 1px 3px rgba(0, 0, 0, 0.15) inset);
+}
+.cleditorMain textarea {
+	border:none;
+	margin:0;
+	padding:0;
+	overflow-y:scroll;
+	font:10pt Arial,Verdana;
+	resize:none;
+	outline:none /* webkit grip focus */
+}
+.cleditorToolbar {
+/*background: url('../images/toolbar.gif') repeat*/
+	margin: 5px 0 8px;
+}
+.cleditorGroup {
+	float:left;
+	height:26px;
+	margin: 0 5px 0 0;
+	width: auto !important;
+	border:1px solid #999;
+	overflow: hidden;
+	@include border-radius(4px);
+}
+.cleditorButton {
+	float:left;
+	width:32px;
+	height:26px;
+	margin:0 0 0 -1px;
+	border-left:1px solid #999;
+	background: url('../images/buttons.gif') #fff;
+	@include gradient(#fff, #ccc, image, url('../images/buttons.gif') no-repeat);
+
+	&:hover {
+		@include gradient(#ccc, #fff, image, url('../images/buttons.gif') no-repeat);
+	}
+}
+.cleditorButton:first-child {
+	//border-radius: 4px 0 0 4px;
+	border-left: 0 none;
+	margin: 0;
+}
+.cleditorButton:last-child {
+	//border-radius: 0 4px 4px 0;
+}
+.cleditorDisabled {
+	opacity:0.3;
+	filter:alpha(opacity=30);
+}
+.cleditorDivider {
+	display: none;
+	float:left;
+	width:1px;
+	height:23px;
+	margin:1px 0 1px 0;
+	background:#CCC;
+}
+.cleditorPopup {
+	border:solid 1px #999;
+	background-color:white;
+	color:#333333;
+	position:absolute;
+	font:10pt Arial,Verdana;
+	cursor:default;
+	z-index:10000;
+}
+.cleditorList div {
+	padding:2px 4px 2px 4px
+}
+.cleditorList p,
+.cleditorList h1,
+.cleditorList h2,
+.cleditorList h3,
+.cleditorList h4,
+.cleditorList h5,
+.cleditorList h6,
+.cleditorList font {
+	padding:0;
+	margin:0;
+	background-color:Transparent;
+}
+.cleditorColor {
+	width:150px;
+	padding:1px 0 0 1px;
+}
+.cleditorColor div {
+	float:left;
+	width:14px;
+	height:14px;
+	margin:0 1px 1px 0;
+}
+.cleditorPrompt {
+	background-color:#F6F7F9;
+	padding:4px;
+	font-size:8.5pt;
+}
+.cleditorPrompt input,
+.cleditorPrompt textarea {
+	font:8.5pt Arial,Verdana;
+}
+.cleditorMsg {
+	background-color:#FDFCEE;
+	width:150px;
+	padding:4px;
+	font-size:8.5pt
+}
+img {
+	max-width: 100%;
+}

@@ -1,0 +1,121 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww12440\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \
+\
+\
+\
+users\
++----------------+-------------+------+-----+---------+----------------+\
+| Field          | Type        | Null | Key | Default | Extra          |\
++----------------+-------------+------+-----+---------+----------------+\
+| user_id        | int(11)     | NO   | PRI | NULL    | auto_increment |\
+| username       | varchar(30) | NO   | UNI | NULL    |                |\
+| email          | varchar(70) | NO   | UNI | NULL    |                |\
+| passwd         | char(40)    | NO   |     | NULL    |                |\
+| displayname    | varchar(30) | NO   |     | NULL    |                |\
+| active         | binary(1)   | NO   |     | 0       |                |\
+| setup          | binary(1)   | YES  |     | 0       |                |\
+| joindate       | date        | YES  |     | NULL    |                |\
+| birthdate      | date        | YES  |     | NULL    |                |\
+| bio            | text        | YES  |     | NULL    |                |\
+| location       | varchar(60) | YES  |     | NULL    |                |\
+| car            | varchar(60) | YES  |     | NULL    |                |\
+| profileimg     | varchar(40) | YES  |     | NULL    |                |\
+| profilebg      | varchar(40) | YES  |     | NULL    |                |\
+| total_posts    | int(11)     | YES  |     | 0       |                |\
+| total_comments | int(11)     | YES  |     | 0       |                |\
+| total_likes    | int(11)     | YES  |     | 0       |                |\
+| lvl            | tinyint(4)  | YES  |     | 0       |                |\
+| total_xp       | int(11)     | NO   |     | 0       |                |\
+| total_gp       | int(11)     | YES  |     | 0       |                |\
+| crew_id        | int(11)     | YES  |     | NULL    |                |\
+| session_hash   | varchar(32) | YES  |     | NULL    |                |\
++----------------+-------------+------+-----+---------+----------------+\
+\
+categories\
++-----------------+--------------+------+-----+---------+----------------+\
+| Field           | Type         | Null | Key | Default | Extra          |\
++-----------------+--------------+------+-----+---------+----------------+\
+| id              | int(11)      | NO   | PRI | NULL    | auto_increment |\
+| category        | varchar(30)  | YES  |     | NULL    |                |\
+| cat_displayname | varchar(20)  | YES  |     | NULL    |                |\
+| description     | varchar(140) | YES  |     | NULL    |                |\
+| num_posts       | int(11)      | YES  |     | 0       |                |\
+| num_comments    | int(11)      | YES  |     | 0       |                |\
+| listorder       | int(2)       | YES  |     | NULL    |                |\
++-----------------+--------------+------+-----+---------+----------------+\
+\
+posts\
++--------------+--------------+------+-----+---------+----------------+\
+| Field        | Type         | Null | Key | Default | Extra          |\
++--------------+--------------+------+-----+---------+----------------+\
+| id           | int(11)      | NO   | PRI | NULL    | auto_increment |\
+| user_id      | int(11)      | YES  | MUL | NULL    |                |\
+| blog_title   | varchar(100) | YES  |     | NULL    |                |\
+| blog_message | mediumtext   | YES  |     | NULL    |                |\
+| category     | varchar(60)  | YES  |     | NULL    |                |\
+| crew_id      | int(11)      | YES  |     | NULL    |                |\
+| post_date    | datetime     | YES  |     | NULL    |                |\
+| views        | int(11)      | NO   |     | 0       |                |\
+| likes        | int(11)      | NO   |     | 0       |                |\
+| comments     | int(11)      | NO   |     | 0       |                |\
+| post_updated | datetime     | YES  |     | NULL    |                |\
+| deleted      | binary(1)    | YES  |     | 0       |                |\
++--------------+--------------+------+-----+---------+----------------+\
+\
+comments\
++--------------+-------------+------+-----+---------+----------------+\
+| Field        | Type        | Null | Key | Default | Extra          |\
++--------------+-------------+------+-----+---------+----------------+\
+| id           | int(11)     | NO   | PRI | NULL    | auto_increment |\
+| usrname      | varchar(30) | YES  |     | NULL    |                |\
+| post_id      | int(11)     | YES  |     | NULL    |                |\
+| user_id      | int(11)     | YES  | MUL | NULL    |                |\
+| comment_post | text        | YES  |     | NULL    |                |\
+| comment_date | datetime    | YES  |     | NULL    |                |\
+| deleted      | binary(1)   | YES  |     | 0       |                |\
++--------------+-------------+------+-----+---------+----------------+\
+\
+likes\
++--------------+---------+------+-----+---------+----------------+\
+| Field        | Type    | Null | Key | Default | Extra          |\
++--------------+---------+------+-----+---------+----------------+\
+| id           | int(11) | NO   | PRI | NULL    | auto_increment |\
+| user_id      | int(11) | YES  |     | NULL    |                |\
+| post_id      | int(11) | YES  |     | NULL    |                |\
+| post_user_id | int(10) | YES  |     | NULL    |                |\
++--------------+---------+------+-----+---------+----------------+\
+\
+crews\
++-------------+-------------+------+-----+------------------+----------------+\
+| Field       | Type        | Null | Key | Default          | Extra          |\
++-------------+-------------+------+-----+------------------+----------------+\
+| crew_id     | int(11)     | NO   | PRI | NULL             | auto_increment |\
+| crewname    | varchar(30) | YES  | UNI | NULL             |                |\
+| crew_url    | varchar(40) | YES  |     | NULL             |                |\
+| founder     | varchar(30) | NO   |     | NULL             |                |\
+| about       | text        | YES  |     | NULL             |                |\
+| num_members | int(11)     | YES  |     | 0                |                |\
+| location    | varchar(30) | YES  |     | NULL             |                |\
+| datecreated | date        | NO   |     | NULL             |                |\
+| img_url     | varchar(40) | NO   |     | /images/crew.jpg |                |\
+| banner_img  | varchar(40) | YES  |     | NULL             |                |\
+| private     | binary(1)   | YES  |     | 0                |                |\
++-------------+-------------+------+-----+------------------+----------------+\
+\
+notifications\
++-------------------+-------------+------+-----+---------+----------------+\
+| Field             | Type        | Null | Key | Default | Extra          |\
++-------------------+-------------+------+-----+---------+----------------+\
+| id                | int(11)     | NO   | PRI | NULL    | auto_increment |\
+| user_id           | int(11)     | YES  | MUL | NULL    |                |\
+| from_user_id      | int(11)     | YES  |     | NULL    |                |\
+| notification_type | varchar(30) | YES  |     | NULL    |                |\
+| notification      | text        | YES  |     | NULL    |                |\
+| notification_date | datetime    | YES  |     | NULL    |                |\
+| read              | binary(1)   | YES  |     | 0       |                |\
++-------------------+-------------+------+-----+---------+----------------+}

@@ -1,0 +1,111 @@
+// Add UI colors here
+// Example Base Colors
+$white: #ffffff;
+$black: #000000;
+$gray: #eaeaea;
+$red: #e24547;
+$orange: #f18c2c;
+$blue: #42a7dd;
+$green: #78ca45;
+$yellow: #ffff00;
+$purple: #a132a8;
+$primary: #1ABC9C;
+$warning: #F1C40F;
+$default: #BDC3C7;
+$danger: #E74C3C;
+$success: #2ECC71;
+$inverse: #34495E;
+$info: #3498DB;
+$bg-color: #687991;
+
+// DONT CHANGE VARIABLE NAMES BELOW THIS POINT 
+// _base.scss AND mixins.scss ARE DEPENDENT ON THESE VARS
+
+// Custom Font Family
+// Set true to use embeded fonts set false to use google font or default font
+$set-custom-font: true;
+$font-count: 1;
+$custom1-font-family: 'Proxima Nova','Montserrat', 'Open Sans', 'Helvetica Neue', 'Helvetica', arial, sans-serif;
+$custom1-font-family-url: 'itcavantgardestd-md';
+$custom2-font-family: 'ITCAvantGardeGothicStdBook';
+$custom2-font-family-url: 'itcavantgardestd-bk';
+//Add custom family and url for more fonts 
+
+// Default Font Colors
+$gray-headline: #333;
+$gray-subheadline: #444;
+$gray-maintext: #333;
+
+// body Background
+$body-bg: none center center no-repeat $bg-color;
+$body-text-color: $gray-maintext;
+$body-font-family: $custom1-font-family;
+$body-font-size: 100%;
+
+// Elements
+$link: #226B93;
+$link-hover: darken($link,20%); 
+$ui-border: 1px solid #555;
+
+// Spacing
+$auto: 0 auto;
+
+// H font style
+$h-font-family: 'Proxima Nova', 'Helvetica Neue', sans-serif;
+$h-weight: 700;
+
+// Base font-size
+$h1-size: 2em;
+$h2-size: 1.5em;
+$h3-size: 1.2em;
+$h4-size: 1em;
+$h5-size: .8em;
+$h6-size: .6em;
+$label-size: 1em;
+$p-size: 1em;
+$li-size: 1em;
+
+// input style
+$input-bg: #fff;
+$input-text-color: #555;
+$input-focus-text-color: #555;
+$input-focus-border-color: #e24547;
+
+// Custom select drop down
+$select-t-color: #757474;
+$select-gradent-to: #fff; 
+$select-gradent-from: #e7e7e7;
+$select-gradent-default: #fff;
+
+$dd-default-w: 100%;
+$dd-h: 36px;
+$dd-margin: 5px 0 20px;
+$dd-t-padding: 4px .4em;
+$dd-t-color: $select-t-color;
+$dd-f-weight: normal;
+$dd-f-size: 1em;
+$dd-bg: #ccc;
+
+// Main btnAll Default
+$btn-color: #e24547;
+$btn-hover: #f18c2c;
+$btn-text-color: #fff;
+$btn-padding: .3em 0;
+
+// Grid Spacing / Use for global spacing
+$top: auto;
+$right: 1%;
+$bottom: auto;
+$left: 1%;
+
+// Grid Selector: 
+// Use '%' for silent/placeholder selector and '.' for normal selector
+$gd-selector: '%';
+
+// Set grid count default 12
+$gd-count: 12;
+
+// Braking Points
+$start-width: 1250px;
+$mid-lr: 750px;
+$mobile-lr: 480px;

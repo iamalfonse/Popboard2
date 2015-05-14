@@ -1,0 +1,148 @@
+* {
+	margin:0; 
+	padding:0; 
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+img {
+	border: 0 none;
+}
+@include c-font($set-c-font: $set-custom-font, $f-count: $font-count, $c1-font-family: $custom1-font-family, $c2-font-family: $custom2-font-family, $c1-font-family-url: $custom1-font-family-url, $c2-font-family-url: $custom2-font-family-url);
+body {
+	background: $body-bg;
+	color: $body-text-color;
+	font-size: $body-font-size;
+	font-family: $body-font-family;
+}
+a {
+	color:$link;
+	text-decoration: none;
+	outline: none;
+	&:hover {
+		color:$link-hover;
+	}
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: $h-font-family;
+	font-weight: $h-weight;
+	letter-spacing: .02em;
+}
+h1 {
+    font-size: $h1-size;
+    color:$gray-headline;
+}
+h2 {
+    font-size: $h2-size;
+    color:$gray-subheadline;
+}
+h3 {
+    font-size: $h3-size;
+    color:$gray-subheadline;
+}
+h4 {
+    font-size: $h4-size;
+}
+h5 {
+    font-size: $h5-size;
+}
+h6 {
+    font-size: $h6-size;
+}
+label {
+    font-size: $label-size;
+    font-weight: bold;
+}
+p {
+    font-size: $p-size;
+}
+ul {
+	list-style:none;
+	li {
+		font-size: $li-size;
+	}
+}
+ol {
+	list-style-position:inside;
+}
+// Form Elements
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+textarea {
+	padding: 10px 14px;
+	margin: 0 0 10px;
+	width: 100%;
+	font-size: 1em;
+	color: $input-text-color;
+	font-family: $custom1-font-family;
+	border: 1px solid #ccc;
+	background: $input-bg;
+	@include border-radius(4px);
+	// @include box-shadow(0 0 20px rgba(255,255,255,.9), 0 1px 2px rgba(0,0,0,.6) inset);
+	@include transition(box-shadow 0.3s linear);
+
+	&.required {
+		border: 1px solid $red;
+	}
+}
+// input[type="submit"] {
+// 	padding: .8% .6%;
+//     border: 1px solid #ccc;
+//     font-size: 1em;
+//     background: $input-bg;
+//     color: $input-text-color;
+//     font-family: $custom1-font-family;
+//     margin: 0 0 1%;
+//     cursor: pointer;
+//     &:hover {
+//     	background: darken($input-bg, 5%);
+//     }
+//     &:active {
+//     	background: darken($input-bg, 10%);
+//     }
+// }
+textarea:focus, 
+input[type="text"]:focus, 
+input[type="number"]:focus, 
+input[type="tel"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus {
+	color: $input-focus-text-color;
+	background:$input-bg;
+	@include box-shadow(0 0 4px rgba(66,167,221, 0.9));
+}
+input:focus::-webkit-input-placeholder, input:focus::-moz-placeholder {
+    color: $input-focus-text-color;
+    @include box-shadow(none);
+}
+textarea {
+	min-height:100px;
+}
+button {
+	border: 0 none;
+}
+@include drop-down($dd-default-w: 100%, $dd-h: 36px, $dd-margin: $auto, $dd-t-padding: 0 .4em, $dd-t-color: $select-t-color, $dd-f-weight: normal, $dd-f-size: 1em);
+// Btn
+%btnAll {
+	font-size:1.4em;
+	line-height:1em;
+	padding:$btn-padding;
+	margin:0 auto;
+	border:0 none;
+    color: $btn-text-color;
+    width: 100%;
+    font-weight: normal;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    @include border-radius(5px);
+    background:$btn-color;
+	&:hover {
+		cursor:pointer;
+		background:$btn-hover;
+	}
+}
