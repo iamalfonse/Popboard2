@@ -22,7 +22,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 	<title>Import Underground | Categories</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews">
+	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
 	<meta name="description" content="Post and discuss about Import Cars">
 </head>
 <body class="categories">

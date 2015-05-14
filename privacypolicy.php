@@ -22,7 +22,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 	<title>Import Underground | Privacy Policy</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews">
+	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
 	<meta name="description" content="Post and discuss about Import Cars">
 </head>
 <body class="privacypolicy">
@@ -56,7 +56,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 
 					<li>To administer a contest, promotion, survey or other site feature</li>
 
-					<li>To send periodic emails	(such as notifications, crew invites, promotions, etc.)</li>
+					<li>To send periodic emails	(such as notifications, group invites, promotions, etc.)</li>
 				</ul>
 
 				<p>The email address you provide may be used to send you information, respond to inquiries, and/or other requests or questions.</p>

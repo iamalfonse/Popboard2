@@ -15,28 +15,28 @@
 		echo $requester_userid." ".$decision;
 
 		
-		//select * from crew invites
-		$updateCrewInviteQuery  = mysqli_query($dblink, "SELECT * FROM crewinvites WHERE user_id = '$requester_userid'");
-		$updateCrewInviteRow = mysqli_fetch_assoc($updateCrewInviteQuery);
+		//select * from group invites
+		$updateGroupInviteQuery  = mysqli_query($dblink, "SELECT * FROM groupinvites WHERE user_id = '$requester_userid'");
+		$updateGroupInviteRow = mysqli_fetch_assoc($updateGroupInviteQuery);
 
 		if($decision == 'accepted'){
 
-			//then add user to crew (add a crew_id to user)
-			$updateCrewInviteQuery2  = mysqli_query($dblink, "UPDATE users SET crew_id = '{$updateCrewInviteRow['crew_id']}' WHERE user_id = '$requester_userid'");
+			//then add user to group (add a group_id to user)
+			$updateGroupInviteQuery2  = mysqli_query($dblink, "UPDATE users SET group_id = '{$updateGroupInviteRow['group_id']}' WHERE user_id = '$requester_userid'");
 
-			//add +1 to crew members in crew table
-			$updateCrewInviteQuery3  = mysqli_query($dblink, "UPDATE crews SET num_members = num_members+1 WHERE crew_id = '{$updateCrewInviteRow['crew_id']}'");
+			//add +1 to group members in group table
+			$updateGroupInviteQuery3  = mysqli_query($dblink, "UPDATE groups SET num_members = num_members+1 WHERE group_id = '{$updateGroupInviteRow['group_id']}'");
 
-			//add notification to say that this user has joined your crew
+			//add notification to say that this user has joined your group
 			iu_send_notification($requester_userid, $Rows['user_id'], 'joined');
 
-			//also add a notification to the user that he has been accepted into the crew
+			//also add a notification to the user that he has been accepted into the group
 			iu_send_notification($Rows['user_id'], $requester_userid,'accepted');
 		}else {
 			//do nothing. invite gets deleted anyways
 		}
 		//delete pending = 0 to get rid of the pending invite
-		$updateCrewInviteQuery  = mysqli_query($dblink, "DELETE FROM crewinvites WHERE user_id = '$requester_userid'");
+		$updateGroupInviteQuery  = mysqli_query($dblink, "DELETE FROM groupinvites WHERE user_id = '$requester_userid'");
 	
 		
 	}

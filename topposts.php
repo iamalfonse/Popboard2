@@ -22,8 +22,8 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
 	<title>Import Underground | Top Posts</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews, JDM">
-	<meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a crew and share your thoughts with people like you.">
+	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups, JDM">
+	<meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a group and share your thoughts with people like you.">
 	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>
@@ -36,13 +36,13 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 
 		<div id="right">
 
-	    	<div class="headertitle crewname">
+	    	<div class="headertitle groupname">
 	    		<h2>Top Posts</h2>
 	    	</div>
 			<?php
 				//show posts
-				$QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, likes, post_date FROM users INNER JOIN posts USING (user_id) WHERE (posts.crew_id is NULL AND posts.deleted = '0') ORDER BY likes DESC LIMIT 0, 6");
-				// $QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, post_date FROM users LEFT OUTER JOIN posts ON users.user_id=posts.user_id LEFT OUTER JOIN likes on likes.id=posts.id WHERE (posts.crew_id is NULL AND posts.deleted = '0') ORDER BY id DESC LIMIT 0, 3");
+				$QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, likes, post_date FROM users INNER JOIN posts USING (user_id) WHERE (posts.group_id is NULL AND posts.deleted = '0') ORDER BY likes DESC LIMIT 0, 6");
+				// $QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, post_date FROM users LEFT OUTER JOIN posts ON users.user_id=posts.user_id LEFT OUTER JOIN likes on likes.id=posts.id WHERE (posts.group_id is NULL AND posts.deleted = '0') ORDER BY id DESC LIMIT 0, 3");
 				$Row = mysqli_fetch_assoc($QueryResult);
 				$num_rows = mysqli_num_rows($QueryResult);
 				

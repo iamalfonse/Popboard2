@@ -70,26 +70,26 @@ RewriteRule ^profile(\/)?([a-z0-9-]+)?$ profile.php?username=$2 [NC,L]
 # Handle requests for "updateprofile"
 RewriteRule ^updateprofile(\/)?$ updateprofile.php [NC,L]
 
-# Handle requests for "crews"
-RewriteRule ^crews(\/)?$ crews.php [NC,L]
+# Handle requests for "groups"
+RewriteRule ^groups(\/)?$ groups.php [NC,L]
 
-# Handle requests for "crew/crewname"
-RewriteRule ^crew(\/)?([a-z0-9-]+)?$ crew.php?crewurl=$2 [NC,L]
+# Handle requests for "group/groupname"
+RewriteRule ^group(\/)?([a-z0-9-]+)?$ group.php?groupurl=$2 [NC,L]
 
-# Handle requests for "createcrew"
-RewriteRule ^createcrew(\/)?$ createcrew.php [NC,L]
+# Handle requests for "creategroup"
+RewriteRule ^creategroup(\/)?$ creategroup.php [NC,L]
 
-# Handle requests for "submitcreatecrew"
-RewriteRule ^submitcreatecrew(\/)?$ submitcreatecrew.php [NC,L]
+# Handle requests for "submitcreategroup"
+RewriteRule ^submitcreategroup(\/)?$ submitcreategroup.php [NC,L]
 
-# Handle requests for "submitcrewsetup"
-RewriteRule ^submitcrewsetup(\/)?$ submitcrewsetup.php [NC,L]
+# Handle requests for "submitgroupsetup"
+RewriteRule ^submitgroupsetup(\/)?$ submitgroupsetup.php [NC,L]
 
-# Handle requests for "crewsetup"
-RewriteRule ^crewsetup(\/)?([a-z0-9-]+)?$ crewsetup.php?crewname=$2 [NC,L]
+# Handle requests for "groupsetup"
+RewriteRule ^groupsetup(\/)?([a-z0-9-]+)?$ groupsetup.php?groupname=$2 [NC,L]
 
-# Handle requests for "joincrew"
-RewriteRule ^joincrew(\/)?$ joincrew.php [NC,L]
+# Handle requests for "joingroup"
+RewriteRule ^joingroup(\/)?$ joingroup.php [NC,L]
 
 # Handle requests for "events"
 RewriteRule ^events(\/)?$ events.php [NC,L]
@@ -122,7 +122,7 @@ RewriteRule ^createcategory(\/)?$ createcategory.php [NC,L]
 RewriteRule ^submitcreatecategory(\/)?$ submitcreatecategory.php [NC,L]
 
 # Handle requests for "myposts", "myposts/newest" or "mypost/oldest"
-RewriteRule ^myposts(\/)?(newest|oldest|crewposts)?$ myposts.php?sortby=$2 [NC,L]
+RewriteRule ^myposts(\/)?(newest|oldest|groupposts)?$ myposts.php?sortby=$2 [NC,L]
 
 # Handle requests for "like_posts" (used for liking posts)
 RewriteRule ^likepost(\/)?([0-9]+)?\/?$ like_post.php?postid=$2 [NC,L]

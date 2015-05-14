@@ -32,7 +32,7 @@ users\
 | lvl            | tinyint(4)  | YES  |     | 0       |                |\
 | total_xp       | int(11)     | NO   |     | 0       |                |\
 | total_gp       | int(11)     | YES  |     | 0       |                |\
-| crew_id        | int(11)     | YES  |     | NULL    |                |\
+| group_id        | int(11)     | YES  |     | NULL    |                |\
 | session_hash   | varchar(32) | YES  |     | NULL    |                |\
 +----------------+-------------+------+-----+---------+----------------+\
 \
@@ -58,7 +58,7 @@ posts\
 | blog_title   | varchar(100) | YES  |     | NULL    |                |\
 | blog_message | mediumtext   | YES  |     | NULL    |                |\
 | category     | varchar(60)  | YES  |     | NULL    |                |\
-| crew_id      | int(11)      | YES  |     | NULL    |                |\
+| group_id      | int(11)      | YES  |     | NULL    |                |\
 | post_date    | datetime     | YES  |     | NULL    |                |\
 | views        | int(11)      | NO   |     | 0       |                |\
 | likes        | int(11)      | NO   |     | 0       |                |\
@@ -90,19 +90,19 @@ likes\
 | post_user_id | int(10) | YES  |     | NULL    |                |\
 +--------------+---------+------+-----+---------+----------------+\
 \
-crews\
+groups\
 +-------------+-------------+------+-----+------------------+----------------+\
 | Field       | Type        | Null | Key | Default          | Extra          |\
 +-------------+-------------+------+-----+------------------+----------------+\
-| crew_id     | int(11)     | NO   | PRI | NULL             | auto_increment |\
-| crewname    | varchar(30) | YES  | UNI | NULL             |                |\
-| crew_url    | varchar(40) | YES  |     | NULL             |                |\
+| group_id     | int(11)     | NO   | PRI | NULL             | auto_increment |\
+| groupname    | varchar(30) | YES  | UNI | NULL             |                |\
+| group_url    | varchar(40) | YES  |     | NULL             |                |\
 | founder     | varchar(30) | NO   |     | NULL             |                |\
 | about       | text        | YES  |     | NULL             |                |\
 | num_members | int(11)     | YES  |     | 0                |                |\
 | location    | varchar(30) | YES  |     | NULL             |                |\
 | datecreated | date        | NO   |     | NULL             |                |\
-| img_url     | varchar(40) | NO   |     | /images/crew.jpg |                |\
+| img_url     | varchar(40) | NO   |     | /images/group.jpg |                |\
 | banner_img  | varchar(40) | YES  |     | NULL             |                |\
 | private     | binary(1)   | YES  |     | 0                |                |\
 +-------------+-------------+------+-----+------------------+----------------+\

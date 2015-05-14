@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$('body').on('change','#crewimg', function(){
+	$('body').on('change','#groupimg', function(){
 		ajaxFileUpload();
 	})
 	//error window handling
@@ -10,58 +10,58 @@ $(document).ready(function(){
 
 	//jcrop window handling
 	.on('click', '.jcropCancel', function(){
-		removeCrewPic();
+		removeGroupPic();
 		$('.jcropOverlay').fadeOut(500);
 	})
 
 	.on('click', '.jcropConfirm', function(){
-		cropCrewPic();
+		cropGroupPic();
 	})
 
-	.on('keyup', '.crewinfo .crewDesc', function(){
-		var crewdesc = $(this).val();
-		$('.crewPreview .crewAbout').html(crewdesc);
+	.on('keyup', '.groupinfo .groupDesc', function(){
+		var groupdesc = $(this).val();
+		$('.groupPreview .groupAbout').html(groupdesc);
 		$(this).removeClass('required');//if required was added after submit
-		if(crewdesc == ''){
+		if(groupdesc == ''){
 			$(this).addClass('required');
 		}
 	})
-	.on('keyup', '.crewinfo .crewLoc', function(){
-		var crewloc = $(this).val();
-		$('.crewPreview .location').html(crewloc);
+	.on('keyup', '.groupinfo .groupLoc', function(){
+		var grouploc = $(this).val();
+		$('.groupPreview .location').html(grouploc);
 		$(this).removeClass('required');//if required was added after submit
-		if(crewloc == ''){
-			$('.crewPreview .location').html('&nbsp;');//placeholder if there's no value
+		if(grouploc == ''){
+			$('.groupPreview .location').html('&nbsp;');//placeholder if there's no value
 			$(this).addClass('required');
 		}
 	})
-	.on('focusout', '.crewinfo .crewDesc, .crewinfo .crewLoc', function(){
-		var crewdesc = $('.crewinfo .crewDesc').val();
-		var crewloc = $('.crewinfo .crewLoc').val();
-		$('.crewPreview .crewAbout').html(crewdesc);
-		$('.crewPreview .location').html(crewloc);
+	.on('focusout', '.groupinfo .groupDesc, .groupinfo .groupLoc', function(){
+		var groupdesc = $('.groupinfo .groupDesc').val();
+		var grouploc = $('.groupinfo .groupLoc').val();
+		$('.groupPreview .groupAbout').html(groupdesc);
+		$('.groupPreview .location').html(grouploc);
 	})
-	.on('click','.crewinfo input[type="radio"]', function(){
+	.on('click','.groupinfo input[type="radio"]', function(){
 		var val = $(this).val();
 		if(val == '1'){
-			$('.crewprivate').append('<span>(Only crew members can view posts)</span>');
-			$('.crewlist li').append('<div class="private">Private</div>');
+			$('.groupprivate').append('<span>(Only group members can view posts)</span>');
+			$('.grouplist li').append('<div class="private">Private</div>');
 		}else if(val == '0'){
-			$('.crewprivate span, .crewlist .private').detach();
+			$('.groupprivate span, .grouplist .private').detach();
 		}
 	})
 	.on('click','.submitbtn', function(event){
 		
-		var crewname = $('.crewinfo .crewName').val();
-		var crewdesc = $('.crewinfo .crewDesc').val();
-		var crewloc = $('.crewinfo .crewLoc').val();
-		if(crewname == '' || crewdesc == '' || crewloc == ''){
+		var groupname = $('.groupinfo .groupName').val();
+		var groupdesc = $('.groupinfo .groupDesc').val();
+		var grouploc = $('.groupinfo .groupLoc').val();
+		if(groupname == '' || groupdesc == '' || grouploc == ''){
 			event.preventDefault();
 			$('#right').prepend('<p class="error">Please fill in the required fields.</p>');
 
-			if(crewname == ''){$('.crewinfo .crewName').addClass('required');}
-			if(crewdesc == ''){$('.crewinfo .crewDesc').addClass('required');}
-			if(crewloc == ''){$('.crewinfo .crewLoc').addClass('required');}
+			if(groupname == ''){$('.groupinfo .groupName').addClass('required');}
+			if(groupdesc == ''){$('.groupinfo .groupDesc').addClass('required');}
+			if(grouploc == ''){$('.groupinfo .groupLoc').addClass('required');}
 
 			return;
 		}
@@ -79,9 +79,9 @@ ajaxFileUpload = function(){
 	console.log("start ajax upload ");
 
 	$.ajaxFileUpload({
-		url:'../setupcrewupload.php',
+		url:'../setupgroupupload.php',
 		secureuri:false,
-		fileElementId:'crewimg',
+		fileElementId:'groupimg',
 		dataType: 'json',
 		data:{name:'iu', id:'id'},
 		success: function (data, status){
@@ -154,7 +154,7 @@ ajaxFileUpload = function(){
 				    });
 
 				    //crop automatically
-				    cropCrewPic();
+				    cropGroupPic();
 				}
 			}
 			
@@ -174,7 +174,7 @@ ajaxFileUpload = function(){
 	return false;
 }
 
-cropCrewPic = function(){
+cropGroupPic = function(){
 	var x = $('#x').val();
 	var y = $('#y').val();
 	var w = $('#w').val();
@@ -183,15 +183,15 @@ cropCrewPic = function(){
 	console.log('imgz: ',img);
 
 	$.ajax({
-		url: "../cropcrewpic.php",
+		url: "../cropgrouppic.php",
 		datatype: "html",
 		data: {src: img, xvalue: x, yvalue: y, wvalue: w, hvalue: h},
 		beforeSend: function() {
-		    console.log('processing crew pic');
+		    console.log('processing group pic');
 		},
 		success: function(data) {
 			console.log('successful crop: '+data);
-			$('.crewPreview .crewImg img').attr('src', data+'?'+Math.random());
+			$('.groupPreview .groupImg img').attr('src', data+'?'+Math.random());
 			$('#target').remove();
 			$('.jcrop-holder').remove();
 			$('.jcropOverlay').fadeOut(500);
@@ -200,16 +200,16 @@ cropCrewPic = function(){
 	});
 }
 
-removeCrewPic = function(){
+removeGroupPic = function(){
 
 	$.ajax({
-		url: "../removecrewpic.php",
+		url: "../removegrouppic.php",
 		datatype: "html",
 		beforeSend: function() {
-		    console.log('removing crew pic');
+		    console.log('removing group pic');
 		},
 		success: function(data) {
-			console.log('successful removal of crew pic: '+data);
+			console.log('successful removal of group pic: '+data);
 			$('.avatarImg').attr('src', data+'?'+Math.random());
 			$('#target').remove();
 			$('.jcrop-holder').remove();

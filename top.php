@@ -6,7 +6,7 @@
 	preg_match('/\/([A-Za-z]+)(?:\/)?([A-Za-z-]+)?(\/)?/', $pageURL, $url);
 	if(isset($url[1])){
 		$url1 = $url[1];
-		$url2 = isset($url[2]) ? $url[2] : ''; //used to grab crewname
+		$url2 = isset($url[2]) ? $url[2] : ''; //used to grab groupname
 	}
 
 	
@@ -19,20 +19,20 @@
 		/* GET LOGGED IN USER INFORMATION*/
 		$r  = mysqli_query($dblink, "SELECT * FROM users WHERE username='$username' AND session_hash = '$session_hash'");
 		$Rows = mysqli_fetch_assoc($r);
-		$topcrewid = $Rows['crew_id'];
+		$topgroupid = $Rows['group_id'];
 	}
 
 	// print_r($url);
 
-	//get crew url
-	if(!isset($topcrewid)){
-		$topcrewid = '';
+	//get group url
+	if(!isset($topgroupid)){
+		$topgroupid = '';
 	}
-	$topcrewurl ='';
-	if($topcrewid){
-		$nav_results  = @mysqli_query($dblink, "SELECT crew_url FROM crews WHERE crew_id = '$topcrewid'");
+	$topgroupurl ='';
+	if($topgroupid){
+		$nav_results  = @mysqli_query($dblink, "SELECT group_url FROM groups WHERE group_id = '$topgroupid'");
 		$nav_rows = mysqli_fetch_assoc($nav_results);
-		$topcrewurl = $nav_rows['crew_url'];
+		$topgroupurl = $nav_rows['group_url'];
 	}
 	
 
@@ -89,13 +89,13 @@
 				</ul>
 			</div>
 		<? 
-			//check if user is a founder/creator of a crew
-			$crewfounderQuery = @mysqli_query($dblink, "SELECT crew_id FROM crews WHERE founder = '{$Rows['username']}'");
-			if(mysqli_num_rows($crewfounderQuery)){ // if there's a match, show invite count
+			//check if user is a founder/creator of a group
+			$groupfounderQuery = @mysqli_query($dblink, "SELECT group_id FROM groups WHERE founder = '{$Rows['username']}'");
+			if(mysqli_num_rows($groupfounderQuery)){ // if there's a match, show invite count
 
-				$crewfounderRows = mysqli_fetch_assoc($crewfounderQuery);
+				$groupfounderRows = mysqli_fetch_assoc($groupfounderQuery);
 				//grab number of invites
-				$getInvitesQuery = @mysqli_query($dblink, "SELECT COUNT(*) AS 'invitecount' FROM crewinvites WHERE crew_id = '{$crewfounderRows['crew_id']}' AND crewinvites.pending = '1'");
+				$getInvitesQuery = @mysqli_query($dblink, "SELECT COUNT(*) AS 'invitecount' FROM groupinvites WHERE group_id = '{$groupfounderRows['group_id']}' AND groupinvites.pending = '1'");
 				$getInvitesRows = mysqli_fetch_assoc($getInvitesQuery);
 				$invite_count = $getInvitesRows['invitecount'];
 		?>
@@ -111,7 +111,7 @@
 						<? 
 							//grab pending invites
 							$user_id = $Rows['user_id'];
-							$inviteQuery = @mysqli_query($dblink, "SELECT * FROM crewinvites INNER JOIN crews USING (crew_id) WHERE crewinvites.crew_id = {$Rows['crew_id']} AND crewinvites.pending = '1' ORDER BY id DESC;");
+							$inviteQuery = @mysqli_query($dblink, "SELECT * FROM groupinvites INNER JOIN groups USING (group_id) WHERE groupinvites.group_id = {$Rows['group_id']} AND groupinvites.pending = '1' ORDER BY id DESC;");
 							
 							iu_get_inviterequests($inviteQuery);
 						?>
@@ -132,10 +132,10 @@
 	<ul>
 		<li class="nav-home <? if($url1 == 'home'){ echo 'active'; } ?>"><a href="/home"><i></i><span>Home</span></a></li>
 		<li class="nav-categories <? if($url1 == 'categories' || $url1 == 'posts'){ echo 'active'; } ?>"><a href="/categories"><i></i><span>Categories</span></a></li>
-		<li class="nav-crews <? if($url1 == 'crews' || ($url1== 'crew' && $url2 != $topcrewurl)){ echo 'active'; } ?>"><a href="/crews"><i></i><span>Crews</span></a></li>
+		<li class="nav-groups <? if($url1 == 'groups' || ($url1== 'group' && $url2 != $topgroupurl)){ echo 'active'; } ?>"><a href="/groups"><i></i><span>Groups</span></a></li>
 		<li class="nav-topposts <? if($url1 == 'topposts'){ echo 'active'; } ?>"><a href="/topposts"><i></i><span>Top Posts</span></a></li>
-		<? if( isset($_COOKIE['login_cookie']) && isset($Rows['crew_id']) ){ ?>
-			<li class="nav-mycrew <? if($url2 == $topcrewurl){ echo 'active'; } ?>"><a href="/crew/<?= $topcrewurl ?>"><i></i><span>My Crew</span></a></li>
+		<? if( isset($_COOKIE['login_cookie']) && isset($Rows['group_id']) ){ ?>
+			<li class="nav-mygroup <? if($url2 == $topgroupurl){ echo 'active'; } ?>"><a href="/group/<?= $topgroupurl ?>"><i></i><span>My Group</span></a></li>
 		<? } ?>
 		<li class="nav-events <? if($url1 == 'events'){ echo 'active'; } ?>"><a href="/events"><i></i><span>Events</span></a></li>
 	</ul>

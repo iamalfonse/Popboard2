@@ -43,8 +43,8 @@ if($errmsg=='1'){
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
 	
 	<title>Import Underground | The Auto Enthusiast Community</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews, JDM">
-	<meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a crew and share your thoughts with people like you.">
+	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups, JDM">
+	<meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a group and share your thoughts with people like you.">
 	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>

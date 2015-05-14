@@ -16,14 +16,14 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	header("Location: /");
 	exit;
 }
-$editpostQuery = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, category, posts.crew_id FROM users INNER JOIN posts USING (user_id) WHERE posts.id = '$post_id'");
+$editpostQuery = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, category, posts.group_id FROM users INNER JOIN posts USING (user_id) WHERE posts.id = '$post_id'");
 $editpostRows = mysqli_fetch_assoc($editpostQuery);
 
 $category = $editpostRows['category'];
 
-if(isset($editpostRows['crew_id'])){
-	$editpostCrewQuery = @mysqli_query($dblink, "SELECT crewname FROM crews WHERE crew_id = '{$editpostRows['crew_id']}'");
-	$editpostCrewRows = mysqli_fetch_assoc($editpostCrewQuery);
+if(isset($editpostRows['group_id'])){
+	$editpostGroupQuery = @mysqli_query($dblink, "SELECT groupname FROM groups WHERE group_id = '{$editpostRows['group_id']}'");
+	$editpostGroupRows = mysqli_fetch_assoc($editpostGroupQuery);
 }
 
 
@@ -70,10 +70,10 @@ if(isset($editpostRows['crew_id'])){
 					if($username == $editpostRows['username']){
 				?>
 					<form method="post" action="/submitpost" >
-						<? if(isset($editpostRows['crew_id'])){ //show only if its a crew post ?>
-							<h4>Posted In <?= $editpostCrewRows['crewname']; ?></h4>
+						<? if(isset($editpostRows['group_id'])){ //show only if its a group post ?>
+							<h4>Posted In <?= $editpostGroupRows['groupname']; ?></h4>
 							<input type="hidden" name="category" value="general">
-							<input type="hidden" name="crewid" value="<?= $editpostRows['crew_id']; ?>">
+							<input type="hidden" name="groupid" value="<?= $editpostRows['group_id']; ?>">
 						<? }else{ ?>
 							<label class='inputtitle'>Post in Category:</label>
 							<select class="select catselect" name="category">

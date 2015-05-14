@@ -2,7 +2,7 @@
 
 $error = "";
 // fieldname used within the file <input> of the HTML form 
-$fileElementName = 'crewimg';
+$fileElementName = 'groupimg';
 
 if(!empty($_FILES[$fileElementName]['error'])){
 	switch($_FILES[$fileElementName]['error']){

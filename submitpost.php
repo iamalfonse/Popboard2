@@ -36,27 +36,27 @@ if(isset($_COOKIE['login_cookie'])){ //if logged in
 	exit;
 }
 
-if(isset($_POST['crewid'])){ // if posting from crew post
-	$crewid = mysqli_real_escape_string($dblink, $_POST['crewid']);
+if(isset($_POST['groupid'])){ // if posting from group post
+	$groupid = mysqli_real_escape_string($dblink, $_POST['groupid']);
 
-	$submitpotCrewQuery = mysqli_query($dblink, "SELECT * FROM crews WHERE crew_id = '$crewid'");
-	$submitPostCrewRows = mysqli_fetch_assoc($submitpotCrewQuery);
-	$crewurl = $submitPostCrewRows['crew_url'];
+	$submitpotGroupQuery = mysqli_query($dblink, "SELECT * FROM groups WHERE group_id = '$groupid'");
+	$submitPostGroupRows = mysqli_fetch_assoc($submitpotGroupQuery);
+	$groupurl = $submitPostGroupRows['group_url'];
 
-	//make sure user has permission to post to this crew
-	if($submitPostRows['crew_id'] != $crewid || $_POST['category'] != 'general'){ // if user crew doesn't match or category not in general (trying to hack)
+	//make sure user has permission to post to this group
+	if($submitPostRows['group_id'] != $groupid || $_POST['category'] != 'general'){ // if user group doesn't match or category not in general (trying to hack)
 		
 		if($from == 'editpost'){
 			$post_id = mysqli_real_escape_string($dblink, $_POST['post_id']);
 			$post_url = mysqli_real_escape_string($dblink, $_POST['post_url']);
 			header("Location: /editpost/$post_id/$post_url?errmsg=2");
 		}else if($from == 'createpost'){
-			header("Location: /createpost?errmsg=2&crew=$crewid");
+			header("Location: /createpost?errmsg=2&group=$groupid");
 			exit;
 		}
 	}
 }else {
-	$crewid = 'NULL';
+	$groupid = 'NULL';
 }
 
 
@@ -79,18 +79,18 @@ if (isset($_POST['submitpost'])) { //============= IF USER SUBMITS BLOG POST ===
 	//make sure it's the correct user posting it by checking their session_hash (security check)
 	if($session_hash == $submitPostRows['session_hash']){
 
-		// //check if user posted from a crew post
-		if(!isset($_POST['crewid'])){ //if user didn't post from a crew
+		// //check if user posted from a group post
+		if(!isset($_POST['groupid'])){ //if user didn't post from a group
 			$submitPostDB = mysqli_query($dblink, "INSERT INTO posts(user_id, blog_title, blog_message, category, post_date, post_updated) VALUES('$submitPostRows[user_id]','$posttitle', '$blogmessage', '$category','$post_date','$post_date')");
 		}else {
 			//add user and post to posts table
-			$submitPostDB = mysqli_query($dblink, "INSERT INTO posts(user_id, blog_title, blog_message, category, crew_id, post_date, post_updated) VALUES('$submitPostRows[user_id]','$posttitle', '$blogmessage', '$category', '$crewid','$post_date','$post_date')");
+			$submitPostDB = mysqli_query($dblink, "INSERT INTO posts(user_id, blog_title, blog_message, category, group_id, post_date, post_updated) VALUES('$submitPostRows[user_id]','$posttitle', '$blogmessage', '$category', '$groupid','$post_date','$post_date')");
 		}
 
 		//add +1 total posts for user
 		$submitPostTotal = mysqli_query($dblink, "UPDATE users SET total_posts=total_posts+1 WHERE user_id={$submitPostRows['user_id']}");
 		
-		if(!isset($_POST['crewid'])){ //if user didn't post from crew
+		if(!isset($_POST['groupid'])){ //if user didn't post from group
 			//add +1 total posts to category
 			$submitPostCatTotal = mysqli_query($dblink, "UPDATE categories SET num_posts=num_posts+1 WHERE category='$category'");
 		}
@@ -146,8 +146,8 @@ if (isset($_POST['submitpost'])) { //============= IF USER SUBMITS BLOG POST ===
     }
 }
 
-if(isset($_POST['crewid'])){
-	header("Location: /crew/$crewurl");
+if(isset($_POST['groupid'])){
+	header("Location: /group/$groupurl");
 	exit;
 }else {
 	header("Location: /posts/$category");

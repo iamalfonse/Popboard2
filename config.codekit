@@ -78,13 +78,13 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/_resources\/crew.jpg": {
+	"\/_resources\/group.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 13167,
-		"inputAbbreviatedPath": "\/_resources\/crew.jpg",
-		"outputAbbreviatedPath": "\/_resources\/crew.jpg",
+		"inputAbbreviatedPath": "\/_resources\/group.jpg",
+		"outputAbbreviatedPath": "\/_resources\/group.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -2329,11 +2329,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/checkcrewname.php": {
+	"\/checkgroupname.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/checkcrewname.php",
+		"inputAbbreviatedPath": "\/checkgroupname.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2374,11 +2374,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/createcrew.php": {
+	"\/creategroup.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/createcrew.php",
+		"inputAbbreviatedPath": "\/creategroup.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2392,38 +2392,38 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/crew.php": {
+	"\/group.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/crew.php",
+		"inputAbbreviatedPath": "\/group.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/crewfileupload.php": {
+	"\/groupfileupload.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/crewfileupload.php",
+		"inputAbbreviatedPath": "\/groupfileupload.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/crews.php": {
+	"\/groups.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/crews.php",
+		"inputAbbreviatedPath": "\/groups.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/crewsetup.php": {
+	"\/groupsetup.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/crewsetup.php",
+		"inputAbbreviatedPath": "\/groupsetup.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2437,11 +2437,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/cropcrewpic.php": {
+	"\/cropgrouppic.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/cropcrewpic.php",
+		"inputAbbreviatedPath": "\/cropgrouppic.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -3040,79 +3040,79 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crew.jpg": {
+	"\/images\/group.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 8549,
-		"inputAbbreviatedPath": "\/images\/crew.jpg",
-		"outputAbbreviatedPath": "\/images\/crew.jpg",
+		"inputAbbreviatedPath": "\/images\/group.jpg",
+		"outputAbbreviatedPath": "\/images\/group.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crewbanner.jpg": {
+	"\/images\/groupbanner.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 24373,
-		"inputAbbreviatedPath": "\/images\/crewbanner.jpg",
-		"outputAbbreviatedPath": "\/images\/crewbanner.jpg",
+		"inputAbbreviatedPath": "\/images\/groupbanner.jpg",
+		"outputAbbreviatedPath": "\/images\/groupbanner.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crewbanner1.jpg": {
+	"\/images\/groupbanner1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 11992,
-		"inputAbbreviatedPath": "\/images\/crewbanner1.jpg",
-		"outputAbbreviatedPath": "\/images\/crewbanner1.jpg",
+		"inputAbbreviatedPath": "\/images\/groupbanner1.jpg",
+		"outputAbbreviatedPath": "\/images\/groupbanner1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crewbanner2.jpg": {
+	"\/images\/groupbanner2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 43398,
-		"inputAbbreviatedPath": "\/images\/crewbanner2.jpg",
-		"outputAbbreviatedPath": "\/images\/crewbanner2.jpg",
+		"inputAbbreviatedPath": "\/images\/groupbanner2.jpg",
+		"outputAbbreviatedPath": "\/images\/groupbanner2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crewbanner3.jpg": {
+	"\/images\/groupbanner3.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 67584,
-		"inputAbbreviatedPath": "\/images\/crewbanner3.jpg",
-		"outputAbbreviatedPath": "\/images\/crewbanner3.jpg",
+		"inputAbbreviatedPath": "\/images\/groupbanner3.jpg",
+		"outputAbbreviatedPath": "\/images\/groupbanner3.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crewbanner4.jpg": {
+	"\/images\/groupbanner4.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 47595,
-		"inputAbbreviatedPath": "\/images\/crewbanner4.jpg",
-		"outputAbbreviatedPath": "\/images\/crewbanner4.jpg",
+		"inputAbbreviatedPath": "\/images\/groupbanner4.jpg",
+		"outputAbbreviatedPath": "\/images\/groupbanner4.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/crewbanner5.jpg": {
+	"\/images\/groupbanner5.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 37718,
-		"inputAbbreviatedPath": "\/images\/crewbanner5.jpg",
-		"outputAbbreviatedPath": "\/images\/crewbanner5.jpg",
+		"inputAbbreviatedPath": "\/images\/groupbanner5.jpg",
+		"outputAbbreviatedPath": "\/images\/groupbanner5.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -3443,11 +3443,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/joincrew.php": {
+	"\/joingroup.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/joincrew.php",
+		"inputAbbreviatedPath": "\/joingroup.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -6395,12 +6395,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/createcrew.js": {
+	"\/js\/creategroup.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/createcrew.js",
-		"outputAbbreviatedPath": "\/js\/min\/createcrew-min.js",
+		"inputAbbreviatedPath": "\/js\/creategroup.js",
+		"outputAbbreviatedPath": "\/js\/min\/creategroup-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -6417,34 +6417,34 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/crew.js": {
+	"\/js\/group.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/crew.js",
-		"outputAbbreviatedPath": "\/js\/min\/crew-min.js",
+		"inputAbbreviatedPath": "\/js\/group.js",
+		"outputAbbreviatedPath": "\/js\/min\/group-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/crews.js": {
+	"\/js\/groups.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/crews.js",
-		"outputAbbreviatedPath": "\/js\/min\/crews-min.js",
+		"inputAbbreviatedPath": "\/js\/groups.js",
+		"outputAbbreviatedPath": "\/js\/min\/groups-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/crewsetup.js": {
+	"\/js\/groupsetup.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/crewsetup.js",
-		"outputAbbreviatedPath": "\/js\/min\/crewsetup-min.js",
+		"inputAbbreviatedPath": "\/js\/groupsetup.js",
+		"outputAbbreviatedPath": "\/js\/min\/groupsetup-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -6937,11 +6937,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/setupcrewupload.php": {
+	"\/setupgroupupload.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/setupcrewupload.php",
+		"inputAbbreviatedPath": "\/setupgroupupload.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -7027,20 +7027,20 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/submitcreatecrew.php": {
+	"\/submitcreategroup.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/submitcreatecrew.php",
+		"inputAbbreviatedPath": "\/submitcreategroup.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/submitcrewsetup.php": {
+	"\/submitgroupsetup.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/submitcrewsetup.php",
+		"inputAbbreviatedPath": "\/submitgroupsetup.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -8162,7 +8162,7 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"screw-ie8": {
+		"sgroup-ie8": {
 			"active": 0,
 			"flagValue": -1
 			},

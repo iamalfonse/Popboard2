@@ -23,7 +23,7 @@ if($userprofile == ''){
 
 //TODO: make sure user can reset password, send email verification
 
-//TODO: Make sure user can remove themselves from a crew (also -1 to num_crew members)
+//TODO: Make sure user can remove themselves from a group (also -1 to num_group members)
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ if($userprofile == ''){
 	<link href="/stylesheets/jcrop.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 	<title>Import Underground | <?= $Rows['displayname'] ?></title>
-	<meta name="keywords" content="Import Underground <?= $Rows['displayname'] ?> Profile, Import Underground Profile, Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews">
+	<meta name="keywords" content="Import Underground <?= $Rows['displayname'] ?> Profile, Import Underground Profile, Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
 	<meta name="description" content="Import Underground | <?= $Rows['displayname'] ?>'s Profile">
 </head>
 <body class="profile">
@@ -60,10 +60,10 @@ if($userprofile == ''){
 
 				if($userProfileNum_rows == 1){ //if there's a user in the database
 
-					//get crew info for user
-					if($userProfileRow1['crew_id'] != NULL || $userProfileRow1['crew_id'] != ''){
-						//get crew name of user
-						$userProfileQuery5 = @mysqli_query($dblink, "SELECT crewname, crew_url FROM crews WHERE crew_id={$userProfileRow1['crew_id']}");
+					//get group info for user
+					if($userProfileRow1['group_id'] != NULL || $userProfileRow1['group_id'] != ''){
+						//get group name of user
+						$userProfileQuery5 = @mysqli_query($dblink, "SELECT groupname, group_url FROM groups WHERE group_id={$userProfileRow1['group_id']}");
 						$userProfileRow5 = mysqli_fetch_assoc($userProfileQuery5);
 					}
 			?>
@@ -79,9 +79,9 @@ if($userprofile == ''){
 					<div class="userinfo">
 						<p class="location"><span class="icon"></span><strong>Location:</strong> <?= $userProfileRow1['location']; ?></p>
 						<p class="car"><span class="icon"></span><strong>Car:</strong> <?= $userProfileRow1['car']; ?></p>
-						<p class="crew"><span class="icon"></span><strong>Crew:</strong> 
-							<? if($userProfileRow1['crew_id'] != NULL || $userProfileRow1['crew_id'] != ''){// if user is in a crew ?>
-								<a href="/crew/<?= $userProfileRow5['crew_url'] ?>"><?= $userProfileRow5['crewname']; ?></a>
+						<p class="group"><span class="icon"></span><strong>Group:</strong> 
+							<? if($userProfileRow1['group_id'] != NULL || $userProfileRow1['group_id'] != ''){// if user is in a group ?>
+								<a href="/group/<?= $userProfileRow5['group_url'] ?>"><?= $userProfileRow5['groupname']; ?></a>
 							<? } ?>
 						</p>
 						<p class="joindate"><span class="icon"></span><strong>Joined on:</strong> <?= iu_readable_date($userProfileRow1['joindate']); ?></p>
@@ -112,10 +112,10 @@ if($userprofile == ''){
 
 	    	}else{ //----------------------------else show your own profile---------------------
 
-				//check if user is in a crew
-				if($Rows['crew_id'] != NULL || $Rows['crew_id'] != ''){
-					//get crew name of user
-					$userProfileQuery5 = @mysqli_query($dblink, "SELECT crewname, crew_url FROM crews WHERE crew_id={$Rows['crew_id']}");
+				//check if user is in a group
+				if($Rows['group_id'] != NULL || $Rows['group_id'] != ''){
+					//get group name of user
+					$userProfileQuery5 = @mysqli_query($dblink, "SELECT groupname, group_url FROM groups WHERE group_id={$Rows['group_id']}");
 					$userProfileRow5 = mysqli_fetch_assoc($userProfileQuery5);
 				}
 				$max_file_size = 512000; //500kb
@@ -133,9 +133,9 @@ if($userprofile == ''){
 					<div class="userinfo">
 						<p class="location"><span class="icon"></span><strong>Location:</strong> <?= $Rows['location']; ?></p>
 						<p class="car"><span class="icon"></span><strong>Car:</strong> <?= $Rows['car']; ?></p>
-						<p class="crew"><span class="icon"></span><strong>Crew:</strong> 
-							<? if($Rows['crew_id'] != NULL || $Rows['crew_id'] != ''){// if user is in a crew ?>
-								<a href="/crew/<?= $userProfileRow5['crew_url'] ?>"><?= $userProfileRow5['crewname']; ?></a>
+						<p class="group"><span class="icon"></span><strong>Group:</strong> 
+							<? if($Rows['group_id'] != NULL || $Rows['group_id'] != ''){// if user is in a group ?>
+								<a href="/group/<?= $userProfileRow5['group_url'] ?>"><?= $userProfileRow5['groupname']; ?></a>
 							<? } ?>
 						</p>
 						<p class="email"><span class="icon"></span><strong>E-mail:</strong> <?= $Rows['email'] ?></p>

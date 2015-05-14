@@ -1201,14 +1201,14 @@ INSERT INTO `confirm` (`id`, `userid`, `key`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `crewinvites`
+-- Table structure for table `groupinvites`
 --
 
-DROP TABLE IF EXISTS `crewinvites`;
-CREATE TABLE IF NOT EXISTS `crewinvites` (
+DROP TABLE IF EXISTS `groupinvites`;
+CREATE TABLE IF NOT EXISTS `groupinvites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `crew_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
   `pending` binary(1) NOT NULL DEFAULT '1',
   `rejected` binary(1) NOT NULL DEFAULT '0',
   `daterequest` datetime DEFAULT NULL,
@@ -1218,33 +1218,33 @@ CREATE TABLE IF NOT EXISTS `crewinvites` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `crews`
+-- Table structure for table `groups`
 --
 
-DROP TABLE IF EXISTS `crews`;
-CREATE TABLE IF NOT EXISTS `crews` (
-  `crew_id` int(11) NOT NULL AUTO_INCREMENT,
-  `crewname` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `crew_url` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE IF NOT EXISTS `groups` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `groupname` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `group_url` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `founder` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `about` text COLLATE utf8_unicode_ci,
   `num_members` int(11) DEFAULT '0',
   `location` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `datecreated` date NOT NULL,
-  `img_url` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '/images/crew.jpg',
+  `img_url` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '/images/group.jpg',
   `banner_img` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `private` binary(1) DEFAULT '0',
-  PRIMARY KEY (`crew_id`),
-  UNIQUE KEY `crewname` (`crewname`)
+  PRIMARY KEY (`group_id`),
+  UNIQUE KEY `groupname` (`groupname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `crews`
+-- Dumping data for table `groups`
 --
 
-INSERT INTO `crews` (`crew_id`, `crewname`, `crew_url`, `founder`, `about`, `num_members`, `location`, `datecreated`, `img_url`, `banner_img`, `private`) VALUES
-(1, 'Import Underground', 'import-underground', 'importunderground', 'Import Underground Crew', 3, 'San Francisco, CA', '2013-12-10', '/images/crew.jpg', '/images/crewbanner1.jpg', '0'),
-(2, 'Baseline', 'baseline', 'iamalfonse', 'Baseline Crew based in the Bay Area', 2, 'Bay Area, CA', '2013-12-19', '/userimages/89571a6a/1406075693852.jpg', '/images/crewbanner2.jpg', '0');
+INSERT INTO `groups` (`group_id`, `groupname`, `group_url`, `founder`, `about`, `num_members`, `location`, `datecreated`, `img_url`, `banner_img`, `private`) VALUES
+(1, 'Import Underground', 'import-underground', 'importunderground', 'Import Underground Group', 3, 'San Francisco, CA', '2013-12-10', '/images/group.jpg', '/images/groupbanner1.jpg', '0'),
+(2, 'Baseline', 'baseline', 'iamalfonse', 'Baseline Group based in the Bay Area', 2, 'Bay Area, CA', '2013-12-19', '/userimages/89571a6a/1406075693852.jpg', '/images/groupbanner2.jpg', '0');
 
 -- --------------------------------------------------------
 
@@ -1573,7 +1573,7 @@ INSERT INTO `notifications` (`id`, `user_id`, `from_user_id`, `notification_type
 (65, 1, 31, 'like', '<a href=''/profile/test''>test</a> liked your <a href=''/post/34/badass-evo-tho''>post</a>.', '2014-06-13 08:51:32', '1'),
 (66, 1, 31, 'like', '<a href=''/profile/test''>test</a> liked your <a href=''/post/32/dat-ww-evo-tho''>post</a>.', '2014-06-13 08:51:36', '1'),
 (67, 23, 1, 'like', '<a href=''/profile/alfonse''>Alfonse</a> liked your <a href=''/post/35/rx7-orsupra''>post</a>.', '2014-06-23 23:48:39', '1'),
-(68, 23, 1, 'joined', '<a href=''/profile/alfonse''>Alfonse</a> has joined your crew.</a>.', '2014-06-24 00:43:35', '1'),
+(68, 23, 1, 'joined', '<a href=''/profile/alfonse''>Alfonse</a> has joined your group.</a>.', '2014-06-24 00:43:35', '1'),
 (69, 23, 1, 'like', '<a href=''/profile/alfonse''>Alfonse</a> liked your <a href=''/post/36/s2000-cruising''>post</a>.', '2014-06-23 18:48:35', '1'),
 (70, 23, 1, 'like', '<a href=''/profile/alfonse''>Alfonse</a> liked your <a href=''/post/37/ashley-vee''>post</a>.', '2014-06-23 18:48:42', '1'),
 (71, 1, 34, 'like', '<a href=''/profile/evox''>EvoX</a> liked your <a href=''/post/31/mean-rx7''>post</a>.', '2014-06-23 21:57:41', '1'),
@@ -1611,8 +1611,8 @@ INSERT INTO `notifications` (`id`, `user_id`, `from_user_id`, `notification_type
 (103, 1, 35, 'like', '<a href=''/profile/jdm''>JDM</a> liked your <a href=''/post/38/dannie-riel''>post</a>.', '2014-06-24 17:47:07', '1'),
 (104, 1, 35, 'like', '<a href=''/profile/jdm''>JDM</a> liked your <a href=''/post/10/battling-legends''>post</a>.', '2014-06-24 17:47:10', '1'),
 (105, 25, 1, 'like', '<a href=''/profile/alfonse''>Alfonse</a> liked your <a href=''/post/39/blacked-out-frs''>post</a>.', '2014-06-24 17:53:56', '1'),
-(106, 1, 2, 'joined', '<a href=''/profile/importunderground''>ImportUnderground</a> has joined your crew.</a>.', '2014-06-24 18:26:36', '1'),
-(107, 2, 1, 'accepted', '<a href=''/profile/alfonse''>Alfonse</a> has accepted your invitation to join their crew.</a>.', '2014-06-24 18:26:36', '1'),
+(106, 1, 2, 'joined', '<a href=''/profile/importunderground''>ImportUnderground</a> has joined your group.</a>.', '2014-06-24 18:26:36', '1'),
+(107, 2, 1, 'accepted', '<a href=''/profile/alfonse''>Alfonse</a> has accepted your invitation to join their group.</a>.', '2014-06-24 18:26:36', '1'),
 (108, 1, 2, 'like', '<a href=''/profile/importunderground''>ImportUnderground</a> liked your <a href=''/post/29/awesome''>post</a>.', '2014-06-24 18:30:00', '1'),
 (109, 25, 2, 'like', '<a href=''/profile/importunderground''>ImportUnderground</a> liked your <a href=''/post/39/blacked-out-frs''>post</a>.', '2014-06-24 18:37:46', '1'),
 (110, 35, 2, 'like', '<a href=''/profile/importunderground''>ImportUnderground</a> liked your <a href=''/post/40/all-about-that-life-tho''>post</a>.', '2014-06-24 19:01:30', '1'),
@@ -1718,8 +1718,8 @@ INSERT INTO `notifications` (`id`, `user_id`, `from_user_id`, `notification_type
 (210, 34, 23, 'like', '<a href=''/profile/iamalfonse''>iamalfonse</a> liked your <a href=''/post/45/damn-thats-clean''>post</a>.', '2014-07-30 11:24:19', '1'),
 (211, 35, 23, 'like', '<a href=''/profile/iamalfonse''>iamalfonse</a> liked your <a href=''/post/42/old-vs-new''>post</a>.', '2014-07-30 11:24:46', '0'),
 (212, 23, 25, 'like', '<a href=''/profile/havoc''>Havoc</a> liked your <a href=''/post/35/rx7-orsupra''>post</a>.', '2014-08-12 11:24:45', '1'),
-(213, 23, 25, 'joined', '<a href=''/profile/havoc''>Havoc</a> has joined your crew.', '2014-08-12 11:25:13', '1'),
-(214, 25, 23, 'accepted', '<a href=''/profile/iamalfonse''>iamalfonse</a> has accepted your invitation to join their crew.', '2014-08-12 11:25:13', '1'),
+(213, 23, 25, 'joined', '<a href=''/profile/havoc''>Havoc</a> has joined your group.', '2014-08-12 11:25:13', '1'),
+(214, 25, 23, 'accepted', '<a href=''/profile/iamalfonse''>iamalfonse</a> has accepted your invitation to join their group.', '2014-08-12 11:25:13', '1'),
 (215, 25, 23, 'like', '<a href=''/profile/iamalfonse''>iamalfonse</a> liked your <a href=''/post/58/thanks-for-the-invite''>post</a>.', '2014-08-12 11:31:22', '1'),
 (216, 25, 23, 'comment', '<a href=''/profile/iamalfonse''>iamalfonse</a> commented on your <a href=''/post/58/thanks-for-the-invite''>post</a>.', '2014-08-12 11:34:28', '1'),
 (217, 25, 34, 'like', '<a href=''/profile/evox''>EvoX</a> liked your <a href=''/post/61/west-coast-collective-one-event''>post</a>.', '2014-10-21 11:30:55', '0'),
@@ -1738,7 +1738,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `blog_title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `blog_message` mediumtext COLLATE utf8_unicode_ci,
   `category` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `crew_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
   `post_date` datetime DEFAULT NULL,
   `views` int(11) NOT NULL DEFAULT '0',
   `likes` int(11) NOT NULL DEFAULT '0',
@@ -1754,7 +1754,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `blog_title`, `blog_message`, `category`, `crew_id`, `post_date`, `views`, `likes`, `comments`, `post_updated`, `deleted`) VALUES
+INSERT INTO `posts` (`id`, `user_id`, `blog_title`, `blog_message`, `category`, `group_id`, `post_date`, `views`, `likes`, `comments`, `post_updated`, `deleted`) VALUES
 (1, 2, 'Import Underground Is Now in Beta!', '<p>Import Underground is now live! Thanks for signing up!</p>\r\n\r\n<p>&nbsp;</p>', 'general', NULL, '2014-06-30 00:00:00', 18, 5, 4, '2014-06-14 00:22:07', '0'),
 (2, 3, 'Nyan Cat', '<p>cool story bro!</p>\r\n<p><img src="http://laughingsquid.com/wp-content/uploads/nyan.jpg" alt="nyan cat" width="431" height="282" /></p>', 'general', NULL, '2014-06-20 00:00:00', 8, 3, 3, NULL, '0'),
 (3, 5, 'DIS IS YOU BOY!', '<p>Kosta Was Here</p>', 'general', NULL, '2014-06-20 00:00:00', 2, 1, 0, NULL, '0'),
@@ -1841,7 +1841,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lvl` tinyint(4) DEFAULT '0',
   `total_xp` int(11) NOT NULL DEFAULT '0',
   `total_gp` int(11) DEFAULT '0',
-  `crew_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
   `session_hash` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`),
@@ -1853,7 +1853,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `crew_id`, `session_hash`) VALUES
+INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `group_id`, `session_hash`) VALUES
 (1, 'alfonse', 'bboyhavoc7@yahoo.com', 'ca058b136319a9664d38737989dde13ce5563f9d', 'Alfonse', '1', '1', '2012-05-30', '1984-05-04', 'Web UI/UX designer located in San Francisco, CA', 'San Francisco, CA', 'Lancer Evo X', 'userimages/301517a1/1399937571adb.jpg', 'radial-blue ', 20, 19, 91, 4, 329, 0, 1, '35e944372b3d5ed356e0d0522b475ee8'),
 (2, 'importunderground', 'support@importunderground.com', '7598f9ec7694a3f477f39f5e8daeaa23c3bbb471', 'ImportUnderground', '1', '1', '2012-05-31', '1984-05-04', 'Import Underground', 'Bay Area, CA', '2010 Evo X', 'userimages/fca22867/14036565791a7.jpg', 'radial-blue ', 1, 1, 2, 0, 14, 0, 1, '197b02594b3d6f4d9d8330db40bcfce4'),
 (3, 'roman', 'roman@romandiaz.me', '238a1843d81dd7fbe80b5c1b99515c4ba8c94d0d', 'Roman', '1', '0', '2012-05-31', NULL, NULL, '', '', NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, '0'),
@@ -2103,7 +2103,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `a
 (265, 'michaelea', 'michaelpex@outlook.com', '3747a8ac35c9209d151abe1b63cff7fd2cb15faf', 'MichaelEa', '0', '0', '2014-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (266, 'stevenbowl', 'stevenvep@mail.ru', 'cd963c3e5f36fcc81e36aaafcd6533c4f3e8a508', 'StevenBowl', '0', '0', '2014-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (267, 'douglasol', 'douglasei@outlook.com', 'd213dd792712c76339fddefc3e4a70b9fa3ca023', 'DouglasOl', '0', '0', '2014-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `crew_id`, `session_hash`) VALUES
+INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `group_id`, `session_hash`) VALUES
 (268, 'michaelric', 'michaelmnp@outlook.com', '34b5723200b2ddf251e73012027dfb84fa9bf53e', 'Michaelric', '0', '0', '2014-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (269, 'arturotub', 'arturoon@yandex.ru', 'f141a30236ea4512ecef612c1fbe69f3c6a63268', 'ArturoTub', '0', '0', '2014-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (270, 'williamtar', 'williamrigh@sochi2014photo.com', 'c511435637e781ec6ed564fd1051377c14a59065', 'WilliamTar', '0', '0', '2014-12-23', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
@@ -2362,7 +2362,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `a
 (523, 'unlimpaykr', 'unlimpaymri@yandex.ru', '16f88beb496e90bafb5b5fd9e38fef7584fbfc0c', 'UnlimPayKr', '0', '0', '2015-01-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (524, 'haroldsa', 'haroldsi@outlook.com', '2a056498bdbac31e249f9e0e02a1f84c5c5bb24e', 'HaroldSa', '0', '0', '2015-01-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (525, 'multunhomy', 'multunki@mail.ru', '8e11dea44830be0a9278644c2873c912a79df381', 'MultunHOMY', '0', '0', '2015-01-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `crew_id`, `session_hash`) VALUES
+INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `group_id`, `session_hash`) VALUES
 (526, 'dcrandallpt', 'rocrandallodfkrd@outlook.com', 'af112c635019e62e2a86b56b341f63bbc550dc46', 'dCrandallpt', '0', '0', '2015-01-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (527, 'eileenriff', 'melissaKl@47t.de', 'ab0d4a47f8404f50a93f0e09ee1e62b7ac99fb49', 'EileenRiff', '0', '0', '2015-01-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (528, 'ronaldsl', 'ronaldtah@yandex.ru', '9d0d1684dfc9de320753fc0d57ad29721a9c6480', 'Ronaldsl', '0', '0', '2015-01-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
@@ -2621,7 +2621,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `a
 (781, 'richardfeli', 'richardpret@yandex.ru', '1baa32bf732eeaa32ed5971845f2c550a199e7bf', 'Richardfeli', '0', '0', '2015-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (782, 'williekiz', 'williest56@outlook.com', '5d9996fd487fb5841824974d86d7c04c70c3b30f', 'WillieKiz', '0', '0', '2015-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (783, 'joshuasr', 'adelaida953marangoni@hotmail.com', '1334c687a60c8fffefe32f2028c90b9bff95f0e4', 'JoshuaSr', '0', '0', '2015-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `crew_id`, `session_hash`) VALUES
+INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `group_id`, `session_hash`) VALUES
 (784, 'leonardcase', 'keva160monios@hotmail.com', '5e170354e6bed0ba176b3b29cb6415829581fe20', 'LeonardCase', '0', '0', '2015-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (785, 'rnufases', 'mjutazec33@uugmail.com', '851bda69397c29106f24db3f5adc185b19c144a0', 'Rnufases', '0', '0', '2015-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (786, 'wufootballs5', 'ulpingourb7@outlook.com', '1948fa68365a24c8f84110484de62ae8d1b1f95d', 'wufootballs5', '0', '0', '2015-01-14', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
@@ -2879,7 +2879,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `a
 (1038, 'michaelhedo', 'swankyocean684@mail.ru', 'e6b79cf047f152bd47d75c9efc06b81c20f11d94', 'Michaelhedo', '0', '0', '2015-02-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (1039, 'justinwack', 'justingaxk@outlook.com', '0df5ee0511d99028bd7e00329f167e4fde227c7d', 'Justinwack', '0', '0', '2015-02-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (1040, 'donaldlymn', 'mezir_mortis@elpatevskiy.com', '761beac2019d965bc92b1e2587d5d77eed0050c0', 'DonaldLymn', '0', '0', '2015-02-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `crew_id`, `session_hash`) VALUES
+INSERT INTO `users` (`user_id`, `username`, `email`, `passwd`, `displayname`, `active`, `setup`, `joindate`, `birthdate`, `bio`, `location`, `car`, `profileimg`, `profilebg`, `total_posts`, `total_comments`, `total_likes`, `lvl`, `total_xp`, `total_gp`, `group_id`, `session_hash`) VALUES
 (1041, 'glazoktvma', 'glazoktvlilm@mail.ru', '4d89689f3d3fb1b5d45dda2869ec5d8c95e9350a', 'GlazokTVMa', '0', '0', '2015-02-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (1042, 'juivimefurk', 'trusefurky7@outlook.com', '3daf0fd7e3e87bfd6675b2fb26c43802b89d5aa8', 'juivimeFurk', '0', '0', '2015-02-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),
 (1043, 'marilynoa', 'marilynwer@47t.de', 'ab0d4a47f8404f50a93f0e09ee1e62b7ac99fb49', 'MarilynOa', '0', '0', '2015-02-01', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL),

@@ -14,14 +14,14 @@ $(document).ready(function(){
 
 	enable_liking();
 
-	$('body').on('click','.joincrewbtn', function(){
+	$('body').on('click','.joingroupbtn', function(){
 		show_joinoverlay();
 	})
 	.on('click','.joinOverlay .closebtn, .joinOverlay .cancelBtn', function(){
 		$('.joinOverlay').fadeOut(300);
 	})
 	.on('click','.joinOverlay .joinBtn', function(){
-		join_crew();
+		join_group();
 		$('.joinOverlay').fadeOut(300);
 	})
 
@@ -33,12 +33,12 @@ var processing = false;
 var starting = 6; //start of posts
 var nomoreposts = false;
 load_more_posts = function() {
-	var crewurl = $('#crewurl').val();
+	var groupurl = $('#groupurl').val();
 	processing = true;
 
 	if(!nomoreposts){ // if there's still posts to load, load them
 		$.ajax({
-			url: "../get_posts.php?crewurl="+crewurl,
+			url: "../get_posts.php?groupurl="+groupurl,
 			datatype: "html",
 			data: {start: starting, limit: '6'},
 			beforeSend: function() {
@@ -102,17 +102,17 @@ show_joinoverlay = function(){
 
 }
 
-join_crew = function() {
+join_group = function() {
 	
-	var thisBtn = $('.joincrewbtn'); 
-	var crew_id = $('#crewid').val();
+	var thisBtn = $('.joingroupbtn'); 
+	var group_id = $('#groupid').val();
 	$.ajax({
-		url: "../joincrew",
+		url: "../joingroup",
 		datatype: "html",
-		data: {crewid: crew_id},
+		data: {groupid: group_id},
 		type: 'POST',
 		beforeSend: function() {
-			thisBtn.removeClass('btn joincrewbtn').addClass('pending').html('wait...');
+			thisBtn.removeClass('btn joingroupbtn').addClass('pending').html('wait...');
 		},
 		success: function(data) {
 		    thisBtn.html(data);

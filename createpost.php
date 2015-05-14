@@ -17,16 +17,16 @@ if (isset( $_COOKIE['login_cookie'] )) {
 }
 
 
-if(isset($_GET['crew'])){ // get crewid if posting from your crew
-	$cpCrewID = mysqli_real_escape_string($dblink, strtolower($_GET['crew']));
+if(isset($_GET['group'])){ // get groupid if posting from your group
+	$cpGroupID = mysqli_real_escape_string($dblink, strtolower($_GET['group']));
 
-	$cpCrewQuery = mysqli_query($dblink, "SELECT * FROM crews WHERE crew_id='$cpCrewID'");
-	$cpCrewRow = mysqli_fetch_assoc($cpCrewQuery);
-	$cpCrewName = $cpCrewRow['crewname'];
+	$cpGroupQuery = mysqli_query($dblink, "SELECT * FROM groups WHERE group_id='$cpGroupID'");
+	$cpGroupRow = mysqli_fetch_assoc($cpGroupQuery);
+	$cpGroupName = $cpGroupRow['groupname'];
 	
-	$crewpermission = true;
-	if($Rows['crew_id'] != $cpCrewRow['crew_id']){ //if this is not your crew (i.e. you don't have permission to post)
-		$crewpermission = false;
+	$grouppermission = true;
+	if($Rows['group_id'] != $cpGroupRow['group_id']){ //if this is not your group (i.e. you don't have permission to post)
+		$grouppermission = false;
 	}
 }
 ?>
@@ -64,22 +64,22 @@ if(isset($_GET['crew'])){ // get crewid if posting from your crew
 					}
 				}
 
-				if(isset($_GET['crew']) && $crewpermission == false){
-					echo "<p class='error'>You don't have permission to post in this crew: ".$cpCrewName."</p>";
+				if(isset($_GET['group']) && $grouppermission == false){
+					echo "<p class='error'>You don't have permission to post in this group: ".$cpGroupName."</p>";
 				}
 			?>
 			</div>
-			<? if(isset($_GET['crew']) && $crewpermission == false){ 
-				//dont show anything if you don't have permission to post in this crew
+			<? if(isset($_GET['group']) && $grouppermission == false){ 
+				//dont show anything if you don't have permission to post in this group
 			 }else { ?>
         	<div id="postcomment">
 				<form method="post" action="/submitpost">
 
-					<? if(isset($_GET['crew'])){ //if posting from crew ?>
-						<label class='inputtitle'>Post in Crew:</label>
-						<p class="crewname"><?= $cpCrewName; ?></p>
+					<? if(isset($_GET['group'])){ //if posting from group ?>
+						<label class='inputtitle'>Post in Group:</label>
+						<p class="groupname"><?= $cpGroupName; ?></p>
 						<input type="hidden" name="category" value="general">
-						<input type="hidden" name="crewid" value="<?= $_GET['crew']; ?>">
+						<input type="hidden" name="groupid" value="<?= $_GET['group']; ?>">
 					<? }else { //posting normal post 
 
 						$cat = ''; //used toautomatically select a category from dropdown select

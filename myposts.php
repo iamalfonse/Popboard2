@@ -26,8 +26,8 @@ if($sortby=='newest' || $sortby==''){
 	$sort = 'Most Recent Posts';
 }else if($sortby=='oldest'){
 	$sort = 'Oldest Posts';
-}else if($sortby=='crewposts'){
-	$sort = 'Crew Posts';
+}else if($sortby=='groupposts'){
+	$sort = 'Group Posts';
 }
 ?>
 <!DOCTYPE html>
@@ -61,14 +61,14 @@ if($sortby=='newest' || $sortby==''){
 <?php
 
 	if($sortby == 'newest'|| $sortby == '') { //sort by newest
-		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.crew_id IS NULL ORDER BY id DESC LIMIT 0, 6";
+		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.group_id IS NULL ORDER BY id DESC LIMIT 0, 6";
 		$subpage = '';
 	}else if($sortby == 'oldest'){ //sort by oldest
-		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.crew_id IS NULL ORDER BY id ASC LIMIT 0, 6";
+		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.group_id IS NULL ORDER BY id ASC LIMIT 0, 6";
 		$subpage = '';
-	}else if($sortby == 'crewposts'){
-		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND (posts.crew_id='{$Rows['crew_id']}' AND posts.category='general') ORDER BY id DESC LIMIT 0, 6";
-		$subpage = 'crewposts';
+	}else if($sortby == 'groupposts'){
+		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND (posts.group_id='{$Rows['group_id']}' AND posts.category='general') ORDER BY id DESC LIMIT 0, 6";
+		$subpage = 'groupposts';
 	}
 	$page = 'myposts';
 	
@@ -90,8 +90,8 @@ if($sortby=='newest' || $sortby==''){
 				<p>Sort by: </p>
 				<p><a href="/myposts/newest">Most Recent</a></p>
 				<p><a href="/myposts/oldest">Oldest</a></p>
-				<? if(isset($Rows['crew_id'])){ //only show option if user is in a crew ?>
-				<p><a href="/myposts/crewposts">Crew Posts</a></p>
+				<? if(isset($Rows['group_id'])){ //only show option if user is in a group ?>
+				<p><a href="/myposts/groupposts">Group Posts</a></p>
 				<? } ?>
 			</div>
 		</aside>

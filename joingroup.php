@@ -16,16 +16,16 @@ if (isset( $_COOKIE['login_cookie'] )) {
 }
 
 
-$crewid = mysqli_real_escape_string($dblink, $_POST['crewid']);
+$groupid = mysqli_real_escape_string($dblink, $_POST['groupid']);
 
 
-//check if user has already tried submitting for an invite to a crew
-$crewinviteCheckQuery = mysqli_query($dblink, "SELECT * FROM crewinvites WHERE user_id='{$Rows['user_id']}'");
-$crewinviteNumRows = mysqli_num_rows($crewinviteCheckQuery);
+//check if user has already tried submitting for an invite to a group
+$groupinviteCheckQuery = mysqli_query($dblink, "SELECT * FROM groupinvites WHERE user_id='{$Rows['user_id']}'");
+$groupinviteNumRows = mysqli_num_rows($groupinviteCheckQuery);
 
-if($crewinviteNumRows == 0){// there's no record yet, add it to crewinvites table
+if($groupinviteNumRows == 0){// there's no record yet, add it to groupinvites table
 	$requestdate = date("Y-m-d H:i:s"); //get current datetime value. i.e. '2013-10-22 14:45:00'
-	$crewinviteQuery =  mysqli_query($dblink, "INSERT INTO crewinvites (user_id,crew_id,daterequest) VALUES ('{$Rows['user_id']}','$crewid','$requestdate')");
+	$groupinviteQuery =  mysqli_query($dblink, "INSERT INTO groupinvites (user_id,group_id,daterequest) VALUES ('{$Rows['user_id']}','$groupid','$requestdate')");
 	echo "Invite Sent";
 }else {
 	echo "Invite is Pending";

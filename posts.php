@@ -36,7 +36,7 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
 	<title>Import Underground | <?= $catDisplayname ?></title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews">
+	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
 	<meta name="description" content="Import Underground | <?= $catDisplayname ?> ">
 	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
@@ -56,7 +56,7 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 	    	</div>
 			<?php
 				//show posts
-				$QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (category = '$category' AND posts.crew_id is NULL AND posts.deleted = '0') ORDER BY id DESC LIMIT 0, 6");
+				$QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (category = '$category' AND posts.group_id is NULL AND posts.deleted = '0') ORDER BY id DESC LIMIT 0, 6");
 				$Row = mysqli_fetch_assoc($QueryResult);
 				$num_rows = mysqli_num_rows($QueryResult);
 				
@@ -107,7 +107,7 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 			<div class="step1">
 				<h1>Hi <?= $Rows['displayname'] ?>!</h1>
 				<h2>Welcome to Import Underground</h2>
-				<p>Create and share your posts with other auto enthusiasts just like you. Check out some of the other categories, join a crew or create your own, see the top posts, or look for upcoming events near you.</p>
+				<p>Create and share your posts with other auto enthusiasts just like you. Check out some of the other categories, join a group or create your own, see the top posts, or look for upcoming events near you.</p>
 				<button class="btn nextstep">Next</button>
 			</div>
 			<div class="step2 help1">
@@ -116,7 +116,7 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 			</div>
 			<div class="step2 help2">
 				<div class="arrow"></div>
-				<p>Check out or join some of the crews or see the top posts from others.</p>
+				<p>Check out or join some of the groups or see the top posts from others.</p>
 			</div>
 			<div class="step2 help3">
 				<div class="arrow"></div>

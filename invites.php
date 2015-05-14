@@ -39,17 +39,17 @@ if (isset( $_COOKIE['login_cookie'] )) {
 		<div id="right">
 
 		<? 
-			//only show invites if you are the founder of a crew
-			$crewinfoQuery = @mysqli_query($dblink, "SELECT crew_id,crewname,crew_url,founder FROM crews WHERE founder = '{$Rows['username']}'");
-			$crewinfoNumRows = mysqli_num_rows($crewinfoQuery);
-			if($crewinfoNumRows > 0){ //if there is a record of you being the founder of a crew, then show invites
+			//only show invites if you are the founder of a group
+			$groupinfoQuery = @mysqli_query($dblink, "SELECT group_id,groupname,group_url,founder FROM groups WHERE founder = '{$Rows['username']}'");
+			$groupinfoNumRows = mysqli_num_rows($groupinfoQuery);
+			if($groupinfoNumRows > 0){ //if there is a record of you being the founder of a group, then show invites
 		?>
 			<h2>Invites</h2>
 			<ul class="invitelist">
 				<?
 					//grab pending invites
 					$user_id = $Rows['user_id'];
-					$inviteQuery = @mysqli_query($dblink, "SELECT * FROM crewinvites INNER JOIN crews USING (crew_id) WHERE crewinvites.crew_id = {$Rows['crew_id']} AND crewinvites.pending = '1' ORDER BY id DESC;");
+					$inviteQuery = @mysqli_query($dblink, "SELECT * FROM groupinvites INNER JOIN groups USING (group_id) WHERE groupinvites.group_id = {$Rows['group_id']} AND groupinvites.pending = '1' ORDER BY id DESC;");
 					
 					iu_get_inviterequests($inviteQuery);
 				?>

@@ -2,7 +2,7 @@
 $error = "";
 
 // fieldname used within the file <input> of the HTML form 
-$fileElementName = 'crewimg';
+$fileElementName = 'groupimg';
 
 if(!empty($_FILES[$fileElementName]['error'])){
 	switch($_FILES[$fileElementName]['error']){
@@ -53,9 +53,9 @@ if(!empty($_FILES[$fileElementName]['error'])){
 		// }
 	}
 
-	// get crew info
-	$CrewInfoQuery  = mysqli_query($dblink, "SELECT * FROM crews WHERE crew_id='{$Rows['crew_id']}'");
-	$CrewInfoRow = mysqli_fetch_assoc($CrewInfoQuery);
+	// get group info
+	$GroupInfoQuery  = mysqli_query($dblink, "SELECT * FROM groups WHERE group_id='{$Rows['group_id']}'");
+	$GroupInfoRow = mysqli_fetch_assoc($GroupInfoQuery);
 
 	// make a note of the current working directory, relative to root.
 	$directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
@@ -86,12 +86,12 @@ if(!empty($_FILES[$fileElementName]['error'])){
 	}else {
 
 		//do query to check if user has uploaded a profile image before
-		$checkUploadImg = mysqli_query($dblink, "SELECT img_url FROM crews WHERE crew_url = '{$CrewInfoRow['crew_url']}'");
+		$checkUploadImg = mysqli_query($dblink, "SELECT img_url FROM groups WHERE group_url = '{$GroupInfoRow['group_url']}'");
 		$RowUpload = mysqli_fetch_assoc($checkUploadImg);
 
 		if($RowUpload['img_url'] != '' || $RowUpload['img_url'] != NULL){
 
-			if($RowUpload['img_url'] != '/images/crew.jpg'){
+			if($RowUpload['img_url'] != '/images/group.jpg'){
 				$oldImgLocation = $_SERVER['DOCUMENT_ROOT'] . $directory_self .$RowUpload['img_url'];
 
 				// $error = 'already uploaded: '.$oldImgLocation;
@@ -131,7 +131,7 @@ if(!empty($_FILES[$fileElementName]['error'])){
 		//now lets remember the file location to store in the database
 		if($session_hash == $Rows['session_hash']){
 			//Post imageUrl into database
-			$updateProfileImgQuery = mysqli_query($dblink, "UPDATE crews SET img_url='$imageUrl' WHERE crewname = '{$CrewInfoRow['crewname']}'");
+			$updateProfileImgQuery = mysqli_query($dblink, "UPDATE groups SET img_url='$imageUrl' WHERE groupname = '{$GroupInfoRow['groupname']}'");
 		}
 
 

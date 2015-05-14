@@ -20,7 +20,7 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
 	
 	<title>Import Underground | The Auto Enthusiast Community</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Crews, Car Crews">
+	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
 	<meta name="description" content="Import Undergroud">
 	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
@@ -70,7 +70,7 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 		<h2>I think something broke bcuz 'Page not found'...</h2>
 		<div class="content">
 			<img src="/images/errorbg.jpg" alt="Import Underground Error" /> 
-			<p>Why not try checking out the <a href="/categories">Categories Page</a>, <a href="/crews">Crews Page</a>, or check out some of the <a href="/topposts">Top Posts</a>.</p>
+			<p>Why not try checking out the <a href="/categories">Categories Page</a>, <a href="/groups">Groups Page</a>, or check out some of the <a href="/topposts">Top Posts</a>.</p>
 		</div>
 		
 	</div>

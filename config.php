@@ -97,7 +97,7 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 		$getPostsUsername = $getPostsRow['displayname'];
 
 		//get the number of comments for a post
-		$getPostsQuery2 = @mysqli_query($dblink, "SELECT count(posts.id), posts.crew_id, posts.category FROM posts INNER JOIN comments WHERE comments.post_id = '{$Row['id']}' AND comments.post_id = posts.id");
+		$getPostsQuery2 = @mysqli_query($dblink, "SELECT count(posts.id), posts.group_id, posts.category FROM posts INNER JOIN comments WHERE comments.post_id = '{$Row['id']}' AND comments.post_id = posts.id");
 		$getPostsRow2 = mysqli_fetch_assoc($getPostsQuery2);
 
 		//get the number of likes for a post
@@ -108,13 +108,13 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 		$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
 		$getPostsRow4 = mysqli_fetch_assoc($getPostsQuery4);
 
-		if($urlpage == 'myposts' && $suburlpage != 'crewposts'){// only do query in /myposts page
+		if($urlpage == 'myposts' && $suburlpage != 'groupposts'){// only do query in /myposts page
 			//get the category from the post id
 			$getPostsQuery5 = @mysqli_query($dblink, "SELECT posts.category, categories.cat_displayname FROM posts INNER JOIN categories WHERE posts.category = categories.category AND posts.id = '{$Row['id']}'");
 			$getPostsRow5 = mysqli_fetch_assoc($getPostsQuery5);
-		}else if ($urlpage == 'myposts' && $suburlpage == 'crewposts'){// only do query in /myposts/crewposts page
-			//get crew name from post id
-			$getPostsQuery5 = @mysqli_query($dblink, "SELECT crews.crewname, posts.crew_id FROM crews INNER JOIN posts WHERE posts.crew_id = crews.crew_id AND posts.id = '{$Row['id']}'");
+		}else if ($urlpage == 'myposts' && $suburlpage == 'groupposts'){// only do query in /myposts/groupposts page
+			//get group name from post id
+			$getPostsQuery5 = @mysqli_query($dblink, "SELECT groups.groupname, posts.group_id FROM groups INNER JOIN posts WHERE posts.group_id = groups.group_id AND posts.id = '{$Row['id']}'");
 			$getPostsRow5 = mysqli_fetch_assoc($getPostsQuery5);
 		}
 ?>
@@ -132,10 +132,10 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 				<p class='username'>Posted by: <a href="/profile/<?= $Row['username'] ?>"><?= $getPostsUsername ?></a> 
 					<?= iu_time_elapsed_string($Row['post_date']) ?>
 					<?  
-						if($urlpage == 'myposts' && $suburlpage != 'crewposts'){ //show normal posts in /myposts
+						if($urlpage == 'myposts' && $suburlpage != 'groupposts'){ //show normal posts in /myposts
 							echo "in <a href='/posts/{$getPostsRow5['category']}'>{$getPostsRow5['cat_displayname']}</a>"; 
-						}else if($urlpage == 'myposts' && $suburlpage == 'crewposts'){ //show crew posts in /myposts
-							echo "in <a href='/crew/".iu_cleaner_url($getPostsRow5['crewname'])."'>{$getPostsRow5['crewname']}</a>"; 
+						}else if($urlpage == 'myposts' && $suburlpage == 'groupposts'){ //show group posts in /myposts
+							echo "in <a href='/group/".iu_cleaner_url($getPostsRow5['groupname'])."'>{$getPostsRow5['groupname']}</a>"; 
 						}
 					?>
 				</p>
@@ -175,48 +175,48 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 
 }
 
-function iu_get_crews($crewsRow, $crewsQuery){
-		$crewsNumRows = mysqli_num_rows($crewsQuery);
-		if($crewsNumRows < 1){ // no crews found
-			echo "<h2>No Crews Found</h2>";
+function iu_get_groups($groupsRow, $groupsQuery){
+		$groupsNumRows = mysqli_num_rows($groupsQuery);
+		if($groupsNumRows < 1){ // no groups found
+			echo "<h2>No Groups Found</h2>";
 		}else{
-			// show list of crews
-			echo "<ul class='crewlist'>";
+			// show list of groups
+			echo "<ul class='grouplist'>";
 			do {
 			?>
 				<li>
-					<a class="crewImg" href="/crew/<?= $crewsRow['crew_url']?>">
-						<img src="<?= $crewsRow['img_url']?>" alt="<?= $crewsRow['crewname']?>"/>
+					<a class="groupImg" href="/group/<?= $groupsRow['group_url']?>">
+						<img src="<?= $groupsRow['img_url']?>" alt="<?= $groupsRow['groupname']?>"/>
 						<div class="transparent">
-							<p class="crewAbout"><?= $crewsRow['about']?></p>
+							<p class="groupAbout"><?= $groupsRow['about']?></p>
 						</div>
 					</a>
-					<h3><?= $crewsRow['crewname']?></h3>
-					<p class="members" ><strong><i></i><?= iu_plural($crewsRow['num_members'], 'Member'); ?></strong></p>
-					<!-- <p class="founder"><strong>Founder:</strong> <a href="/profile/<?= strtolower($crewsRow['founder']) ?>"><?= $crewsRow['founder']?></a></p> -->
-					<!-- <p class="admins"><strong>Admins:</strong> <a href="/profile/<?= strtolower($crewsRow['leader']) ?>"><?= $crewsRow['leader']?></a></p> -->
-					<p class="location" ><?= $crewsRow['location']?></p>
-					<p class="created"><?= iu_readable_date($crewsRow['datecreated'], 'short'); ?></p>
-					<? if($crewsRow['private'] == '1'){ echo "<div class='private'>Private</div>";} ?>
+					<h3><?= $groupsRow['groupname']?></h3>
+					<p class="members" ><strong><i></i><?= iu_plural($groupsRow['num_members'], 'Member'); ?></strong></p>
+					<!-- <p class="founder"><strong>Founder:</strong> <a href="/profile/<?= strtolower($groupsRow['founder']) ?>"><?= $groupsRow['founder']?></a></p> -->
+					<!-- <p class="admins"><strong>Admins:</strong> <a href="/profile/<?= strtolower($groupsRow['leader']) ?>"><?= $groupsRow['leader']?></a></p> -->
+					<p class="location" ><?= $groupsRow['location']?></p>
+					<p class="created"><?= iu_readable_date($groupsRow['datecreated'], 'short'); ?></p>
+					<? if($groupsRow['private'] == '1'){ echo "<div class='private'>Private</div>";} ?>
 				</li>
 			<?
-				$crewsRow = mysqli_fetch_assoc($crewsQuery);
-			} while ($crewsRow);
+				$groupsRow = mysqli_fetch_assoc($groupsQuery);
+			} while ($groupsRow);
 			echo  "</ul>";
 		}
 }
 
-function iu_get_crewmembers($crewMemberRow, $crewMemberQuery){
+function iu_get_groupmembers($groupMemberRow, $groupMemberQuery){
 	do {
 	?>
-		<li class="tooltip" data-tooltip="<?= $crewMemberRow['displayname']?>">
-			<a href="/profile/<?= $crewMemberRow['username']?>">
-				<?= iu_get_avatar_pic($crewMemberRow['email']); ?>
+		<li class="tooltip" data-tooltip="<?= $groupMemberRow['displayname']?>">
+			<a href="/profile/<?= $groupMemberRow['username']?>">
+				<?= iu_get_avatar_pic($groupMemberRow['email']); ?>
 			</a>
 		</li>
 	<?
-			$crewMemberRow = mysqli_fetch_assoc($crewMemberQuery);
-		} while ($crewMemberRow);
+			$groupMemberRow = mysqli_fetch_assoc($groupMemberQuery);
+		} while ($groupMemberRow);
 }
 
 function iu_cleaner_url($title){
@@ -329,7 +329,7 @@ function iu_get_inviterequests( $inviteQuery){
 
 				echo "<li data-userid='".$inviteQueryRows2['user_id']."'><a href='/profile/".$inviteQueryRows2['username']."'>";
 				iu_get_avatar_pic($inviteQueryRows2['email']);
-				echo "</a> <p><a href='/profile/".$inviteQueryRows2['username']."'>".$inviteQueryRows2['displayname']."</a> has asked to join your crew.</p><button class='btn acceptinvite'>Accept</button><button class='btn rejectinvite'>Reject</button></li>";
+				echo "</a> <p><a href='/profile/".$inviteQueryRows2['username']."'>".$inviteQueryRows2['displayname']."</a> has asked to join your group.</p><button class='btn acceptinvite'>Accept</button><button class='btn rejectinvite'>Reject</button></li>";
 
 				$inviteQueryRows = mysqli_fetch_assoc($inviteQuery);
 			}while($inviteQueryRows);
@@ -377,10 +377,10 @@ function iu_send_notification($from_userid, $to_userid, $type, $posturl=''){
 		$notification = mysqli_real_escape_string($dblink,"<a href='/profile/".$Row['username']."'>{$Row['displayname']}</a> mentioned you in a <a href='".$posturl."'>post</a>.");
 	}
 	if($type=='joined'){
-		$notification = mysqli_real_escape_string($dblink,"<a href='/profile/".$Row['username']."'>{$Row['displayname']}</a> has joined your crew.");
+		$notification = mysqli_real_escape_string($dblink,"<a href='/profile/".$Row['username']."'>{$Row['displayname']}</a> has joined your group.");
 	}
 	if($type=='accepted'){
-		$notification = mysqli_real_escape_string($dblink,"<a href='/profile/".$Row['username']."'>{$Row['displayname']}</a> has accepted your invitation to join their crew.");
+		$notification = mysqli_real_escape_string($dblink,"<a href='/profile/".$Row['username']."'>{$Row['displayname']}</a> has accepted your invitation to join their group.");
 	}
 
 	$notification_date = date("Y-m-d H:i:s"); //get current datetime value. i.e. '2013-10-22 14:45:00'

@@ -411,10 +411,10 @@ h2 {
 	}
 	.nav-home i {background-position: center 0;}
 	.nav-categories i {background-position: center -30px;}
-	.nav-crews i {background-position: center -60px;}
+	.nav-groups i {background-position: center -60px;}
 	.nav-events i {background-position: center -90px;}
 	.nav-topposts i {background-position: center -120px;}
-	.nav-mycrew i {background-position: center -150px;}
+	.nav-mygroup i {background-position: center -150px;}
 	// .nav-accessories i {background-position: 0 0;}
 }
 
@@ -536,9 +536,9 @@ h2 {
 	float: left;
 
 	&.categoriessection,
-	&.crewsection,
-	&.createcrewsection,
-	&.crewsetupsection,
+	&.groupsection,
+	&.creategroupsection,
+	&.groupsetupsection,
 	&.profilesection {
 		@extend %gd9;
 		// width: 82%;
@@ -595,7 +595,7 @@ h3.sectiontitle {
 			//margin:20px 0 0 0;
 		}
     }
-    .crewname {
+    .groupname {
     	color: $blue;
     	margin: 0 auto 10px;
     }
@@ -982,7 +982,7 @@ h3.sectiontitle {
 
 		&.location,
 		&.car,
-		&.crew,
+		&.group,
 		&.email,
 		&.joindate {
 			text-align: center;
@@ -1002,7 +1002,7 @@ h3.sectiontitle {
 		}
 		&.location .icon {background-position: -40px 0;}
 		&.car .icon {background-position: -40px -30px;}
-		&.crew .icon {background-position: -40px -60px;}
+		&.group .icon {background-position: -40px -60px;}
 		&.email .icon {background-position: -40px -90px;}
 		&.joindate .icon {background-position: -40px -120px;}
 		
@@ -1747,12 +1747,12 @@ body.registration input {
 
 
 /* ------- CREWS Section ------- */
-.crewHeader {
+.groupHeader {
 	position: relative;
 	margin: 0 auto 30px;
 	@include clearfix();
 }
-.createCrew {
+.createGroup {
 	width: 50%;
 	float: left;
 
@@ -1766,11 +1766,11 @@ body.registration input {
 		margin: 0 10px 0 0;
 	}
 }
-.searchCrews {
+.searchGroups {
 	width: 36%;
 	float: right;
 
-	.inputCrewSearch {
+	.inputGroupSearch {
 		float: left;
 		width: 68%;
 		margin: 0 2% 0 0;
@@ -1803,7 +1803,7 @@ body.registration input {
 .searchbtn {
 
 }
-.crewlist {
+.grouplist {
 	@include clearfix();
 
 	li {
@@ -1822,7 +1822,7 @@ body.registration input {
 			margin: 0 0 20px 2%;
 		}
 	}
-	.crewImg {
+	.groupImg {
 		position: relative;
 		cursor: pointer;
 		display: block;
@@ -1834,7 +1834,7 @@ body.registration input {
 				top: -62px;
 				@include opacity(1);
 			}
-			.crewAbout {
+			.groupAbout {
 				bottom: 140px;
 			}
 		}
@@ -1852,7 +1852,7 @@ body.registration input {
 			@include opacity(0);
 			@include transition(all 0.5s ease);
 		}
-		.crewAbout {
+		.groupAbout {
 			position: absolute;
 			bottom: -20px;
 			margin: 0;
@@ -1976,12 +1976,12 @@ body.registration input {
 
 
 /* ------- CREW Section ------- */
-.crewbanner {
+.groupbanner {
 	position: relative;
 	width: 100%;
 	height: 160px;
 	margin: 0 auto 20px;
-	// background: url('../images/crewbanner.jpg') no-repeat center top;
+	// background: url('../images/groupbanner.jpg') no-repeat center top;
 
 	.transparent {
 		display: block;
@@ -2002,7 +2002,7 @@ body.registration input {
 		text-shadow: 0 1px 5px rgba(0,0,0,0.75);
 	}
 }
-.crewDesc {
+.groupDesc {
 
 	h3 {
 		font-size: 1em;
@@ -2011,14 +2011,14 @@ body.registration input {
 	p {
 		font-size: 0.8em;
 	}
-	// .crewsetupbtn {
+	// .groupsetupbtn {
 	// 	&:before {
 	// 		content: " ";
 	// 		margin: 0 5px 0 0;
 	// 		@include icon(settings);
 	// 	}
 	// }
-	.joincrewbtn {
+	.joingroupbtn {
 		width: 100%;
 	}
 	.pending {
@@ -2034,7 +2034,7 @@ body.registration input {
 
 
 .sidePost,
-.crewMembers {
+.groupMembers {
 
 	h3 {
 		margin: 0 auto 10px;
@@ -2096,7 +2096,7 @@ body.registration input {
 
 
 /* ------- CREATECREW Section ------- */
-.crewinfo {
+.groupinfo {
 	width: 48%;
 	margin: 0 2% 20px 0;
 	float: left;
@@ -2118,7 +2118,7 @@ body.registration input {
 		margin: 0 0 20px;
 	}
 }
-#crewnametaken {
+#groupnametaken {
 	display: block;
 	position: absolute;
 	top: 8px;
@@ -2139,7 +2139,7 @@ body.registration input {
 		top: -25px;
 	}
 }
-.crewPreview {
+.groupPreview {
 	width: 48%;
 	margin: 0 0 0 2%;
 	float: left;
@@ -2147,14 +2147,14 @@ body.registration input {
 	h3 {
 		text-align: center;
 	}
-	.crewlist li {
+	.grouplist li {
 		width: 306px;
 		float: none;
 		margin: 0 auto;
 		overflow: hidden;
 	}
 }
-.crewMemberList {
+.groupMemberList {
 	clear: both;
 	width: 100%;
 	margin: 0 auto 20px;
