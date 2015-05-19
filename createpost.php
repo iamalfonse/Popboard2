@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+// include("config.php");
 
 if (isset( $_COOKIE['login_cookie'] )) {
 	$have_user_id = true;
@@ -17,10 +17,10 @@ if (isset( $_COOKIE['login_cookie'] )) {
 }
 
 
-if(isset($_GET['group'])){ // get groupid if posting from your group
-	$cpGroupID = mysqli_real_escape_string($dblink, strtolower($_GET['group']));
+if(isset($_GET['groupurl'])){ // get groupurl if posting from your group
+	$cpGroupURL = mysqli_real_escape_string($dblink, strtolower($_GET['groupurl']));
 
-	$cpGroupQuery = mysqli_query($dblink, "SELECT * FROM groups WHERE group_id='$cpGroupID'");
+	$cpGroupQuery = mysqli_query($dblink, "SELECT * FROM groups WHERE group_url='$cpGroupURL'");
 	$cpGroupRow = mysqli_fetch_assoc($cpGroupQuery);
 	$cpGroupName = $cpGroupRow['groupname'];
 	
@@ -29,97 +29,76 @@ if(isset($_GET['group'])){ // get groupid if posting from your group
 		$grouppermission = false;
 	}
 }
+
 ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | Create Post</title>
-	<link href="/stylesheets/cleditor.css" rel="stylesheet" type="text/css" />
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
-</head>
-<body class="createpost">
+<div class="createpostOverlay">
+</div>
+<div id="createpost">
 	
-	<?php include("top.php"); ?>
+	<div class="errorContainer">
+	<?php
+		if (isset($_GET['errmsg']) && isset($_GET['errmsg']) != '') {
+			if($_GET['errmsg'] == '1'){
+				echo "<p class='error'>Title and Message must not be empty.</p>";
+			}else if($_GET['errmsg'] == '2') {
+				echo "<p class='error'>You don't have permission to do that. Don't try to hack bro!</p>";
+			}else {
+				echo "<p class='error'>An error has occured. Please try again.</p>";
+			}
+		}
 
-	<div id="content">
-		<?php include("left.php"); ?>
-	
-    	<div id="right">
-    		<div class="right-content">
-	        	<h3 class="sectiontitle">Create Post</h3>
-			</div>
-			<div class="errorContainer">
-			<?php
-				if (isset($_GET['errmsg']) && isset($_GET['errmsg']) != '') {
-					if($_GET['errmsg'] == '1'){
-						echo "<p class='error'>Title and Message must not be empty.</p>";
-					}else if($_GET['errmsg'] == '2') {
-						echo "<p class='error'>You don't have permission to do that. Don't try to hack bro!</p>";
-					}else {
-						echo "<p class='error'>An error has occured. Please try again.</p>";
-					}
-				}
+		if(isset($_GET['groupurl']) && $grouppermission == false){
+			echo "<p class='error'>You don't have permission to post in this group: ".$cpGroupName."</p>";
+		}
+	?>
+	</div>
+	<? if(isset($_GET['groupurl']) && $grouppermission == false){ 
+		//dont show anything if you don't have permission to post in this group
+	 }else { ?>
+	<div id="postcomment">
+		<p class="closebtn">Close</p>
+		<form method="post" action="/submitpost">
 
-				if(isset($_GET['group']) && $grouppermission == false){
-					echo "<p class='error'>You don't have permission to post in this group: ".$cpGroupName."</p>";
+			<? if(isset($_GET['groupurl'])){ //if posting from group ?>
+				<label class='inputtitle'>Post in Group:</label>
+				<p class="groupname"><?= $cpGroupName; ?></p>
+				<input type="hidden" name="category" value="general">
+				<input type="hidden" name="groupurl" value="<?= $_GET['groupurl']; ?>">
+			<? }else { //posting normal post 
+
+				$cat = ''; //used toautomatically select a category from dropdown select
+				if(isset($_GET['category'])){
+					$cat = $_GET['category'];
 				}
 			?>
-			</div>
-			<? if(isset($_GET['group']) && $grouppermission == false){ 
-				//dont show anything if you don't have permission to post in this group
-			 }else { ?>
-        	<div id="postcomment">
-				<form method="post" action="/submitpost">
-
-					<? if(isset($_GET['group'])){ //if posting from group ?>
-						<label class='inputtitle'>Post in Group:</label>
-						<p class="groupname"><?= $cpGroupName; ?></p>
-						<input type="hidden" name="category" value="general">
-						<input type="hidden" name="groupid" value="<?= $_GET['group']; ?>">
-					<? }else { //posting normal post 
-
-						$cat = ''; //used toautomatically select a category from dropdown select
-						if(isset($_GET['c'])){
-							$cat = $_GET['c'];
-						}
+			<label class='inputtitle'>Post in Category:</label>
+				<select class="select catselect" name="category">
+					<?
+						$catQuery = @mysqli_query($dblink, "SELECT * FROM categories ORDER BY listorder ASC");
+						$catRows = mysqli_fetch_assoc($catQuery);
+						do {
 					?>
-					<label class='inputtitle'>Post in Category:</label>
-						<select class="select catselect" name="category">
-							<?
-								$catQuery = @mysqli_query($dblink, "SELECT * FROM categories ORDER BY listorder ASC");
-								$catRows = mysqli_fetch_assoc($catQuery);
-								do {
-							?>
-									<option value="<?= $catRows['category'] ?>" <?= $cat==$catRows['category'] ? 'selected="selected"' : ''; ?> ><?= $catRows['cat_displayname'] ?></option>
-							<?
-									$catRows = mysqli_fetch_assoc($catQuery);
-								} while ($catRows);
-							?>
-
-						</select>
-					<? } ?>
-					<label>Or</label>
-					<p><a href="/createcategory">Create Your Own Category</a></p>
-					<input type="hidden" value="createpost" name="from">
-					<label class='inputtitle' for="posttitle">Title</label>
-					<input type="text" id="posttitle" name="posttitle" maxlength="50" class='inputtitle userinput' />
-					<label class='inputtitle' for="postmessage">Message</label>
-					<textarea id="postmessage" name="postmessage" rows="5" cols="50" class='inputmessage'></textarea>
-					<input type="submit" name="submitpost" value="Submit Post" class="submitbtn" id="postsubmit"/>
-					<p class="note">You can embed Youtube and Vimeo videos by simply copy and pasting the url</p>
-				</form>
-			</div>
+							<option value="<?= $catRows['category'] ?>" <?= $cat==$catRows['category'] ? 'selected="selected"' : ''; ?> ><?= $catRows['cat_displayname'] ?></option>
+					<?
+							$catRows = mysqli_fetch_assoc($catQuery);
+						} while ($catRows);
+					?>
+				</select>
 			<? } ?>
-    	</div>
+			<label>Or</label>
+			<p><a href="/createcategory">Create Your Own Category</a></p>
+			<input type="hidden" value="createpost" name="from">
+			<label class='inputtitle' for="posttitle">Title</label>
+			<input type="text" id="posttitle" name="posttitle" maxlength="50" class='inputtitle userinput' />
+			<label class='inputtitle' for="postmessage">Message</label>
+			<textarea id="postmessage" name="postmessage" rows="5" cols="50" class='inputmessage'></textarea>
+			<input type="submit" name="submitpost" value="Submit Post" class="submitbtn" id="postsubmit"/>
+			<p class="note">You can embed Youtube and Vimeo videos by simply copy and pasting the url</p>
+		</form>
+	</div>
+	<? } ?>
+</div>
 
-    </div>
-<?php include("scripts.php"); ?>
 <!-- <script type="text/javascript" src="/js/jquery.cleditor.js"></script> -->
 <script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="/js/createpost.js"></script>
-</body>
-</html>

@@ -59,7 +59,7 @@ RewriteRule ^post\/([0-9]+)\/([A-Za-z0-9\-]+)$ post.php?post_id=$1&title=$2 [NC,
 RewriteRule ^submitcomment\/([0-9]+)\/([A-Za-z0-9\-]+)$ submitcomment.php?post_id=$1&title=$2 [NC,L]
 
 # Handle requests for "home"
-RewriteRule ^home(\/)?$ posts.php?category=general [NC,L]
+RewriteRule ^home(\/)?(\&start)?$ posts.php?category=general$2 [NC,L]
 
 # Handle requests for "categories"
 RewriteRule ^categories(\/)?$ categories.php [NC,L]
@@ -87,6 +87,9 @@ RewriteRule ^submitgroupsetup(\/)?$ submitgroupsetup.php [NC,L]
 
 # Handle requests for "groupsetup"
 RewriteRule ^groupsetup(\/)?([a-z0-9-]+)?$ groupsetup.php?groupname=$2 [NC,L]
+
+# Handle requests for "mygroups"
+RewriteRule ^mygroups(\/)?$ mygroups.php [NC,L]
 
 # Handle requests for "joingroup"
 RewriteRule ^joingroup(\/)?$ joingroup.php [NC,L]

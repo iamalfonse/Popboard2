@@ -1,0 +1,164 @@
+html,
+body{
+	height: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: 'Proxima Nova', Arial, sans-serif;
+}
+
+// blur background when overlay is open
+body.openOverlay {
+	#top,
+	.mainNav,
+	#content {
+		-webkit-filter: blur(3px);
+		-moz-filter: blur(3px);
+		-o-filter: blur(3px);
+		-ms-filter: blur(3px);
+		filter: blur(3px);
+	}	
+}
+
+
+.clear {
+	clear: both;
+}
+
+// Inline styling for errors/success
+span {
+	&.red {
+		color: #D94040;
+	}
+	&.green {
+		color: #00ff00;
+	}
+	&.mini {
+		font-size: 10px;
+	}
+}
+
+p.error {
+	position: relative;
+	margin: 20px 0 20px;
+	padding: 10px 1%;
+	line-height: 14px;
+	color: $red;
+	text-align: center;
+	z-index: 5;
+	background: #fff;
+	@include box-shadow(0 1px 3px rgba(0,0,0,0.2));
+	border-radius: 4px;
+
+	&:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		right: 1%;
+		top: 10px;
+		height: 14px;
+		width: 14px;
+		cursor: pointer;
+		background: url('../images/mini-icons.png') no-repeat -40px -150px;
+	}
+}
+iframe {
+	width: 100%;
+	border: 0 none;
+}
+
+a {
+	color:$link;
+
+	// &:visited {
+	// 	color:lighten($link, 2%);
+	// 	text-shadow: 0 1px 1px #fff;
+	// }
+	&:hover {
+		color: $link-hover;
+	}
+}
+
+
+hr {
+	background:#666;
+}
+
+h2 {
+	display:block;
+	// margin: 0px auto 20px;
+	font-size: 22px;
+	color:#333;
+	text-align:center;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.25);
+}
+
+// global avatar images
+
+// Profile Image styling
+%profile-bg-colors {
+	&.default {background: #2C353A;}
+	&.white {background: #ddd;}
+	&.black {background: #222;}
+	&.red {background: #e53f2d;}
+	&.blue {background: #5ab3e2;}
+	&.green {background: #8fbf26;}
+	&.yellow {background: #eac51c;}
+	&.pink {background: #df34bd;}
+	&.purple {background: #a534df;}
+	&.orange {background: #e26a13;}
+	&.radial-white {@include gradient(#eee, #bbb, radial);}
+	&.radial-black {@include gradient(#737373, #272727, radial);}
+	&.radial-red {@include gradient(#e9574c, #9d0000, radial);}
+	&.radial-yellow {@include gradient(#f6d97f, #e99f00, radial);}
+	&.radial-green {@include gradient(#b4d668, #649419, radial);}
+	&.radial-blue {@include gradient(#70c1ef, #0c78b7, radial);}
+	&.radial-orange {@include gradient(#fab13f, #e95800, radial);}
+	&.radial-pink {@include gradient(#f787c1, #ee2c9e, radial);}
+	&.radial-purple {@include gradient(#e06dfd, #6f00c4, radial);}
+	&.radial-white.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-black.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-red.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-yellow.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-green.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-blue.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-orange.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-pink.locked span {background: url('../images/locked.png') no-repeat;}
+	&.radial-purple.locked span {background: url('../images/locked.png') no-repeat;}
+	// &.radial-white.locked {@include gradient(#eee, #bbb, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-black.locked {@include gradient(#737373, #272727, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-red.locked {@include gradient(#e9574c, #9d0000, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-yellow.locked {@include gradient(#f6d97f, #e99f00, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-green.locked {@include gradient(#b4d668, #649419, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-blue.locked {@include gradient(#70c1ef, #0c78b7, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-orange.locked {@include gradient(#fab13f, #e95800, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-pink.locked {@include gradient(#f787c1, #ee2c9e, imageradial, "url('../images/locked.png') no-repeat");}
+	// &.radial-purple.locked {@include gradient(#e06dfd, #6f00c4, imageradial, "url('../images/locked.png') no-repeat");}
+	&.bgimg01 {background: url('../images/profilebg_01.jpg'); background-size: 100% auto;}
+	&.bgimg02 {background: url('../images/profilebg_02.jpg'); background-size: 100% auto;}
+}
+
+img.avatar {
+	border-radius: 100px;
+	background: #fff;
+}
+
+// white square showing lvl under avatar
+.lvl {
+	position: relative;
+	padding: 3px 8px;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	color: #444;
+	background: #fff;
+	border: 2px solid #fff;
+	border-radius: 4px;
+	@include box-shadow(inset 0 0 5px rgba(0,0,0,0.3));
+	p {
+		margin: 0;
+	}
+}

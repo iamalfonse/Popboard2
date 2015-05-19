@@ -1,116 +1,16 @@
 @charset "UTF-8";
 @import "fontface","var","mixins","base";
 
+// TODO: Make this only have @imports and @includes
+
 @include grid-wrap(0,0,0,0);
 @include grid();
 @include dropdown();
 
-
-html,
-body{
-	height: 100%;
-}
-
-input,
-select,
-textarea,
-button {
-	font-family: 'Proxima Nova', Arial, sans-serif;
-}
-
-.clear {
-	clear: both;
-}
-
-span {
-	&.red {
-		color: #D94040;
-	}
-	&.green {
-		color: #00ff00;
-	}
-	&.mini {
-		font-size: 10px;
-	}
-}
-
-p.error {
-	position: relative;
-	margin: 20px 0 20px;
-	padding: 10px 1%;
-	line-height: 14px;
-	color: $red;
-	text-align: center;
-	z-index: 5;
-	background: #fff;
-	@include box-shadow(0 1px 3px rgba(0,0,0,0.2));
-	@include border-radius(4px);
-
-	&:after {
-		content: " ";
-		display: block;
-		position: absolute;
-		right: 1%;
-		top: 10px;
-		height: 14px;
-		width: 14px;
-		cursor: pointer;
-		background: url('../images/mini-icons.png') no-repeat -40px -150px;
-	}
-}
-iframe {
-	width: 100%;
-	border: 0 none;
-}
-
-%profile-bg-colors {
-	&.default {background: #2C353A;}
-	&.white {background: #ddd;}
-	&.black {background: #222;}
-	&.red {background: #e53f2d;}
-	&.blue {background: #5ab3e2;}
-	&.green {background: #8fbf26;}
-	&.yellow {background: #eac51c;}
-	&.pink {background: #df34bd;}
-	&.purple {background: #a534df;}
-	&.orange {background: #e26a13;}
-	&.radial-white {@include gradient(#eee, #bbb, radial);}
-	&.radial-black {@include gradient(#737373, #272727, radial);}
-	&.radial-red {@include gradient(#e9574c, #9d0000, radial);}
-	&.radial-yellow {@include gradient(#f6d97f, #e99f00, radial);}
-	&.radial-green {@include gradient(#b4d668, #649419, radial);}
-	&.radial-blue {@include gradient(#70c1ef, #0c78b7, radial);}
-	&.radial-orange {@include gradient(#fab13f, #e95800, radial);}
-	&.radial-pink {@include gradient(#f787c1, #ee2c9e, radial);}
-	&.radial-purple {@include gradient(#e06dfd, #6f00c4, radial);}
-	&.radial-white.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-black.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-red.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-yellow.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-green.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-blue.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-orange.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-pink.locked span {background: url('../images/locked.png') no-repeat;}
-	&.radial-purple.locked span {background: url('../images/locked.png') no-repeat;}
-	// &.radial-white.locked {@include gradient(#eee, #bbb, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-black.locked {@include gradient(#737373, #272727, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-red.locked {@include gradient(#e9574c, #9d0000, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-yellow.locked {@include gradient(#f6d97f, #e99f00, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-green.locked {@include gradient(#b4d668, #649419, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-blue.locked {@include gradient(#70c1ef, #0c78b7, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-orange.locked {@include gradient(#fab13f, #e95800, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-pink.locked {@include gradient(#f787c1, #ee2c9e, imageradial, "url('../images/locked.png') no-repeat");}
-	// &.radial-purple.locked {@include gradient(#e06dfd, #6f00c4, imageradial, "url('../images/locked.png') no-repeat");}
-	&.bgimg01 {background: url('../images/profilebg_01.jpg'); background-size: 100% auto;}
-	&.bgimg02 {background: url('../images/profilebg_02.jpg'); background-size: 100% auto;}
-}
-
-img.avatar {
-	@include border-radius(100px);
-	background: #fff;
-}
+@import "global_styles";
 
 
+/*============ SIGNUP ===============*/
 #nametaken {
 	position: absolute;
 	width: 0;
@@ -141,52 +41,12 @@ img.avatar {
 		}
 	}
 }
-	
-a {
-	color:$link;
 
-	// &:visited {
-	// 	color:lighten($link, 2%);
-	// 	text-shadow: 0 1px 1px #fff;
-	// }
-	&:hover {
-		color: $link-hover;
-	}
-}
-
-
-hr {
-	background:#666;
-}
-
-.lvl {
-	position: relative;
-	padding: 3px 8px;
-	width: 100%;
-	text-align: center;
-	font-weight: bold;
-	color: #444;
-	background: #fff;
-	border: 2px solid #fff;
-	@include border-radius(4px);
-	@include box-shadow(inset 0 0 5px rgba(0,0,0,0.3));
-	p {
-		margin: 0;
-	}
-}
-
-h2 {
-	display:block;
-	// margin: 0px auto 20px;
-	font-size: 22px;
-	color:#333;
-	text-align:center;
-	text-shadow: 0 1px 1px rgba(255,255,255,0.25);
-}
 
 /*============ TOP ===============*/
 #top {
 	background: #fff;
+	transition: filter 0.5s ease;
 	//background: #363A45;
 	//@include gradient(#3C404C, #2E323C); //gray
 	//@include box-shadow(inset 0 1px 0px rgba(#3C404C, 0.5));
@@ -251,7 +111,7 @@ h2 {
 	height: 30px;
 	border: 1px solid #aaa;
 	cursor: pointer;
-	@include border-radius(4px);
+	border-radius: 4px;
 
 	.invitecount,
 	.unread {
@@ -264,7 +124,7 @@ h2 {
 		color: #fff;
 		text-align: center;
 		background: $red;
-		@include border-radius(20px);
+		border-radius: 20px;
 	}
 
 	&.open ul {
@@ -283,7 +143,7 @@ h2 {
 		z-index: 10;
 		cursor: default;
 		@include clearfix();
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include box-shadow(0 1px 3px rgba(0,0,0,0.6));
 		&:before {
 			content: " ";
@@ -308,7 +168,7 @@ h2 {
 		height: 20px;
 		float: left;
 		margin: 0 5px 0 0;
-		@include border-radius(20px);
+		border-radius: 20px;
 	}
 	button {
 		display: none;
@@ -324,7 +184,7 @@ h2 {
 		// background: lighten(#2C353A, 20%);
 		@include gradient(lighten(#586A74, 5%),#586A74);
 		@include box-shadow(inset 0 1px 0px rgba(255,255,255,0.3));
-		@include border-radius(4px);
+		border-radius: 4px;
 		&:hover {
 			color: #fff;
 			@include gradient(#586A74,lighten(#586A74, 5%));
@@ -346,8 +206,9 @@ h2 {
 	//float: left;
 	position: relative;
 	overflow: hidden;
-	height: 90px;
+	height: 70px;
 	background: #2c353a;
+	transition: filter 0.5s ease;
 	// background: #a8cba1;
 	//background: #272B32; //gray
 	// background: #9DBE20; // lime green
@@ -382,14 +243,14 @@ h2 {
 			height: 100%;
 			// width: 146px;
 			margin: 0 0;
-			padding: 24px 0 14px;
+			padding: 14px 0 0;
 			text-align: center;
 			font-weight: normal;
 			font-size: 0.9em;
 			color: #848e92;
 			// border:1px solid darken(#363A45, 20%);
 			// @include gradient(lighten(#363A45, 5%), #363A45);
-			// @include border-radius(4px);
+			// border-radius: 4px;
 			// @include box-shadow(inset 0 1px 0px lighten(#363A45, 10%));
 
 			&:hover {
@@ -550,7 +411,7 @@ h2 {
 		margin: 0 auto 20px;
 		padding:10px;
 		overflow: hidden;
-		@include border-radius(5px);
+		border-radius: 5px;
 	}
 
 }
@@ -560,7 +421,7 @@ h2 {
 	margin: 0 auto 20px;
 	background: darken(#687991, 8%);
 	@include box-shadow(inset 0 1px 2px rgba(0,0,0,0.2), 0 1px 0px rgba(255,255,255,0.2));
-	@include border-radius(4px);
+	border-radius: 4px;
 }
 
 h3.sectiontitle {
@@ -571,17 +432,67 @@ h3.sectiontitle {
 	text-shadow: 0 1px 1px #FFFFFF;
 }
 
+.createpostOverlay {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: -1;
+	transition: all 0.5s ease;
+	.openOverlay & {
+		opacity: 1;
+		z-index: 9;
+		#createpost {
+			top: 40px;
+		}
+	}
+}
+
+#createpost {
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 600px;
+	margin: 20px 0 0 -300px;
+	z-index: -1;
+	transition: all 0.5s ease;
+	.openOverlay & {
+		top: 40px;
+		opacity: 1;
+		z-index: 10;
+	}
+	.closebtn {
+		cursor: pointer;
+	}
+}
+
 #postcomment,
 #createcategory {
+	position: relative;
 	margin:20px 0 0 0;
-	padding: 10px 20px;
+	padding: 20px;
 	background: none repeat scroll 0 0 #F3F3F3;
-    @include border-radius(5px);
+    border-radius: 5px;
     //@include box-shadow(0 1px 5px rgba(0, 0, 0, 0.5));
     @include clearfix();
 
     h4 {
     	text-align: center;
+    }
+
+    .closebtn {
+    	float: right;
+    	padding: 6px 10px;
+    	font-size: 12px;
+    	@include border-radius(2px);
+
+    	&:hover {
+    		background: darken(#F3F3F3, 10%);
+    	}
     }
 
     .catselect {
@@ -605,7 +516,7 @@ h3.sectiontitle {
 		margin: 5px 0 20px;
 		font-size: 16px;
 		border: 1px solid #cccccc;
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include box-shadow(inset 0 1px 3px rgba(0,0,0,0.15));
 	}
 
@@ -618,7 +529,7 @@ h3.sectiontitle {
 		border:1px solid #999;
 
 		@include box-shadow(inset 0px 1px 1px 0px #6e6e6e);
-		@include border-radius(5px);
+		border-radius: 5px;
 	}
 	.submitbtn,
 	.note {
@@ -643,7 +554,7 @@ h3.sectiontitle {
 		text-align: center;
 		color: #777;
 		border: #BBB thin solid;
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include box-shadow(0 0 3px rgba(0,0,0,0.15));
 		@include gradient(#f9f9f9, #e6e6e6);
 		
@@ -701,7 +612,7 @@ h3.sectiontitle {
 		margin: 0 auto 20px;
 		clear: both;
 		background: #fff;
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include clearfix();
 	}
 	li {
@@ -744,7 +655,7 @@ h3.sectiontitle {
 			border: 4px solid #fff;
 			background: #fff;
 			@include box-shadow(0 1px 3px rgba(0,0,0,0.3));
-			@include border-radius(50px);
+			border-radius: 50px;
 		}
 		p {
 			text-align: center;
@@ -841,7 +752,7 @@ h3.sectiontitle {
 		padding: 20px;
 		margin: 0 0 0 -400px;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include box-shadow(0 1px 5px rgba(0,0,0,0.6));
 	}
 	.mainImg {
@@ -879,7 +790,7 @@ h3.sectiontitle {
 	padding: 0px;
 	// background-color: #f3f3f3;
 	overflow: auto;
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	.userpic{
 		position: relative;
@@ -925,7 +836,7 @@ h3.sectiontitle {
 			padding: 2px 5px;
 			cursor: pointer;
 			background: rgba(255,255,255,0.5);
-			@include border-radius(2px);
+			border-radius: 2px;
 			@include transition(all 0.5s ease);
 		}
 	}
@@ -937,7 +848,7 @@ h3.sectiontitle {
 		margin: 0 auto 20px;
 		background-color: #f3f3f3;
 		@include clearfix();
-		@include border-radius(0 0 5px 5px);
+		border-radius: 0 0 5px 5px;
 	}
 	
 
@@ -952,7 +863,7 @@ h3.sectiontitle {
 		width: 31.333%;
 		border: 1px solid #ccc;
 		@include gradient(#fefefe, #efefef);
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include box-shadow(0 2px 0px rgba(0, 0, 0, 0.15));
 	
 		.icon {
@@ -989,7 +900,7 @@ h3.sectiontitle {
 			padding: 10px;
 			color: #ccc;
 			@include gradient(lighten(#2e3846,5%), #2e3846);
-			@include border-radius(4px);
+			border-radius: 4px;
 			
 			.icon {
 				display: inline-block;
@@ -1029,7 +940,7 @@ h3.sectiontitle {
 	padding: 20px;
 	margin: 0 auto 20px;
 	background-color: #f3f3f3;
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	h3 {
 		text-align: center;
@@ -1086,7 +997,7 @@ h3.sectiontitle {
 	width: 100%;
 	height: 100%;
 	background: rgba(0,0,0,0.6);
-	z-index: 99;
+	z-index: 9;
 }
 .profilebgWrap {
 	position: absolute;
@@ -1097,7 +1008,7 @@ h3.sectiontitle {
 	margin: -80px 0 0 -30%;
 	background: #fff;
 	overflow: hidden;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include box-shadow(0 1px 5px rgba(0,0,0,0.3));
 	@include clearfix();
 
@@ -1151,6 +1062,7 @@ h3.sectiontitle {
 	// width:1250px;
 	margin:0 auto 0px auto;
 	/*min-height:600px;*/
+	transition: filter 0.5s ease;
 	@include clearfix();
 }
 
@@ -1166,7 +1078,7 @@ h3.sectiontitle {
 		padding: 10px 6%;
 		background: darken(#687991, 8%);
 		@include box-shadow(inset 0 1px 2px rgba(0,0,0,0.2), 0 1px 0px rgba(255,255,255,0.2));
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include clearfix();
 	}
 
@@ -1179,7 +1091,7 @@ h3.sectiontitle {
 	margin: 8px 10% 0px;
 	overflow: hidden;
 	background: #ccc;
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	.userLvl,
 	.nextLvl {
@@ -1189,7 +1101,7 @@ h3.sectiontitle {
 		padding: 0;
 		text-align: center;
 		background: #fff;
-		@include border-radius(20px);
+		border-radius: 20px;
 		@include gradient(#f5f5f5, #ddd);
 		@include box-shadow(inset 0 1px 0 rgba(255,255,255,1), 0 1px 4px rgba(0,0,0,0.2));
 
@@ -1205,7 +1117,7 @@ h3.sectiontitle {
 		margin: 4px 1%;
 		background: #fff;
 		overflow: hidden;
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include box-shadow(0 1px 3px rgba(0,0,0,0.2));
 
 		p {
@@ -1262,7 +1174,7 @@ h3.sectiontitle {
 	// background: #fff;
 	background: rgba(255,255,255,0.7);
 	// border:1px solid #eee;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include box-shadow(0 1px 3px rgba(0,0,0,.25));
 	// @include gradient(#f9f9f9, #e6e6e6);
 
@@ -1295,7 +1207,7 @@ h3.sectiontitle {
 		font-size: 14px;
 		width: 100%;
 		border: 1px solid #888;
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include box-shadow(inset 0 1px 3px rgba(0,0,0,0.15));
 	}
 	.signup {
@@ -1327,7 +1239,7 @@ h3.sectiontitle {
 		border:1px solid #9f9f9f;
 		text-shadow:0 1px 0 #eee;
 		@include box-shadow(inset 0 1px 0 rgba(255,255,255,0.5));
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include gradient(#fbf849, #f7a923);
 
 		&:hover {
@@ -1397,7 +1309,7 @@ h3.sectiontitle {
 		padding: 4px 10px;
 		color: #333;
 		background: rgba(255,255,255,0.6);
-		@include border-radius(4px)
+		border-radius: 4px;
 	}
 }
 
@@ -1410,7 +1322,7 @@ h3.sectiontitle {
 	margin:50px auto 50px auto;
 	padding:0px 0 10px 0;
 	background:#fff;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include box-shadow(0 1px 3px rgba(0,0,0,.25));
 	@include gradient(#f9f9f9 ,#e6e6e6);
 
@@ -1418,7 +1330,7 @@ h3.sectiontitle {
 		background:#35a0cd;
 		padding:20px 80px;
 		text-align:center;
-		@include border-radius(5px 5px 0 0);
+		border-radius: 5px 5px 0 0;
 
 		h2 {
 			margin:0px 0;
@@ -1493,7 +1405,7 @@ h3.sectiontitle {
 		margin: 0 10px 0 0;
 		cursor: pointer;
 		border: 2px solid #333;
-		@include border-radius(80px);
+		border-radius: 80px;
 
 		&:hover,
 		&.hover {
@@ -1519,7 +1431,7 @@ h3.sectiontitle {
 			padding: 0px;
 			text-align: center;
 			background: #333;
-			@include border-radius(80px);
+			border-radius: 80px;
 			@include transition(all 1s linear);
 		}
 		i {
@@ -1539,7 +1451,7 @@ body.registration input {
 	margin: 100px auto;
 	padding: 20px 100px;
 	background: #fff;
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	h2 {
 		margin: 0 auto 20px;
@@ -1557,53 +1469,13 @@ body.registration input {
 		display: block;
 		float: left;
 		background: #fff;
-		@include border-radius(5px);
-		@include box-shadow(0 1px 3px rgba(0,0,0,0.3));
+		border-radius: 5px;
+		// @include box-shadow(0 1px 3px rgba(0,0,0,0.3));
 	}
 	.catimg {
 		width: 100%;
-		height: 160px;
+		height: 70px;
 		background: url('../images/category_general.jpg') no-repeat center center;
-		
-		// &.general {
-		// 	background: url('../images/category_general.jpg') no-repeat center center;
-		// }
-		&.import {
-			background: url('../images/category_import.jpg') no-repeat center center;
-		}
-		&.domestic {
-			background: url('../images/category_domestic.jpg') no-repeat center center;
-		}
-		&.euro {
-			background: url('../images/category_euro.jpg') no-repeat center center;
-		}
-		&.exotic {
-			background: url('../images/category_exotic.jpg') no-repeat center center;
-		}
-		&.classic {
-			background: url('../images/category_classic.jpg') no-repeat center center;
-		}
-		&.parts {
-			background: url('../images/category_parts.jpg') no-repeat center center;
-		}
-		&.wheels {
-			background: url('../images/category_wheels.jpg') no-repeat center center;
-		}
-		&.tuning {
-			background: url('../images/category_tune.jpg') no-repeat center center;
-		}
-		&.drag {
-			background: url('../images/category_drag.jpg') no-repeat center center;
-		}
-		&.track {
-			background: url('../images/category_track.jpg') no-repeat center center;
-		}
-		&.rally {
-			background: url('../images/category_rally.jpg') no-repeat center center;
-		}
-		&.models {
-			background: url('../images/category_models.jpg') no-repeat center center;
-		}
 	}
 	h3 {
 		text-align: center;
@@ -1662,7 +1534,7 @@ body.registration input {
 		margin: 10% auto 0;
 		padding: 20px 40px;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include box-shadow(0 1px 8px rgba(0,0,0,0.8));
 	}
 	.step2 {
@@ -1683,7 +1555,7 @@ body.registration input {
 		position: absolute;
 		padding: 10px 20px 0;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 
 		.arrow {
 			position: absolute;
@@ -1704,7 +1576,7 @@ body.registration input {
 	}
 	.help2 {
 		top:150px;
-		left: 380px;
+		left: 550px;
 		width: 300px;
 
 		.arrow {
@@ -1736,7 +1608,7 @@ body.registration input {
 		margin: 0 0 0 -200px;
 		padding: 20px;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 
 		.btn {
 			margin: 0 auto;
@@ -1778,7 +1650,7 @@ body.registration input {
 		font-size: 1em;
 		border: 0 none;
 		background: url("../images/icons.png") no-repeat scroll -52px -185px #efefef;
-		@include border-radius(40px);
+		border-radius: 40px;
 		@include transition(all 0.5s ease);
 
 		&:focus {
@@ -1796,7 +1668,7 @@ body.registration input {
 		border: 0 none;
 		// border: 1px solid #454545;
 		text-shadow: 0 1px 0 rgba(255,255,255,0.8);
-		@include border-radius(4px);
+		border-radius: 4px;
 	}
 
 }
@@ -1813,7 +1685,7 @@ body.registration input {
 		margin: 0 1% 20px;
 		padding: 10px;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 
 		&:nth-child(3n+1) {
 			margin: 0 2% 20px 0;
@@ -1872,7 +1744,7 @@ body.registration input {
 		// background: #48ADD9;
 		// background: none repeat scroll 0 0 rgba(255,255,255,0.85);
 		// @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 3px rgba(0,0,0,0.3));
-		// @include border-radius(4px);
+		// border-radius: 4px;
 	}
 	.private {
 		position: absolute;
@@ -1883,7 +1755,7 @@ body.registration input {
 		font-size: 0.8em;
 		line-height: 0.8em;
 		background: $red;
-		@include border-radius(2px);
+		border-radius: 2px;
 	}
 	.members,
 	.location {
@@ -1902,7 +1774,7 @@ body.registration input {
 			font-weight: normal;
 			background: lighten($blue, 10%);
 			@include box-shadow(inset 0 1px 3px rgba(0,0,0,0.2));
-			@include border-radius(20px);
+			border-radius: 20px;
 		}
 	}
 	.members {
@@ -1953,7 +1825,7 @@ body.registration input {
 		padding: 4px 12px;
 		margin: 0 5px;
 		min-width: 28px;
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include box-shadow(0 1px 1px rgba(0,0,0,0.3));
 	}
 	a,
@@ -2027,7 +1899,7 @@ body.registration input {
 		color: #fff;
 		text-align: center;
 		border: 2px solid #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 	}
 }
 
@@ -2074,7 +1946,7 @@ body.registration input {
 		width: 400px;
 		overflow: hidden;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include box-shadow(0 1px 4px rgba(0,0,0,0.8));
 	}
 	.closebtn {
@@ -2102,7 +1974,7 @@ body.registration input {
 	float: left;
 	padding: 1%;
 	background: #fff;
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	label {
 		margin: 0 auto 10px;
@@ -2161,7 +2033,7 @@ body.registration input {
 	padding: 20px;
 	overflow: hidden;
 	background: #576579;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include box-shadow(0 1px 2px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.2));
 	h3 {
 		color: #fff;
@@ -2194,7 +2066,7 @@ body.registration input {
 		margin: 0 0% 10px;
 		padding: 10px 10px 14px;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 		@include clearfix();
 
 	}
@@ -2239,7 +2111,7 @@ body.registration input {
 		margin: 0 0% 10px;
 		padding: 10px 10px 14px;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 	}
 	img {
 		height: 30px;
@@ -2288,7 +2160,7 @@ body.registration input {
 	clear: both;
 	//border: 1px solid #999;
 	//@include box-shadow(0 1px 5px rgba(0,0,0,0.5));
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include clearfix();
 }
 
@@ -2320,7 +2192,7 @@ body.registration input {
 	padding: 10px 20px;
 	border:#BBB;
 	border-bottom:#BBB thin solid;
-	@include border-radius(5px 5px 0 0);
+	border-radius: 5px 5px 0 0;
 	@include gradient(#f7f7f7, #eeeeee);
 
 	&:before {
@@ -2368,7 +2240,7 @@ h3.posttitle {
 	width: 88%;
 	color: #666;
 	@include clearfix();
-	@include border-radius(0 0 5px 5px);
+	border-radius: 0 0 5px 5px;
 	/*min-height:100px;*/
 
 	ul,
@@ -2425,7 +2297,7 @@ h3.posttitle {
 		color: #aaa;
 		font-size: 0.6em;
 		background: rgba(255,255,255,0.5);
-		@include border-radius(3px);
+		border-radius: 3px;
 		@include transition(all 0.5s ease);
 	}
 	a {
@@ -2497,7 +2369,7 @@ p.logintocomment {
 	margin: 0px 0 20px 0;
 	//width:760px;
 	//border-bottom: #aaa thin solid;
-	@include border-radius(5px);
+	border-radius: 5px;
 	//@include gradient(#f9f9f9, #e6e6e6);
 
 	h3 {
@@ -2518,7 +2390,7 @@ p.logintocomment {
 	overflow: auto;
 	padding: 10px 0;
 	margin: 0px 0 20px 0;
-	@include border-radius(0 0 5px 5px);
+	border-radius: 0 0 5px 5px;
 
 	.comment {
 		clear: both;
@@ -2559,7 +2431,7 @@ p.logintocomment {
 		margin: 20px 0 0 0;
 		padding: 10px;
 		border-bottom: 1px solid #ccc;
-		@include border-radius(5px 5px 0 0);
+		border-radius: 5px 5px 0 0;
 		@include clearfix();
 
 		&:before {
@@ -2600,7 +2472,7 @@ p.logintocomment {
 		padding: 10px;
 		color: #444;
 		//@include box-shadow(inset -2px 0px 2px rgba(0,0,0,0.15));
-		@include border-radius(0 0 5px 5px);
+		border-radius: 0 0 5px 5px;
 	}
 }
 
@@ -2610,12 +2482,12 @@ p.logintocomment {
 		display: block;
 		position: absolute;
 		top: -40px;
-		left: -10px;
-		height: 22px;
+		left: 50%;
+		// height: 22px;
 		padding: 2px 4px;
 		font-size: 1em;
 		background: #fff;
-		@include border-radius(4px);
+		border-radius: 2px;
 		@include box-shadow(0 2px 5px rgba(0,0,0,0.4));
 		&:before{
 			content: " ";
@@ -2636,7 +2508,7 @@ p.logintocomment {
 	float: right;
 	background: none repeat scroll 0 0 #F3F3F3;
     padding: 10px 20px;
-    @include border-radius(5px);
+    border-radius: 5px;
     @include box-shadow(0 1px 5px rgba(0, 0, 0, 0.5));
 }
 .addcommentp {
@@ -2650,7 +2522,7 @@ p.logintocomment {
 	margin: 0;
 	padding: 5px;
 	background: white;
-	@include border-radius(4px);
+	border-radius: 4px;
 	@include box-shadow(0 1px 3px rgba(0, 0, 0, 0.15) inset);
 }
 
@@ -2676,7 +2548,7 @@ p.logintocomment {
 	border:#BBB;
 	border-bottom:#BBB thin solid;
 	@include gradient(#f7f7f7, #eeeeee);
-	@include border-radius(10px);
+	border-radius: 10px;
 }
 .blogtitlewall {
 	font-family: 'Roboto Slab', arial, serif;
@@ -2691,7 +2563,7 @@ p.logintocomment {
 .pp {
 	padding: 20px;
 	background: rgba(0,0,0,0.3);
-	@include border-radius(4px);
+	border-radius: 4px;
 
 	h2,
 	p,
@@ -2722,7 +2594,7 @@ p.logintocomment {
 		padding: 20px;
 		margin: 20px auto;
 		background: #fff;
-		@include border-radius(5px);
+		border-radius: 5px;
 	}
 }
 
@@ -2738,7 +2610,7 @@ p.logintocomment {
 	padding:10px 0 10px 0px;
 	margin:20px 0 20px 0;
 	border:#BBB thin solid;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include gradient(#f2f2f2, #e6e6e6);
 
 	&:hover {
@@ -2763,7 +2635,7 @@ p.logintocomment {
 	margin: 0 0px 0 0;
 	border: #BBB thin solid;
 	text-shadow: 0 1px 0 #FFFFFF;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include gradient(#f2f2f2, #e6e6e6);
 
 	&:hover {
@@ -2806,7 +2678,7 @@ p.logintocomment {
 	color: #fff;
 	border: 1px solid darken(#af0101, 5%);
 	//text-shadow:0 1px 0 #333;
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include box-shadow(inset 0 1px 0 lighten(#d84646, 15%));
 	@include gradient(#d84646, #af0101);
 	
@@ -2821,7 +2693,7 @@ p.logintocomment {
 
 .userinput {
 	padding:10px 2px;
-	border-radius:3px;
+	border-radius: 3px;
 	font-size:14px;
 	//width:250px;
 	border: 1px solid #cccccc;
@@ -2844,7 +2716,7 @@ p.logintocomment {
 	border: 1px solid #2394c3;
 	// background: #53c2f2;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.4);
-	@include border-radius(5px);
+	border-radius: 5px;
 	@include gradient(#5abbe5, #359fcd);
 	@include box-shadow(inset 0 1px 0 lighten(#5abbe5, 15%));
 
@@ -2894,7 +2766,7 @@ p.logintocomment {
 		overflow: hidden;
 		background: #fff;
 		background:rgba(255,255,255,1);
-		@include border-radius(4px);
+		border-radius: 4px;
 		@include box-shadow(0 0 15px rgba(0,0,0,0.4));
 
 		p {

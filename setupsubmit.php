@@ -45,7 +45,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 
 					//add user setup to DB
 					$r2 = mysqli_query($dblink, "UPDATE users SET bio='$bio', birthdate='$birthdate', location='$location', car='$car', setup='1'  WHERE username='$username'");
-					header("Location: /posts/general&start");
+					header("Location: /home&start");
 					exit;
 				}
 			}

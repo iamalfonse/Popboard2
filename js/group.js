@@ -25,6 +25,7 @@ $(document).ready(function(){
 		$('.joinOverlay').fadeOut(300);
 	})
 
+
 });//end document.ready
 
 

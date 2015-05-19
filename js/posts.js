@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 	enable_liking();
     
-
+	
 
 });//end document.ready
 
@@ -29,6 +29,7 @@ $(document).ready(function(){
 //load more posts
 var processing = false;
 var starting = 6; //start of posts
+var limitofposts = 6; //limit of posts
 var nomoreposts = false;
 load_more_posts = function() {
 	var category = $('#category').val();
@@ -38,7 +39,7 @@ load_more_posts = function() {
 		$.ajax({
 			url: "../get_posts.php?category="+category,
 			datatype: "html",
-			data: {start: starting, limit: '6'},
+			data: {start: starting, limit: limitofposts},
 			beforeSend: function() {
 			    $('.load-more').html('<img src="/images/loadmorespinner.gif" />');
 			},
@@ -48,7 +49,7 @@ load_more_posts = function() {
 					nomoreposts = true;
 				}else {
 					$("#right").append(data);
-					starting = starting + 6;
+					starting = starting + limitofposts;
 					$('.load-more').html('Load More');
 					disable_liking();
 					enable_liking();
@@ -83,6 +84,7 @@ disable_liking = function() {
 	$('.likes').off();
 }
 
+var frombottom = 400; //num of pixels from the bottom of the page
 show_posts = function(){
 	if(processing){ 
 		return;
@@ -90,7 +92,7 @@ show_posts = function(){
 
 	// if at bottom of blogwall, add new content:
 	var winHeight = window.innerHeight ? window.innerHeight : $(window).height();
-	if ($(window).scrollTop() >= ($(document).height() - winHeight)-200 && $('body').length) {
+	if ($(window).scrollTop() >= ($(document).height() - winHeight)-frombottom && $('body').length) {
 		load_more_posts();
 	}
 }

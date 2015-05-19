@@ -18,8 +18,8 @@ if(isset($_COOKIE['login_cookie'])){
 			<p class="leftusername"><strong><?php echo $leftRows['displayname']; ?></strong></p>
 		</a>
 		
-		<!-- <p class="leftbuttons profile"><a href="/profile/<?= $leftRows['username']?>"><span></span>My Profile</a> -->
-		<p class="leftbuttons createpost"><a href="/createpost"><span></span>Create Post</a></p>
+		<p class="leftbuttons profile"><a href="/profile/<?= $leftRows['username']?>"><span></span>My Profile</a>
+		<!-- <p class="leftbuttons createpost"><a href="/createpost"><span></span>Create Post</a></p> -->
 		<p class="leftbuttons myposts"><a href="/myposts"><span></span>My Posts</a></p>
 		<p class="leftbuttons logout"><a id="logoutbtn" href="/logout"><span></span>Logout</a></p>
 		<p class="leftbuttons singup"></p>

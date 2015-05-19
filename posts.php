@@ -83,9 +83,9 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 		</aside>
 		<p class='load-more'>Load More</p>
 	</div><!-- #bottom -->
-<?php include("scripts.php"); ?>
+<? include("scripts.php"); ?>
 <script type="text/javascript" src="/js/posts.js"></script>
-
+<? include("createpost.php"); ?>
 <? 
 	// Only show this if it's the first time someone signed up
 	if(isset($_GET['start'])){

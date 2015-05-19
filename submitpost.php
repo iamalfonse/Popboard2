@@ -36,12 +36,12 @@ if(isset($_COOKIE['login_cookie'])){ //if logged in
 	exit;
 }
 
-if(isset($_POST['groupid'])){ // if posting from group post
-	$groupid = mysqli_real_escape_string($dblink, $_POST['groupid']);
+if(isset($_POST['groupurl'])){ // if posting from group post
+	$groupurl = mysqli_real_escape_string($dblink, $_POST['groupurl']);
 
-	$submitpotGroupQuery = mysqli_query($dblink, "SELECT * FROM groups WHERE group_id = '$groupid'");
+	$submitpotGroupQuery = mysqli_query($dblink, "SELECT * FROM groups WHERE group_url = '$groupurl'");
 	$submitPostGroupRows = mysqli_fetch_assoc($submitpotGroupQuery);
-	$groupurl = $submitPostGroupRows['group_url'];
+	$groupid = $submitPostGroupRows['group_id'];
 
 	//make sure user has permission to post to this group
 	if($submitPostRows['group_id'] != $groupid || $_POST['category'] != 'general'){ // if user group doesn't match or category not in general (trying to hack)

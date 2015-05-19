@@ -10,8 +10,8 @@
 		$Rows = mysqli_fetch_assoc($r);
 		
 		//grab the user who is trying to get accepted
-		$requester_userid = $_GET['user_id'];
-		$decision = $_GET['decision'];
+		$requester_userid = mysqli_real_escape_string($dblink, $_GET['user_id']);
+		$decision = mysqli_real_escape_string($dblink, $_GET['decision']);
 		echo $requester_userid." ".$decision;
 
 		
@@ -21,8 +21,11 @@
 
 		if($decision == 'accepted'){
 
+			$invite_date = date("Y-m-d H:i:s"); //get current datetime value. i.e. '2013-10-22 14:45:00'
+
 			//then add user to group (add a group_id to user)
-			$updateGroupInviteQuery2  = mysqli_query($dblink, "UPDATE users SET group_id = '{$updateGroupInviteRow['group_id']}' WHERE user_id = '$requester_userid'");
+			// $updateGroupInviteQuery2  = mysqli_query($dblink, "UPDATE users SET group_id = '{$updateGroupInviteRow['group_id']}' WHERE user_id = '$requester_userid'");
+			$updateGroupInviteQuery2  = mysqli_query($dblink, "INSERT INTO user_groups(user_id, group_id, joindate) VALUES('$requester_userid','{$updateGroupInviteRow['group_id']}','$invite_date')");
 
 			//add +1 to group members in group table
 			$updateGroupInviteQuery3  = mysqli_query($dblink, "UPDATE groups SET num_members = num_members+1 WHERE group_id = '{$updateGroupInviteRow['group_id']}'");

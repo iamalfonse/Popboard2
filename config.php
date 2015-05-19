@@ -3,7 +3,6 @@
 // TODO: check IP address of user and store it to see if they're logged in somewhere else.
 // If they are logged in form another IP, log them out and try re-logging them back in
 
-
 // Remove magic quotes if enabled
 if (get_magic_quotes_gpc()) {
 	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
@@ -97,15 +96,15 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 		$getPostsUsername = $getPostsRow['displayname'];
 
 		//get the number of comments for a post
-		$getPostsQuery2 = @mysqli_query($dblink, "SELECT count(posts.id), posts.group_id, posts.category FROM posts INNER JOIN comments WHERE comments.post_id = '{$Row['id']}' AND comments.post_id = posts.id");
+		$getPostsQuery2 = @mysqli_query($dblink, "SELECT posts.comments, posts.group_id, posts.category FROM posts INNER JOIN comments WHERE comments.post_id = '{$Row['id']}' AND comments.post_id = posts.id");
 		$getPostsRow2 = mysqli_fetch_assoc($getPostsQuery2);
-
+		
 		//get the number of likes for a post
-		$getPostsQuery3 = @mysqli_query($dblink, "SELECT count(post_id), user_id FROM likes WHERE post_id = '{$Row['id']}'");
+		$getPostsQuery3 = @mysqli_query($dblink, "SELECT likes FROM posts WHERE id = '{$Row['id']}'");
 		$getPostsRow3 = mysqli_fetch_assoc($getPostsQuery3);
 
 		//used to check if user has already liked a post
-		$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
+		$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id, liked FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
 		$getPostsRow4 = mysqli_fetch_assoc($getPostsQuery4);
 
 		if($urlpage == 'myposts' && $suburlpage != 'groupposts'){// only do query in /myposts page
@@ -152,10 +151,10 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 
 				<div class='counters'>
 					<? //show likes and determine if user liked the post already and user is logged in
-					if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie'])){
-						echo "<div class='likes'><span class='liked'>Likes</span> {$getPostsRow3['count(post_id)']}</div>";
+					if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie']) && $getPostsRow4['liked'] == 1){
+						echo "<div class='likes'><span class='liked'>Likes</span> {$getPostsRow3['likes']}</div>";
 					}else{
-						echo "<div class='likes'><span>Likes</span> {$getPostsRow3['count(post_id)']}</div>";
+						echo "<div class='likes'><span>Likes</span> {$getPostsRow3['likes']}</div>";
 					}
 
 					//show number of views
@@ -164,7 +163,7 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 					
 					?>
 				</div>
-				<p class="viewcomments"><a class='normalbtn' href='/post/<?= $Row['id']?>/<?= $blogtitle?>'> <?= iu_plural($getPostsRow2['count(posts.id)'], 'Comment'); ?></a></p>
+				<p class="viewcomments"><a class='normalbtn' href='/post/<?= $Row['id']?>/<?= $blogtitle?>'> <?= iu_plural($getPostsRow2['posts.comments'], 'Comment'); ?></a></p>
 				
 				
 			</div>

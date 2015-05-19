@@ -72,19 +72,18 @@ if($Row['deleted']=='1'){ //
 					<div class='counters'>
 						<? 
 						//get the number of likes for a post
-						$getPostsQuery3 = @mysqli_query($dblink, "SELECT count(post_id), user_id FROM likes WHERE post_id = '{$Row['id']}'");
+						$getPostsQuery3 = @mysqli_query($dblink, "SELECT likes FROM posts WHERE id = '{$Row['id']}'");
 						$getPostsRow3 = mysqli_fetch_assoc($getPostsQuery3);
 						
 						//used to check if user has already liked a post
-						$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
+						$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id,liked FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
 						$getPostsRow4 = mysqli_fetch_assoc($getPostsQuery4);
 
-
 						//show likes and determine if user liked the post already and user is logged in
-						if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie'])){
-							echo "<div class='likes'><span class='liked'>Likes</span> {$getPostsRow3['count(post_id)']}</div>";
+						if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie']) && $getPostsRow4['liked'] == 1 ){
+							echo "<div class='likes'><span class='liked'>Likes</span> {$getPostsRow3['likes']}</div>";
 						}else{
-							echo "<div class='likes'><span>Likes</span> {$getPostsRow3['count(post_id)']}</div>";
+							echo "<div class='likes'><span>Likes</span> {$getPostsRow3['likes']}</div>";
 						}
 
 						

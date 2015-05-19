@@ -11,7 +11,9 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	$query  = mysqli_query($dblink, "SELECT * FROM users WHERE username='$username' AND session_hash = '$session_hash'");
 	$Rows = mysqli_fetch_assoc($query);
 }
-
+	
+	// TODO: Make 2 different stylesheets to allow users to show large categories(with cat image) vs inline text categories (default maybe?)
+	
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44,7 +46,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				?>
 						<li>
 							<a href="/posts/<?= $catRows['category']?>">
-								<div class="catimg <?= $catRows['category']?>"></div>
+								<!-- <div class="catimg <?= $catRows['category']?>" <? if(isset($catRows['catimg'])){ ?> style="background: url() no-repeat center center;" <? } ?>></div> -->
 								<h3><?= $catRows['cat_displayname']; ?></h3>
 								<p class="desc"><?= $catRows['description']; ?></p>
 								<p>Posts: <?= $catRows['num_posts']; ?></p>

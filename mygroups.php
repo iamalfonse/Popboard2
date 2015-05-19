@@ -62,7 +62,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 			</div>
 
 			<?
-				$groupsQuery1 = @mysqli_query($dblink, "SELECT * FROM groups ORDER BY group_id ASC");
+				$groupsQuery1 = @mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC");
 				$groupsnr = mysqli_num_rows($groupsQuery1);
 				if(isset($_GET['p'])){
 					$pagenum = mysqli_real_escape_string($dblink, preg_replace("/[^0-9]/i", "", $_GET['p']));
@@ -102,7 +102,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				}
 				$limit = 'LIMIT ' .($pagenum - 1) * $itemsPerPage .',' .$itemsPerPage; 
 
-				$groupQuery2 = mysqli_query($dblink, "SELECT * FROM groups ORDER BY group_id ASC $limit");
+				$groupQuery2 = mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC $limit");
 				$groupsRow1 = mysqli_fetch_assoc($groupQuery2);
 
 				$paginationDisplay = ""; // Initialize the pagination output variable
@@ -132,7 +132,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				// $start = 0 + (($pagenum == 1 ? 0 : $pagenum) * 6);
 				// $end = 6 * ($pagenum == 0 ? 1 : $pagenum) + 6;
 				// echo $start." ".$end;
-				// $groupsQuery1  = @mysqli_query($dblink, "SELECT * FROM groups ORDER BY group_id ASC LIMIT $start, $end");
+				// $groupsQuery1  = @mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC LIMIT $start, $end");
 				// $groupsRow1 = mysqli_fetch_assoc($groupsQuery1);
 	
 				// iu_get_groups($groupsRow1, $groupsQuery1);

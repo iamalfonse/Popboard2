@@ -35,6 +35,18 @@ $(document).ready(function(){
     .on('click','.closemobile', function(){
     	$('#left').removeClass('open');
     })
+
+    //Create post btn
+	.on('click','.createpostbtn', function(e){
+		e.preventDefault();
+		$('body').addClass('openOverlay');
+		var createpostH = $('#createpost').height();
+		var overlay = $('.createpostOverlay');
+		overlay.height(createpostH + 200);
+	})
+	.on('click', '#createpost .closebtn, .createpostOverlay', function(){
+		$('body').removeClass('openOverlay');
+	});
 	
 
 	// reply to comments
@@ -47,10 +59,17 @@ $(document).ready(function(){
 
 	// tooltips
 	$('.tooltip').hover(function(){
-		var tooltip = $(this).data('tooltip');
-		$(this).append('<span class="tooltip-note">'+tooltip+'</span>');
+		var elem = $(this);
+		var tooltip = elem.data('tooltip');
+		var elemWidth = elem.width();
+		console.log('elemWidth: ', elemWidth);
+		elem.append('<span class="tooltip-note">'+tooltip+'</span>');
+		var tooltipWidth = elem.find('.tooltip-note').width();
+		console.log(tooltipWidth/2);
+		elem.find('.tooltip-note').css({'margin' : '0 0 0 -'+Math.floor((tooltipWidth/2)+(elemWidth/4))+'px'});
 	}, function(){
-		$(this).find('.tooltip-note').detach();
+		var elem = $(this);
+		elem.find('.tooltip-note').detach();
 	});
 
 	// notifications
