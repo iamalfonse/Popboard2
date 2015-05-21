@@ -468,7 +468,6 @@ function iu_get_userxp($user_id) {
 		$updatexp_query = @mysqli_query($dblink, "UPDATE users SET total_xp = '$myXP' WHERE user_id='$user_id';");
 	}
 	
-	
 	?>
 	<div id="xp">
 		<div class='userLvl'>
@@ -542,11 +541,11 @@ function iu_time_elapsed_string($datetime, $full = false) {
 function iu_readable_date($datetime, $format = 'normal'){
 	$date = New DateTime($datetime);
 	if($format == 'normal'){
-		$updatedDate = date_format($date,'F j, Y');
+		$updatedDate = date_format($date,'F j, Y'); //January 15, 2015
 	}else if($format == 'short'){
-		$updatedDate = date_format($date,'M j, Y');
+		$updatedDate = date_format($date,'M j, Y'); // Jan 15, 2015
 	}else if($format == 'numbered'){
-		$updatedDate = date_format($date,'n/j/y');
+		$updatedDate = date_format($date,'n/j/y'); // 01/15/15
 	}
 	
 	return $updatedDate;

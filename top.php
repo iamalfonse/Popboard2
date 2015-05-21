@@ -127,6 +127,7 @@
 
 <? 
 	if($url1 != 'setup'){ //don't show menu in setup
+
 ?>
 <nav class="mainNav">
 	<ul>
@@ -134,8 +135,8 @@
 		<li class="nav-categories <? if($url1 == 'categories' || $url1 == 'posts'){ echo 'active'; } ?>"><a href="/categories"><i></i><span>Categories</span></a></li>
 		<li class="nav-groups <? if($url1 == 'groups' || ($url1== 'group' && $url2 != $topgroupurl)){ echo 'active'; } ?>"><a href="/groups"><i></i><span>Groups</span></a></li>
 		<li class="nav-topposts <? if($url1 == 'topposts'){ echo 'active'; } ?>"><a href="/topposts"><i></i><span>Top Posts</span></a></li>
-		<? if( isset($_COOKIE['login_cookie']) && isset($Rows['group_id']) ){ ?>
-			<li class="nav-mygroup <? if($url2 == $topgroupurl){ echo 'active'; } ?>"><a href="/group/<?= $topgroupurl ?>"><i></i><span>My Groups</span></a></li>
+		<? if( isset($_COOKIE['login_cookie']) ){ ?>
+			<li class="nav-mygroup <? if($url2 == $topgroupurl){ echo 'active'; } ?>"><a href="/mygroups"><i></i><span>My Groups</span></a></li>
 		<? } ?>
 		<li class="nav-events <? if($url1 == 'events'){ echo 'active'; } ?>"><a href="/events"><i></i><span>Events</span></a></li>
 	</ul>

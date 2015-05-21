@@ -105,7 +105,7 @@ if($groupurl != ''){
 						$groupcheckRow = mysqli_fetch_assoc($groupCheckQuery);
 						$groupcheckNumRows = mysqli_num_rows($groupCheckQuery);
 						
-						if(isset($_COOKIE['login_cookie']) && $groupcheckNumRows >= 1){ //if logged in and not in a group yet
+						if(isset($_COOKIE['login_cookie']) && $groupcheckNumRows < 1){ //if logged in and not in a group yet
 
 							//check if user has asked for invite first
 							$groupinviteCheckQuery = mysqli_query($dblink, "SELECT * FROM groupinvites WHERE user_id='{$Rows['user_id']}'");
@@ -133,7 +133,7 @@ if($groupurl != ''){
 					<ul>
 						<?
 						//get group member profiles
-						$groupMemberQuery  = mysqli_query($dblink, "SELECT email,username,displayname FROM users WHERE group_id = '$grouppageid' LIMIT 0, 20");
+						$groupMemberQuery  = mysqli_query($dblink, "SELECT email,username,displayname FROM users INNER JOIN user_groups USING (group_id) WHERE ( users.user_id = user_groups.user_id && user_groups.group_id = '$grouppageid') LIMIT 0, 20");
 						$groupMemberRow = mysqli_fetch_assoc($groupMemberQuery);
 						$groupMemberNumRows = mysqli_num_rows($groupMemberQuery);
 

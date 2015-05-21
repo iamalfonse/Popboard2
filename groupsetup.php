@@ -112,11 +112,10 @@ if(isset($_GET['errmsg'])){
 			</div>
 			<div class="groupMemberList">
 				<h3><?= iu_plural($groupInfoRow['num_members'],'Group Member'); ?></h3>
-
 				<ul>
 					<?
 					//get group member profiles
-					$groupMemberQuery  = mysqli_query($dblink, "SELECT email,username,displayname FROM users WHERE group_id = '{$groupInfoRow['group_id']}' LIMIT 0, 20");
+					$groupMemberQuery  = mysqli_query($dblink, "SELECT email,username,displayname FROM users INNER JOIN user_groups USING (group_id) WHERE (users.user_id = user_groups.user_id && user_groups.group_id = '{$groupInfoRow['group_id']}') LIMIT 0, 20");
 					$groupMemberRow = mysqli_fetch_assoc($groupMemberQuery);
 					$groupMemberNumRows = mysqli_num_rows($groupMemberQuery);
 
