@@ -204,7 +204,7 @@ if (isset($_POST['submit'])) {
     <title>Import Underground | Sign Up</title>
     <meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups, JDM">
     <meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a group and share your thoughts with people like you.">
-    <link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
@@ -223,7 +223,7 @@ if (isset($_POST['submit'])) {
             <form action="signup.php" method="post" id="signupform">
                 <label>Username</label>
                 <p><input class="userinput new_username" type="text" name="new_username" size="20" />
-                    <i id="nametaken"></i>
+                    <i class="nametaken"></i>
                 </p>
                 <p>Password<br /><input class="userinput new_password" type="password" name="new_pass" size="20" /></p>
                 <p>Password Confirmation<br /><input class="userinput password_conf" type="password" name="new_pass_conf" size="20" /></p>

@@ -32,7 +32,7 @@ if($userprofile == ''){
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
 	<link href="/stylesheets/jcrop.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 	<title>Import Underground | <?= $Rows['displayname'] ?></title>

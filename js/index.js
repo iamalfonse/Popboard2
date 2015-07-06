@@ -1,10 +1,10 @@
 $(document).ready(function(){
 	
-	$('#bgslider').hide();
+	// $('#bgslider').hide();
     
-	$('#bgslider').fadeIn(1500);//fade the background back in once all the images are loaded
+	// $('#bgslider').fadeIn(1500);//fade the background back in once all the images are loaded
 	// run every 7s
-	setInterval('cycleImages()', 7000);
+	// setInterval('cycleImages()', 7000);
 
 });//end document.ready
 

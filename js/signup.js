@@ -9,7 +9,7 @@ $(document).ready(function(){
                 
             },
             success: function(data) {
-                $('#nametaken').html(data);
+                $('.nametaken').html(data);
             }
         });
     })

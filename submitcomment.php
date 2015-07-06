@@ -42,8 +42,12 @@ if(isset($_POST['submitcomment']) && $_POST['comment'] != ''){
 		//add +1 comments to this post in the posts table and update the post_updated date
 		$submitCommentPostTotal = mysqli_query($dblink, "UPDATE posts SET comments=comments+1 WHERE id = '$postid_num'");
 
-		// send notification to user of post
-		iu_send_notification($Row5['user_id'], $Row4['user_id'], 'comment', '/post/'.$postid_num.'/'.$titleurl);
+		//only send notification to other users (don't send one to yourself)
+		if($user_id != $Row4['user_id']){
+			// send notification to user of post
+			iu_send_notification($Row5['user_id'], $Row4['user_id'], 'comment', '/post/'.$postid_num.'/'.$titleurl);
+		}
+		
 		
 	}
 	

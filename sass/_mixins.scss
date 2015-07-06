@@ -585,25 +585,19 @@
 // `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._.'   `._
 
 // Custom Font Face
-@mixin c-font ($set-c-font: false, $font-url: '', $font-family: '', $f-count: $font-count, $c1-font-family: '', $c2-font-family: '', $c1-font-family-url: '', $c2-font-family-url: ''){
+@mixin c-font ($set-c-font: false, $font-url: '', $font-family: '', $c1-font-family: '', $c2-font-family: '', $c1-font-family-url: '', $c2-font-family-url: ''){
 	@if $set-c-font == true {
-		@for $f from 1 through $font-count {
-			@if $f == 1 {
-				$font-url: $c1-font-family-url;
-				$font-family: $c1-font-family;
-			}
-			@if $f == 2 {
-				$font-url: $c2-font-family-url;
-				$font-family: $c2-font-family;
-			}
-			@font-face {
-			    font-family: $font-family;
-			    src: url('../fonts/#{$font-url}.eot');
-			    src: url('../fonts/#{$font-url}.eot') format('embedded-opentype'),
-			         url('../fonts/#{$font-url}.woff') format('woff'),
-			         url('../fonts/#{$font-url}.ttf') format('truetype'),
-			         url('../fonts/#{$font-url}.svg##{$font-family}') format('svg');
-			}
+			
+		$font-url: $c1-font-family-url;
+		$font-family: $c1-font-family;
+			
+		@font-face {
+		    font-family: $font-family;
+		    src: url('../fonts/#{$font-url}.eot');
+		    src: url('../fonts/#{$font-url}.eot') format('embedded-opentype'),
+		         url('../fonts/#{$font-url}.woff') format('woff'),
+		         url('../fonts/#{$font-url}.ttf') format('truetype'),
+		         url('../fonts/#{$font-url}.svg##{$font-family}') format('svg');
 		}
 	}
 }

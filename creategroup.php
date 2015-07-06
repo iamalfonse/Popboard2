@@ -23,10 +23,10 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 // }
 
 // if a user is already in a group, they can't create their own
-if(isset($Rows['group_id'])){
-	header("Location: /groups?errmsg=2");
-	exit;
-}
+// if(isset($Rows['group_id'])){
+// 	header("Location: /groups?errmsg=2");
+// 	exit;
+// }
 
 //get error message if there is one
 $errmsg = '';
@@ -45,7 +45,7 @@ if(isset($_GET['errmsg'])){
 	<title>Import Underground | Create A Group</title>
 	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
 	<meta name="description" content="Import Underground | Create your own group ">
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>
 
@@ -75,7 +75,7 @@ if(isset($_GET['errmsg'])){
 			<div class="groupinfo">
 				<form method="post" enctype="multipart/form-data" action="/submitcreategroup">
 					<label>Group Name</label>
-					<p><strong id="groupnametaken">&nbsp;</strong><input class="groupName" type="text" name="groupname" value="<? if($errmsg=='1'){echo $groupname;} ?>" placeholder="What's the name of your group?" maxlength="30"/></p>
+					<p><strong class="groupnametaken">&nbsp;</strong><input class="groupName" type="text" name="groupname" value="<? if($errmsg=='1'){echo $groupname;} ?>" placeholder="What's the name of your group?" maxlength="30"/></p>
 					<label>Group Description</label>
 					<p><input class="groupDesc" type="text" name="groupdesc" value="<? if($errmsg=='1'||$errmsg=='2'){echo $groupdesc;} ?>" placeholder="Describe your group" /></p>
 					<label>Location</label>

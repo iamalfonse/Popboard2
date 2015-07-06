@@ -1,0 +1,291 @@
+/*============ TOP ===============*/
+#top {
+	background: #fff;
+	transition: filter 0.5s ease;
+	//background: #363A45;
+	//@include gradient(#3C404C, #2E323C); //gray
+	//@include box-shadow(inset 0 1px 0px rgba(#3C404C, 0.5));
+}
+
+.logomenu {
+	@extend %gw;
+	position: relative;
+	// width: 1250px;
+	height: 45px;
+	margin: 0 auto 0 auto;
+
+	h1 {
+		float: left;
+		margin: 2px 20px 0 0px;
+		padding: 0;
+
+		a {
+			background: url(../images/logo.png) no-repeat;
+			text-indent: -9999px;
+			height: 40px;
+			width: 120px;
+			float: left;
+		}
+	}
+}
+.mobilemenu {
+	@include icon('list-large');
+	display: none;
+	float: left;
+	margin: 12px;
+	cursor: pointer;
+}
+
+#xp {
+	width: 60%;
+	float: left;
+	position: relative;
+	padding: 2px 10px;
+	margin: 8px 10% 0px;
+	overflow: hidden;
+	background: #ccc;
+	border-radius: 5px;
+
+	.userLvl,
+	.nextLvl {
+		float: left;
+		width: 8%;
+		margin: 2px 0;
+		padding: 0;
+		text-align: center;
+		background: #fff;
+		border-radius: 20px;
+		@include gradient(#f5f5f5, #ddd);
+		@include box-shadow(inset 0 1px 0 rgba(255,255,255,1), 0 1px 4px rgba(0,0,0,0.2));
+
+		p {
+			color: #555;
+			font-weight: bold;
+			text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+		}
+	}
+	.xpBar {
+		float: left;
+		width: 82%;
+		margin: 4px 1%;
+		background: #fff;
+		overflow: hidden;
+		border-radius: 5px;
+		@include box-shadow(0 1px 3px rgba(0,0,0,0.2));
+
+		p {
+			position: absolute;
+			left: 50%;
+			margin: 1px 0 0 -1%;
+			font-size: 1rem;
+		}
+
+		.progressXP {
+			height: 16px;
+			// background: #4691FF;
+			// @include gradient(#5bc4f5, #3F8AF5); //BLUE
+			@include gradient(lighten(#5e9a00,13%), #5e9a00);
+			@include box-shadow(inset 0 1px 0 rgba(lighten(#5bc4f5, 20%), 0.5));
+		}
+	}
+	
+}
+
+.gp {
+	width: 180px;
+	margin: 20px 0 0;
+	float: right;
+	text-align: right;
+	color: #ccc;
+
+	.gold,
+	.silver,
+	.copper {
+		height: 16px;
+		width: 30px;
+		margin: 0 0 0 5px;
+		text-indent: -9999px;
+		vertical-align: -2px;
+		display: inline-block;
+		background: url('../images/topicons.png') no-repeat;
+	}
+	.gold { background-position: 0 0; }
+	.silver { background-position: -60px 0; }
+	.copper { background-position: -120px 0; }
+}
+.top-invites,
+.top-notifications {
+	position: relative;
+	float: right;
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #aaa;
+	cursor: pointer;
+	border-radius: 4px;
+
+	.invitecount,
+	.unread {
+		display: block;
+		position: absolute;
+		top: -5px;
+		right: -15px;
+		padding: 3px 8px;
+		min-width: 22px;
+		color: #fff;
+		text-align: center;
+		background: $red;
+		border-radius: 20px;
+	}
+
+	&.open ul {
+		display: block;
+	}
+
+	
+	ul {
+		display: none;
+		position: absolute;
+		top: 40px;
+		left: -300px;
+		width: 360px;
+		padding: 6px 10px;
+		background: lighten($bg-color, 40%);
+		z-index: 10;
+		cursor: default;
+		@include clearfix();
+		border-radius: 5px;
+		@include box-shadow(0 1px 3px rgba(0,0,0,0.6));
+		&:before {
+			content: " ";
+			display: block;
+			position: absolute;
+			top: -20px;
+			right: 35px;
+			@include triangle(20px,lighten($bg-color, 40%),up);
+		}
+	}
+	li {
+		margin: 4px 0;
+		font-size: 1.2rem;
+		clear: both;
+	}
+	span {
+		font-size: 1.2rem;
+		color: #999;
+		float: right;
+	}
+	img {
+		height: 20px;
+		float: left;
+		margin: 0 5px 0 0;
+		border-radius: 20px;
+	}
+	button {
+		display: none;
+	}
+
+	.viewbtn {
+		display: block;
+		text-align: center;
+		padding: 4px 0;
+		margin: 20px auto 0;
+		color: #ccc;
+		border: 1px solid #586A74;
+		// background: lighten(#2C353A, 20%);
+		@include gradient(lighten(#586A74, 5%),#586A74);
+		@include box-shadow(inset 0 1px 0px rgba(255,255,255,0.3));
+		border-radius: 4px;
+		&:hover {
+			color: #fff;
+			@include gradient(#586A74,lighten(#586A74, 5%));
+		}
+	}
+}
+.top-invites {
+	margin: 8px 0px 0 0px;
+	background: url('../images/topicons.png') no-repeat -234px 6px;
+	@include gradient(#fff, #efefef, image, "url('../images/topicons.png') no-repeat -234px 6px");
+}
+.top-notifications {
+	margin: 8px 0px 0 20px;
+	background: url('../images/topicons.png') no-repeat -174px 6px;
+	@include gradient(#fff, #efefef, image, "url('../images/topicons.png') no-repeat -174px 6px");
+}
+
+.mainNav {
+	//float: left;
+	position: relative;
+	overflow: hidden;
+	height: 70px;
+	background: #2c353a;
+	transition: filter 0.5s ease;
+	// background: #a8cba1;
+	//background: #272B32; //gray
+	// background: #9DBE20; // lime green
+
+	ul {
+		@extend %gw;
+		// width: 1250px;
+		margin: 0 auto;
+	}
+	li {
+		@extend %gd2;
+		display: block;
+		float: left;
+		height: 100%;
+		overflow: hidden;
+		margin: 0 auto;
+
+		&:hover,
+		&.active {
+			background: lighten(#272B32, 10%);
+
+			i {
+				@include opacity(1);
+			}
+			span {
+				color: #fff;
+			}
+		}
+		a {
+			@extend %gd12;
+			display: block;
+			height: 100%;
+			// width: 146px;
+			margin: 0 0;
+			padding: 14px 0 0;
+			text-align: center;
+			font-weight: normal;
+			font-size: 1.2rem;
+			color: #848e92;
+			// border:1px solid darken(#363A45, 20%);
+			// @include gradient(lighten(#363A45, 5%), #363A45);
+			// border-radius: 4px;
+			// @include box-shadow(inset 0 1px 0px lighten(#363A45, 10%));
+
+			&:hover {
+				color: #fff;
+				// @include gradient(#363A45, lighten(#363A45, 5%));
+			}
+		}
+		i {
+			display: block;
+			width: 30px;
+			height: 30px;
+			margin: 0 auto;
+			background: url(../images/menu-icons.png) no-repeat;
+			@include opacity(0.5);
+		}
+		span {
+			vertical-align: 8px;
+		}
+	}
+	.nav-home i {background-position: center 0;}
+	.nav-categories i {background-position: center -30px;}
+	.nav-groups i {background-position: center -60px;}
+	.nav-events i {background-position: center -90px;}
+	.nav-topposts i {background-position: center -120px;}
+	.nav-mygroup i {background-position: center -150px;}
+	// .nav-accessories i {background-position: 0 0;}
+}

@@ -1,0 +1,38 @@
+
+.createpostOverlay {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	z-index: -1;
+	transition: all 0.5s ease;
+	.openOverlay & {
+		opacity: 1;
+		z-index: 9;
+		#createpost {
+			top: 40px;
+		}
+	}
+}
+
+#createpost {
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 600px;
+	margin: 20px 0 0 -300px;
+	z-index: -1;
+	transition: all 0.5s ease;
+	.openOverlay & {
+		top: 40px;
+		opacity: 1;
+		z-index: 10;
+	}
+	.closebtn {
+		cursor: pointer;
+	}
+}

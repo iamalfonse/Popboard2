@@ -1,0 +1,87 @@
+/* ------- CREATEGROUP Section ------- */
+.groupinfo {
+	width: 48%;
+	margin: 0 2% 20px 0;
+	float: left;
+	padding: 1%;
+	background: #fff;
+	border-radius: 5px;
+
+	label {
+		margin: 0 auto 10px;
+
+		span {
+			color: $blue;
+			font-size: 1.2rem;
+			font-weight: normal;
+		}
+	}
+	p {
+		position: relative;
+		margin: 0 0 20px;
+	}
+}
+#groupnametaken {
+	display: block;
+	position: absolute;
+	top: 8px;
+	right: 5px; 
+	margin: 0;
+	font-size: 1rem;
+
+	.green {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		text-indent: -9999px;
+		background: url(../images/mini-icons.png) no-repeat 0px -144px;
+	}
+	.red,
+	.mini {
+		position: relative;
+		top: -25px;
+	}
+}
+.groupPreview {
+	width: 48%;
+	margin: 0 0 0 2%;
+	float: left;
+
+	h3 {
+		text-align: center;
+	}
+	.grouplist li {
+		width: 306px;
+		float: none;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+}
+.groupMemberList {
+	clear: both;
+	width: 100%;
+	margin: 0 auto 20px;
+	padding: 20px;
+	// overflow: hidden;
+	background: #576579;
+	border-radius: 5px;
+	@include box-shadow(0 1px 2px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.2));
+	@include clearfix();
+	h3 {
+		color: #fff;
+		margin: 0 auto 10px;
+	}
+	ul {
+
+	}
+	li {
+		display: block;
+		float: left;
+		width: 4%;
+		margin: 0 10px 10px 0;
+	}
+	img {
+		width: 100%;
+		border: 2px solid #fff;
+	}
+}

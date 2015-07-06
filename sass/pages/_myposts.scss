@@ -1,0 +1,23 @@
+.sortby {
+	p {
+		margin: 0 auto 5px;
+	}
+	a {
+		display:block;
+		padding: 2px 0;
+		margin: 0 0 5px 0;
+		text-decoration: none;
+		text-align: center;
+		color: #777;
+		border: 1px solid #ccc;
+		background: #fff;
+		
+		&:hover {
+			display:block;
+			color:#555;
+			background: #eee;
+			// @include gradient(#e6e6e6, #f9f9f9);
+		}
+	}
+
+}

@@ -36,7 +36,7 @@ if(isset($editpostRows['group_id'])){
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
 	<title>Import Underground | Edit Post</title>
 	<link href="/stylesheets/cleditor.css" rel="stylesheet" type="text/css" />
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>
 <body class="editpost">

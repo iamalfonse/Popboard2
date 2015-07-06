@@ -38,7 +38,7 @@
 	<title>Import Underground | Setup Your Profile</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
 	<link href="/stylesheets/jcrop.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>

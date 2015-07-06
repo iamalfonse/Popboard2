@@ -22,6 +22,8 @@ if (get_magic_quotes_gpc()) {
 
 include 'dbparams.php';
 
+$stylesheet = 'style1';
+
 //set charset for using with mysqli_real_escape_string();
 mysqli_set_charset($dblink, "utf8");
 
@@ -71,6 +73,7 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 	preg_match('/\/([A-Za-z]+)(?:\/)?([A-Za-z]+)?(?:\/)?/', $pageURL, $url);
 
 	if($page==''){ //if normal posts
+		$urlpage = $url;
 		if(isset($url[1])){
 			$urlpage = $url[1];
 		}
@@ -163,7 +166,7 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 					
 					?>
 				</div>
-				<p class="viewcomments"><a class='normalbtn' href='/post/<?= $Row['id']?>/<?= $blogtitle?>'> <?= iu_plural($getPostsRow2['posts.comments'], 'Comment'); ?></a></p>
+				<p class="viewcomments"><a class='normalbtn' href='/post/<?= $Row['id']?>/<?= $blogtitle?>'> <?= iu_plural($getPostsRow2['comments'], 'Comment'); ?></a></p>
 				
 				
 			</div>

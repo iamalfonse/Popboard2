@@ -131,7 +131,7 @@
 ?>
 <nav class="mainNav">
 	<ul>
-		<li class="nav-home <? if($url1 == 'home'){ echo 'active'; } ?>"><a href="/home"><i></i><span>Home</span></a></li>
+		<li class="nav-home <? if($url1 == ''){ echo 'active'; } ?>"><a href="/"><i></i><span>Home</span></a></li>
 		<li class="nav-categories <? if($url1 == 'categories' || $url1 == 'posts'){ echo 'active'; } ?>"><a href="/categories"><i></i><span>Categories</span></a></li>
 		<li class="nav-groups <? if($url1 == 'groups' || ($url1== 'group' && $url2 != $topgroupurl)){ echo 'active'; } ?>"><a href="/groups"><i></i><span>Groups</span></a></li>
 		<li class="nav-topposts <? if($url1 == 'topposts'){ echo 'active'; } ?>"><a href="/topposts"><i></i><span>Top Posts</span></a></li>

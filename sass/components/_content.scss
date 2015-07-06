@@ -1,0 +1,10 @@
+/*==================== CONTENT =========================*/
+#content {
+	@extend %gw;
+	clear: both;
+	// width:1250px;
+	margin: 0 auto;
+	/*min-height:600px;*/
+	transition: filter 0.5s ease;
+	@include clearfix();
+}

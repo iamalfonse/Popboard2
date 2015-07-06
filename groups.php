@@ -28,7 +28,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<title>Import Underground | Groups</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="Search and join your favorite car groups in your area">
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>
 <body class="groups">
@@ -50,7 +50,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				}
 			?>
 			<div class="groupHeader">
-				<? if(isset($_COOKIE['login_cookie']) && !isset($Rows['group_id'])){ ?>
+				<? if(isset($_COOKIE['login_cookie'])){ ?>
 				<div class="createGroup">
 					<p><a href="/creategroup" class='submitbtn creategroupbtn'>Start A Group</a></p>
 				</div>

@@ -16,16 +16,16 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 }
 
 //check if user is already in a group (just in case they're trying to hack to make another group)
-if(isset($Rows['group_id'])){
-	header('Location: /groups/?errmsg=2');
-	exit;
-}
+// if(isset($Rows['group_id'])){
+// 	header('Location: /groups/?errmsg=2');
+// 	exit;
+// }
 
 
 if (isset($_POST['submitCreateGroup'])) { //if user submits form
 
 	$groupname = mysqli_real_escape_string($dblink, $_POST['groupname']);
-	$validGroupname = preg_match("/^([a-zA-Z0-9_\s-]+)$/", $_POST['groupname']);
+	$validGroupname = preg_match("/^([a-zA-Z0-9_\s-]+)$/", $groupname);
 	$groupdesc = mysqli_real_escape_string($dblink, $_POST['groupdesc']);
 	$grouplocation = mysqli_real_escape_string($dblink, $_POST['grouplocation']);
 	$private = mysqli_real_escape_string($dblink, $_POST['private']);
@@ -51,11 +51,12 @@ if (isset($_POST['submitCreateGroup'])) { //if user submits form
 	$selectGroupQuery = mysqli_query($dblink, "SELECT group_id FROM groups WHERE groupname = '$groupname';");
 	$selectGroupRow = mysqli_fetch_assoc($selectGroupQuery);
 
-	// update the group_id for the user
-	$updateUserQuery = mysqli_query($dblink, "UPDATE users SET group_id='{$selectGroupRow['group_id']}' WHERE username = '{$Rows['username']}';");
+	// insert record into user_groups for this user
+	$creategroupdate = date("Y-m-d H:i:s"); //get current datetime value. i.e. '2013-10-22 14:45:00'
+	$addUserGroupQuery  = mysqli_query($dblink, "INSERT INTO user_groups(user_id, group_id, joindate) VALUES('{$Rows['user_id']}','{$selectGroupRow['group_id']}','$creategroupdate')");
 
 	// send user to section where they can upload a background image for their group
-	header('Location: /groupsetup?groupname=$group_url&from=creategroup');
+	header("Location: /groupsetup?groupname=$group_url&from=creategroup");
 	exit;
 }
 

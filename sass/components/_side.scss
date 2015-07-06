@@ -1,0 +1,15 @@
+#side {
+	width: 20%;
+	margin: 20px auto 0;
+	float: right;
+	clear: right;
+
+	.sideWrap {
+		width: 100%;
+		margin: 0 auto 20px;
+		padding: 10px 6%;
+		background: #fff;
+		@include clearfix();
+	}
+
+}

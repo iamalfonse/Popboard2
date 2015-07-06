@@ -1,0 +1,27 @@
+/*====================== RIGHT =======================*/
+#right {
+	@extend %gd7;
+	//width:760px;
+	// width: 60%;
+	padding: 0 0 20px 22px;
+	margin: 20px 0 0 0px;
+	float: left;
+
+	&.categoriessection,
+	&.groupsection,
+	&.creategroupsection,
+	&.groupsetupsection,
+	&.profilesection {
+		@extend %gd9;
+		// width: 82%;
+		padding: 20px 0 20px 3%;
+	}
+	
+	.right-content {
+		background-color:#fff;
+		margin: 0 auto 20px;
+		padding:10px;
+		overflow: hidden;
+		// border-radius: 5px;
+	}
+}

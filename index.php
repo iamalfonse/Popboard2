@@ -12,9 +12,10 @@ include("config.php");
 if (isset( $_COOKIE['login_cookie'] )) {
 	iu_check_user_setup(); //make sure user has finished setup
 
-	header('Location: /posts/general');
+	header('Location: /home');
 	exit;
 }
+
 
 $errmsg = '';
 if(isset($_GET['errmsg'])){
@@ -45,7 +46,7 @@ if($errmsg=='1'){
 	<title>Import Underground | The Auto Enthusiast Community</title>
 	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups, JDM">
 	<meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a group and share your thoughts with people like you.">
-	<link href="/stylesheets/car.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 </head>
 <body class="home">

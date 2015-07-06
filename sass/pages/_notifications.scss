@@ -1,0 +1,96 @@
+/* ------- NOTIFICATIONS Section ------- */
+.inviteWrap {
+
+}
+.invitelist {
+	margin: 10px auto 40px;
+
+	li {
+		position: relative;
+		margin: 0 0% 10px;
+		padding: 10px 10px 14px;
+		background: #fff;
+		border-radius: 5px;
+		@include clearfix();
+
+	}
+
+	img {
+		height: 30px;
+		float: left;
+		margin: 0 10px 0 0;
+	}
+	p {
+		margin: 4px 0 0;
+		float: left;
+	}
+	.btn {
+		float: right;
+		margin: 0 10px 0;
+		padding: 4px 20px;
+
+		&.rejectinvite {
+			border: 1px solid #C23333;
+			@include gradient(#EF8282,#C23333);
+			@include box-shadow(inset 0 1px 1px lighten(#EF8282, 15%));
+			&:hover {
+				background: mix(#EF8282,#C23333);
+			}
+		}
+		&.acceptinvite {
+
+		}
+	}
+}
+
+.notificationWrap {
+
+}
+.notificationlist {
+	margin: 10px auto 40px;
+	@include clearfix();
+
+	li {
+		position: relative;
+		margin: 0 0% 10px;
+		padding: 10px 10px 14px;
+		background: #fff;
+		border-radius: 5px;
+	}
+	img {
+		height: 30px;
+		float: left;
+		margin: 0 10px 0 0;
+	}
+	p {
+		margin: 4px 0 0;
+		span {
+			font-size: 1rem;
+			color: #999;
+		}
+	}
+	.notificationtype {
+		position: absolute;
+		top: 16px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		background: url('../images/mini-icons.png') no-repeat;
+		
+		&.like {
+			background-position: 0 -60px;
+		}
+		&.comment,
+		&.mentionpost {
+			background-position: 0 -90px;
+		}
+		&.joined {
+			background-position: 2px -30px;
+		}
+	}
+}
+
+.load-notifications {
+	margin: 0 auto;
+	border: 1px solid darken(#2394C3, 15%);
+}

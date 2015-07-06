@@ -7,7 +7,7 @@ input,
 select,
 textarea,
 button {
-	font-family: 'Proxima Nova', Arial, sans-serif;
+	font-family: $font-family;
 }
 
 // blur background when overlay is open
@@ -37,7 +37,7 @@ span {
 		color: #00ff00;
 	}
 	&.mini {
-		font-size: 10px;
+		font-size: 1rem;
 	}
 }
 
@@ -87,14 +87,6 @@ hr {
 	background:#666;
 }
 
-h2 {
-	display:block;
-	// margin: 0px auto 20px;
-	font-size: 22px;
-	color:#333;
-	text-align:center;
-	text-shadow: 0 1px 1px rgba(255,255,255,0.25);
-}
 
 // global avatar images
 

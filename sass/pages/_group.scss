@@ -1,0 +1,119 @@
+/* ------- GROUP PAGE Section ------- */
+.groupbanner {
+	position: relative;
+	width: 100%;
+	height: 160px;
+	margin: 0 auto 20px;
+	// background: url('../images/groupbanner.jpg') no-repeat center top;
+
+	.transparent {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url('../images/transparent_b_50.png') repeat;
+		background: rgba(0,0,0,0.5);
+	}
+
+	h2{
+		padding: 70px 0 0;
+		color: #fff;
+		font-size: 2.4rem;
+		text-align: center;
+		text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+	}
+}
+.groupDesc {
+
+	h3 {
+		font-size: 1.2rem;
+		color: #333;
+	}
+	p {
+		font-size: 1.2rem;
+	}
+	// .groupsetupbtn {
+	// 	&:before {
+	// 		content: " ";
+	// 		margin: 0 5px 0 0;
+	// 		@include icon(settings);
+	// 	}
+	// }
+	.joingroupbtn {
+		width: 100%;
+	}
+	.pending {
+		margin: 10px auto;
+		padding: 5px 0;
+		color: #fff;
+		text-align: center;
+		border: 2px solid #fff;
+		border-radius: 5px;
+	}
+}
+
+
+
+.sidePost,
+.groupMembers {
+
+	h3 {
+		margin: 0 auto 10px;
+		color: #333;
+		text-shadow: 0 1px 0px rgba(255,255,255,0.2);
+	}ul {
+
+	}
+	li {
+		display: block;
+		float: left;
+		width: 12%;
+		margin: 0 2% 0 0;
+	}
+	img {
+		width: 100%;
+		border: 1px solid #fff;
+	}
+}
+
+.joinOverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1337;
+	background: rgba(0,0,0,0.5);
+
+	.joinWrap {
+		position: absolute;
+		top: 15%;
+		left: 50%;
+		margin: 0 0 0 -200px;
+		padding: 20px 20px 20px;
+		width: 400px;
+		overflow: hidden;
+		background: #fff;
+		border-radius: 5px;
+		@include box-shadow(0 1px 4px rgba(0,0,0,0.8));
+	}
+	.closebtn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 4px 8px;
+		cursor: pointer;
+		background: #888;
+	}
+	p {
+		margin: 0 auto 10px;
+	}
+	.btn {
+		float: left;
+		margin: 0 20px 0 0;
+	}
+}
+

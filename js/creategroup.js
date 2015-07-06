@@ -15,7 +15,7 @@ $(document).ready(function(){
 			    console.log('checking if '+groupname+' exists');
 			},
 			success: function(data) {
-				$('#groupnametaken').html(data);
+				$('.groupnametaken').html(data);
 			}
 		});
 	})

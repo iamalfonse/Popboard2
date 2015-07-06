@@ -1,0 +1,119 @@
+.startOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+}
+.startWrap {
+	position: relative;
+	width: 1250px;
+	margin: 0 auto;
+
+	h1,
+	h2 {
+		color: #3875D7;
+		text-align: center;
+	}
+	h1 {
+		font-weight: 100;
+	}
+	h2 {
+		margin: 0 auto 20px;
+	}
+	p {
+		text-align:center;
+		margin: 0 auto 10px;
+		line-height: 1.5em;
+	}
+	ul {
+		font-size: 1.2rem;
+		list-style: inside;
+		margin: 0 auto 10px;
+	}
+	li {
+	}
+	.step1{
+		width: 600px;
+		margin: 10% auto 0;
+		padding: 20px 40px;
+		background: #fff;
+		border-radius: 5px;
+		@include box-shadow(0 1px 8px rgba(0,0,0,0.8));
+	}
+	.step2 {
+		display: none;
+	}
+	.btn {
+		width: 240px;
+		float: none;
+		margin: 20px auto;
+	}
+	.help1,
+	.help2,
+	.help3 {
+		position: absolute;
+		padding: 10px 20px 0;
+		background: #fff;
+		border-radius: 5px;
+
+		.arrow {
+			position: absolute;
+		}
+	}
+	.help1 {
+		top: 280px;
+		left: 180px;
+		width: 200px;
+
+		.arrow {
+			top: -30px;
+			left: -70px;
+			width: 72px;
+			height: 42px;
+			background: url('../images/helparrow_01.png') no-repeat 0 0;
+		}
+	}
+	.help2 {
+		top:150px;
+		left: 550px;
+		width: 300px;
+
+		.arrow {
+			top: -60px;
+			left: -66px;
+			width: 103px;
+			height: 60px;
+			background: url('../images/helparrow_02.png') no-repeat 0 0;
+		}
+	}
+	.help3 {
+		top: 60px;
+		left: 860px;
+		width: 340px;
+
+		.arrow {
+			top: -47px;
+			left: -56px;
+			width: 62px;
+			height: 50px;
+			background: url('../images/helparrow_03.png') no-repeat 0 0;
+		}
+	}
+	.help4 {
+		position: relative;
+		top: 260px;
+		left: 50%;
+		width: 400px;
+		margin: 0 0 0 -200px;
+		padding: 20px;
+		background: #fff;
+		border-radius: 5px;
+
+		.btn {
+			margin: 0 auto;
+		}
+	}
+
+}

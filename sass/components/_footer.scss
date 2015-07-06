@@ -1,0 +1,22 @@
+/*====================== FOOTER =======================*/
+.footer {
+	padding: 0;
+	color: #ccc;
+	background: #2C353A;
+}
+.footerWrap {
+	@extend %gw;
+	// width: 1250px;
+	margin: 0 auto;
+	padding: 20px 0;
+	@include clearfix();
+
+	.copyright {
+		width: 75%;
+		float: left;
+	}
+	.links {
+		width: 25%;
+		float: left;
+	}
+}
