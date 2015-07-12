@@ -1,13 +1,6 @@
 <?php
-/**
- * index.php
- * Display a login form. Also process submission of login credentials.
- **/
 
-/* Declare the parameters for accessing the database again. */
-//DATABASE PARAMS
 include("config.php");
-
 
 if (isset( $_COOKIE['login_cookie'] )) {
 	iu_check_user_setup(); //make sure user has finished setup
@@ -42,12 +35,11 @@ if($errmsg=='1'){
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	
-	<title>Import Underground | The Auto Enthusiast Community</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups, JDM">
-	<meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a group and share your thoughts with people like you.">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title><?= $__site['name']; ?> | The Other Front Page of the Internet</title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="home">
 
@@ -59,10 +51,9 @@ if($errmsg=='1'){
 		echo "<p class='error'>$errmsg</p>\n";
 	}
 	?>
-
 	<div class="homeHeading">
-		<h2>Welcome to Import Underground</h2>
-		<p>An online community for all Import Car Enthusiasts</p>
+		<h2>Welcome to <?= $__site['name']; ?></h2>
+		<p>The other front page of the internet</p>
 	</div>
     <div class="signupfront">
     	<form id="signinform" method="post" action="/login">
@@ -72,10 +63,10 @@ if($errmsg=='1'){
             <input class="submitbtn" type="submit" name="login" value="Sign In" />
         </form>
         <hr />
-		<h3><span>New to Import Underground?</span> Sign up for free!</h3>
-		<p class="signup"><a class="btn" href="/register">Sign Up Now</a></p>
+		<h3><span>New to <?= $__site['name']; ?>?</span> Sign up for free!</h3>
+		<p class="signup"><a class="btn signupbtn" href="/register">Sign Up Now</a></p>
 	</div>
-	<div id="bgslider" >
+	<!-- <div id="bgslider" >
 		<div class="active image slide1" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
 		<div class="image slide2" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
 		<div class="image slide3" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
@@ -83,13 +74,13 @@ if($errmsg=='1'){
 		<div class="image slide5" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
 		<div class="image slide6" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
 		<div class="image slide7" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-	</div>
+	</div> -->
 </div><!--#content-->
 <!-- <div class="homeAbout">
 	<div class="homeAboutWrap">
 		<ul>
 			<li>
-				
+
 			</li>
 		</ul>
 	</div>
@@ -97,7 +88,7 @@ if($errmsg=='1'){
 <footer class="footer">
 	<div class="footerWrap">
 		<div class="copyright">
-			<p>&copy; 2013-<?= date("Y") ?> ImportUnderground.com | All Rights Reserved | Created by Undr</p>
+			<p>&copy; 2013-<?= date("Y") ?> <?= $__site['name'] ?> | All Rights Reserved | Created by Undr</p>
 		</div>
 		<div class="links">
 			<p><a href="/terms">Terms and Conditions</a> | <a href="/privacypolicy">Privacy Policy</a></p>

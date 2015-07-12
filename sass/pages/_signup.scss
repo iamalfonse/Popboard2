@@ -1,22 +1,24 @@
 /*============ SIGNUP ===============*/
 #signup {
-	@extend %gd6;
+	// @extend %gd6;
+	@include make-sm-column(6);
 	float: none;
 	position:relative;
 	display:block;
 	// width:500px;
 	margin:50px auto 50px auto;
-	padding:0px 0 10px 0;
+	padding: 0px 0 10px 0;
 	background:#fff;
-	border-radius: 5px;
+	border-radius: $border-radius;
 	@include box-shadow(0 1px 3px rgba(0,0,0,.25));
-	@include gradient(#f9f9f9 ,#e6e6e6);
+	// @include gradient(#f9f9f9 ,#e6e6e6);
+	background: #fff;
 
 	.signup-banner {
 		background:#35a0cd;
 		padding:20px 80px;
 		text-align:center;
-		border-radius: 5px 5px 0 0;
+		border-radius: $border-radius $border-radius 0 0;
 
 		h2 {
 			margin:0px 0;

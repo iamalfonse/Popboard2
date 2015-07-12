@@ -1,5 +1,6 @@
 #side {
-	width: 20%;
+	@include make-sm-column(3);
+	// width: 20%;
 	margin: 20px auto 0;
 	float: right;
 	clear: right;
@@ -10,6 +11,15 @@
 		padding: 10px 6%;
 		background: #fff;
 		@include clearfix();
+
+		&.sidePost {
+			padding: 0;
+			background: none;
+		}
+	}
+
+	.submitbtn {
+		margin: 0 auto;
 	}
 
 }

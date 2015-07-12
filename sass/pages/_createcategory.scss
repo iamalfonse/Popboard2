@@ -1,5 +1,10 @@
-#postcomment,
+
 #createcategory {
+	@include make-sm-column(10);
+
+	@media (min-width: $screen-sm-min) {
+		float: right;
+	}
 	position: relative;
 	margin: 20px 0 0 0;
 	padding: 20px;
@@ -12,32 +17,7 @@
     	text-align: center;
     }
 
-    .closebtn {
-    	float: right;
-    	padding: 6px 10px;
-    	font-size: 1.2rem;
-    	border-radius: 2px;
-
-    	&:hover {
-    		background: darken(#F3F3F3, 10%);
-    	}
-    }
-
-    .catselect {
-    	width: 50%;
-    	display: block;
-    }
-
-    label {
-    	&.inputtitle,
-		&.inputmessage {
-			//margin:20px 0 0 0;
-		}
-    }
-    .groupname {
-    	color: $blue;
-    	margin: 0 auto 10px;
-    }
+    
 	input.inputtitle {
 		width: 100%;
 		padding:10px 5px;

@@ -1,0 +1,227 @@
+/* ------- POSTS Section ------- */
+.postitem{
+	position: relative;
+	width: 100%;
+	margin: 0 0 50px;
+	clear: both;
+	// border-radius: $border-radius;
+	@include clearfix();
+}
+
+.postuser {
+	display: none;
+	float: left;
+	width: 30%;
+	@include make-sm-column(2);
+	position: relative;
+
+	@media (min-width: $screen-sm-min) {
+		display: block;
+	}
+	
+	img {
+		width: 100%;
+		border: 2px solid #fff;
+		//@include box-shadow(0 1px 3px rgba(0,0,0,0.5));
+	}
+}
+
+.postcontent-wrap {
+	width: 100%;
+	@include make-sm-column(10);
+	float: right;
+	
+	padding: 0;
+}
+
+.posttop {
+	position:relative;
+	height:auto;
+	min-height: 50px;
+	padding: 10px 20px;
+	border-bottom:#ddd thin solid;
+	border-radius: $border-radius $border-radius 0 0;
+	background: #fff;
+	// @include gradient(#f7f7f7, #eeeeee);
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 24px;
+		left: -20px;
+		width: 0;
+		height: 0;
+		@include triangle(20px, #fff, left);
+	}
+
+	img {
+		height:40px;
+		float: left;
+		margin: 0 10px 0 0;
+	}
+}
+
+.posttitle {
+	//width:700px;
+	font-size:1.8rem;
+	color:#555;
+	margin: 0;
+	padding: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	// text-shadow: 0 1px 1px #fff;
+}
+.username {
+	color: #888;
+	font-size: 1.2rem;
+	padding: 0;
+}
+
+.postbottom {
+	background-color:#fff;
+	border-top:#FFF thin solid;
+	margin: 0px 0 20px 0;
+	padding: 20px;
+	height: 100%;
+	color: #666;
+	@include clearfix();
+	border-radius: 0 0 $border-radius $border-radius;
+	/*min-height:100px;*/
+
+	ul,
+	ol {
+		list-style-position: inside;
+		padding: 0 0 0 20px;
+		margin: 10px 0;
+	}
+	ul {
+		list-style: disc inside;
+	}
+	p {
+		font-size: 1.6rem;
+		margin: 0 0 5px;
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	.readmore {
+		color: #44A9DE;
+		text-decoration: none;
+
+		&:hover {
+			color: lighten(#44A9DE, 20%);
+		}
+	}
+}
+
+.blogmessage {
+	padding: 0px ;
+	margin:0 auto 10px;
+	color:#555;
+
+	a {
+		color: #3A98CE;
+	}
+}
+.imgContainer {
+	position: relative;
+	overflow: hidden;
+
+	&:hover {
+		.imgSrc {
+			bottom: 10px;
+		}
+	}
+	.imgSrc {
+		position: absolute;
+		bottom: -15px;
+		left: 5px;
+		padding: 2px 4px;
+		color: #aaa;
+		font-size: 0.8rem;
+		background: rgba(255,255,255,0.5);
+		border-radius: 3px;
+		@include transition(all 0.5s ease);
+	}
+	a {
+		color: #555;
+	}
+}
+
+.counters {
+	float:left;
+	//width:200px;
+}
+.likes,
+.views,
+.viewcomments {
+	float: left;
+	margin: 0 20px 0 0;
+}
+.likes {
+
+	span {
+		color: #989898;
+		font-size: 1.8rem;
+		vertical-align: -2px;
+		cursor:pointer;
+		transition: color $animation-speed;
+
+		&:hover {
+			color: darken(#989898, 20%);
+		}
+
+		&.liked {
+			color: #e68d8d;
+		}
+	}
+}
+
+
+.views {
+
+	span {
+		color: #989898;
+		font-size: 2rem;
+		vertical-align: -3px;
+	}
+}
+
+.viewcomments {
+
+	a {
+		font-size: 1.5rem;
+		vertical-align: -1px;
+		color: #989898;
+		transition: color $animation-speed;
+
+		&:hover {
+			color: darken(#989898, 20%);
+		}
+	}
+	
+}
+
+.sharepost {
+	float: right;
+
+	iframe {
+		margin: 0 0 0 20px;
+	}
+}
+
+
+.load-more {
+	margin: 0 0 0 0;
+	height: 50px;
+	width: 100%;
+	float: right;
+	clear: both;
+	text-align: center;
+	cursor: pointer;
+	&.none {
+		cursor: default;
+	}
+}

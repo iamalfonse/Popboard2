@@ -5,6 +5,7 @@ $(document).ready(function(){
 		var docHeight = $(document).height();
 		$('.profilebgOverlay').css({'height':docHeight}).fadeIn(300);
 		$('.profilebgWrap').css({'top':$(window).scrollTop() + 150});
+		$('body').addClass('openOverlay');
 	});
 	$('.profilebgWrap li').click(function(){
 		if($(this).hasClass('locked')){
@@ -16,6 +17,7 @@ $(document).ready(function(){
 	});
 	$('.profilebgOverlay, .closex').click(function(){
 		$('.profilebgOverlay').fadeOut(300);
+		$('body').removeClass('openOverlay');
 	});
 	$('.profilebgWrap').click(function(){
 		return false;

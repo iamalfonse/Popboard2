@@ -1,8 +1,13 @@
 
 /*---------MY PROFILE-----------*/
 #myprofile {
-	@extend %gd8;
-	float: none;
+	// @extend %gd8;
+	@include make-sm-column(8);
+
+	@media (min-width: $screen-sm-min) {
+		float: none;
+	}
+	
 	// width: 500px;
 	margin: 20px auto 0;
 	padding: 0px;
@@ -64,7 +69,7 @@
 		width: 100%;
 		padding: 20px;
 		margin: 0 auto 20px;
-		background-color: #f3f3f3;
+		background-color: #fff;
 		@include clearfix();
 		border-radius: 0 0 5px 5px;
 	}
@@ -79,10 +84,10 @@
 		margin: 20px 1%;
 		// min-width: 100px;
 		width: 31.333%;
-		border: 1px solid #ccc;
-		@include gradient(#fefefe, #efefef);
-		border-radius: 4px;
-		@include box-shadow(0 2px 0px rgba(0, 0, 0, 0.15));
+		border: 1px solid #dedede;
+		@include gradient(#ffffff, #f2f2f2);
+		border-radius: $border-radius;
+		@include box-shadow(0 2px 0px rgba(0, 0, 0, 0.1));
 	
 		.icon {
 			display: block;
@@ -157,8 +162,8 @@
 	// width:48%;
 	padding: 20px;
 	margin: 0 auto 20px;
-	background-color: #f3f3f3;
-	border-radius: 5px;
+	background-color: #fff;
+	border-radius: $border-radius;
 
 	h3 {
 		text-align: center;
@@ -198,7 +203,7 @@
 .suboptions {
 	margin: 10px auto;
 	padding: 5px 20px;
-	background: darken(#F2F2F2, 5%);
+	background: darken(#fff, 5%);
 	border-radius: 2px;
 }
 

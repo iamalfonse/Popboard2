@@ -85,7 +85,7 @@ if (isset($_POST['old_email'])) {
 
                 // //let's send the email
                 $to = $old_email;
-                $subject = "Reset your Import Underground Password";
+                $subject = "Reset your {$__site['name']} Password";
                 $message = "
                             <html>
                             <head>
@@ -101,7 +101,7 @@ if (isset($_POST['old_email'])) {
                                 <thead>
                                     <tr style='background:#E9E9E9;'>
                                         <td style='padding:10px 10px;'>
-                                           <img src='http://www.importunderground.com/images/email/header_bg.jpg' alt='Import Underground' />
+                                           <img src='{$__site['url']}/images/email/header_bg.jpg' alt='{$__site['name']}' />
                                         </td>
                                     </tr>
                                 </thead>
@@ -110,21 +110,21 @@ if (isset($_POST['old_email'])) {
                                         <td style='padding:20px 20px;'>
                                             <h3>Reset your login password</h3>
                                             <p>Please click on the link below to reset your account password.</p>
-                                            <p><a href='http://importunderground.com/reset?email=".$old_email."&key=".$key."' >Reset Password</a></p>
+                                            <p><a href='{$__site['url']}/reset?email=".$old_email."&key=".$key."' >Reset Password</a></p>
                                         </td>
                                     <tr>
                                         <td style='padding:20px 20px;'>
                                             <p>If the link above does not work, copy and paste this URL into your browser window.</p>
-                                            <p><a href='http://importunderground.com/reset?email=".$old_email."&key=".$key."' >http://importunderground.com/reset?email=".$old_email."&key=".$key."</a></p>
+                                            <p><a href='{$__site['url']}/reset?email=".$old_email."&key=".$key."' >{$__site['url']}/reset?email=".$old_email."&key=".$key."</a></p>
                                         </td>
                                     <tr>
                                         <td style='padding:20px 20px;'>
-                                            <p style='background-color:#F2F3F6;padding: 20px;'>Sent by ImportUnderground.com. Did you recieve this in error? If so, please ignore it.</p>
+                                            <p style='background-color:#F2F3F6;padding: 20px;'>Sent by {$__site['name']}. Did you recieve this in error? If so, please ignore it.</p>
                                         </td>
                                     </tr>
                                     <tr style='background:#262626;'>
                                         <td style='padding:20px 20px; '>
-                                           <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 Import Underground | <a href='http://www.importunderground.com/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='http://www.importunderground.com/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='http://www.importunderground.com/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
+                                           <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 {$__site['name']} | <a href='{$__site['url']}/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='{$__site['url']}/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='{$__site['url']}/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -137,7 +137,7 @@ if (isset($_POST['old_email'])) {
                 $headers ="MIME-Version: 1.0" . "\r\n";
                 $headers .= "X-Mailer: PHP/" .phpversion() ."\n";
                 $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-                $headers .= "From: Import Underground <support@importunderground.com>";
+                $headers .= "From: {$__site['name']} <{$__site['email']}>";
                 mail($to, $subject, $message, $headers);
 
                 /* Successful reset password!  Now tell user to check email. */

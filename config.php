@@ -22,7 +22,24 @@ if (get_magic_quotes_gpc()) {
 
 include 'dbparams.php';
 
+// TODO: Get geolocation ip address to grab location of user. Useful for keywords
+// http://www.ipinfodb.com
+function iu_get_geolocation() {
+
+}
+
 $stylesheet = 'style1';
+$__site = [ //used primarily for the <head> section
+	'environment' => 'local', // other values: 'production', 'staging', 'local'
+	'name' => 'Popboard',
+	'email' => 'support@popboard.com',
+	'url' => 'http://www.popboard.com',
+	'keywords' => 'Popboard, social, social network',
+	'description' => 'Sign up now to create your own Popboard account and post pictures, videos, share stories, like, create private and public groups, and discuss with others',
+	'facebook-url' => 'https://www.facebook.com/popboard',
+	'twitter-url' => 'https://www.twiiter.com/popboard',
+	'filedate' => '20150709' // update this if you need to bust the cache on css files
+];
 
 //set charset for using with mysqli_real_escape_string();
 mysqli_set_charset($dblink, "utf8");
@@ -129,46 +146,46 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 					<p>Lvl <?= trim($getPostsRow['lvl']); ?></p>
 				</div>
 			</div>
-			<div class='posttop'>
-				<h3 class='posttitle' id='<?= $Row['id'] ?>'><a href='/post/<?= $Row['id']?>/<?= $blogtitle?>'><?= $Row['blog_title'] ?></a></h3>
-				<p class='username'>Posted by: <a href="/profile/<?= $Row['username'] ?>"><?= $getPostsUsername ?></a> 
-					<?= iu_time_elapsed_string($Row['post_date']) ?>
-					<?  
-						if($urlpage == 'myposts' && $suburlpage != 'groupposts'){ //show normal posts in /myposts
-							echo "in <a href='/posts/{$getPostsRow5['category']}'>{$getPostsRow5['cat_displayname']}</a>"; 
-						}else if($urlpage == 'myposts' && $suburlpage == 'groupposts'){ //show group posts in /myposts
-							echo "in <a href='/group/".iu_cleaner_url($getPostsRow5['groupname'])."'>{$getPostsRow5['groupname']}</a>"; 
-						}
-					?>
-				</p>
-				
-				<? if($urlpage == 'myposts'){ //only show if inside of myposts section ?>
-					<p class='editpostbtn'><a class="submitbtn" href='/editpost/<?= $Row['id'] ?>/<?=$blogtitle?>'>Edit Post</a></p>
-					<p class='deletepostbtn'><a class="deletebtn" href='deletepost/<?= $Row['id']?>/<?=$blogtitle?>'>Delete Post</a></p>
-				<? } ?>
-			</div>
-			<div class='postbottom'>
-				<div class='blogmessage'>
-					<?= iu_convert_image_links(iu_read_more( iu_convert_video_links(iu_linkusername($Row['blog_message'])), 200, '<a class="readmore" href="/post/'.$Row['id'].'/'.$blogtitle.'"> ...Read More</a>')) ?>
-				</div>
-
-				<div class='counters'>
-					<? //show likes and determine if user liked the post already and user is logged in
-					if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie']) && $getPostsRow4['liked'] == 1){
-						echo "<div class='likes'><span class='liked'>Likes</span> {$getPostsRow3['likes']}</div>";
-					}else{
-						echo "<div class='likes'><span>Likes</span> {$getPostsRow3['likes']}</div>";
-					}
-
-					//show number of views
-					$numviews = $getPostsRow['views'] != '' ? $getPostsRow['views'] : '0';
-					echo "<div class='views'><span>Views</span> $numviews</div>";
+			<div class="postcontent-wrap">
+				<div class='posttop'>
+					<h3 class='posttitle' id='<?= $Row['id'] ?>'><a href='/post/<?= $Row['id']?>/<?= $blogtitle?>'><?= $Row['blog_title'] ?></a></h3>
+					<p class='username'>Posted by: <a href="/profile/<?= $Row['username'] ?>"><?= $getPostsUsername ?></a> 
+						<?= iu_time_elapsed_string($Row['post_date']) ?>
+						<?  
+							if($urlpage == 'myposts' && $suburlpage != 'groupposts'){ //show normal posts in /myposts
+								echo "in <a href='/posts/{$getPostsRow5['category']}'>{$getPostsRow5['cat_displayname']}</a>"; 
+							}else if($urlpage == 'myposts' && $suburlpage == 'groupposts'){ //show group posts in /myposts
+								echo "in <a href='/group/".iu_cleaner_url($getPostsRow5['groupname'])."'>{$getPostsRow5['groupname']}</a>"; 
+							}
+						?>
+					</p>
 					
-					?>
+					<? if($urlpage == 'myposts'){ //only show if inside of myposts section ?>
+						<p class='editpostbtn'><a class="submitbtn" href='/editpost/<?= $Row['id'] ?>/<?=$blogtitle?>'>Edit Post</a></p>
+						<p class='deletepostbtn'><a class="deletebtn" href='deletepost/<?= $Row['id']?>/<?=$blogtitle?>'>Delete Post</a></p>
+					<? } ?>
 				</div>
-				<p class="viewcomments"><a class='normalbtn' href='/post/<?= $Row['id']?>/<?= $blogtitle?>'> <?= iu_plural($getPostsRow2['comments'], 'Comment'); ?></a></p>
-				
-				
+				<div class='postbottom'>
+					<div class='blogmessage'>
+						<?= iu_convert_image_links(iu_read_more( iu_convert_video_links(iu_linkusername($Row['blog_message'])), 200, '<a class="readmore" href="/post/'.$Row['id'].'/'.$blogtitle.'"> ...Read More</a>')) ?>
+					</div>
+
+					<div class='counters'>
+						<? //show likes and determine if user liked the post already and user is logged in
+						if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie']) && $getPostsRow4['liked'] == 1){
+							echo "<div class='likes'><span class='liked icon-favorite'></span> {$getPostsRow3['likes']}</div>";
+						}else{
+							echo "<div class='likes'><span class='icon-favorite'></span> {$getPostsRow3['likes']}</div>";
+						}
+
+						//show number of views
+						$numviews = $getPostsRow['views'] != '' ? $getPostsRow['views'] : '0';
+						echo "<div class='views'><span class='icon-view'></span> $numviews</div>";
+						
+						?>
+						<div class="viewcomments"><a class='icon-comment' href='/post/<?= $Row['id']?>/<?= $blogtitle?>'></a> <?= $getPostsRow2['comments'] == '' ? '0' : $getPostsRow2['comments']; ?></div>
+					</div>
+				</div>
 			</div>
 		</div>
 <?
@@ -412,8 +429,10 @@ function iu_calculate_GP($user_id){
 	echo "<p class='gp'><span class='gold'></span> ".$gold." <span class='silver'></span> " .$silver ." <span class='copper'></span> ".$copper."</p>";
 }
 
-function iu_get_userxp($user_id) {
+function iu_get_userxp($Rows) {
 	include 'dbparams.php';
+
+	$user_id = $Rows['user_id'];
 
 	//check if logged in
 	if(!isset($_COOKIE['login_cookie'])){
@@ -421,20 +440,21 @@ function iu_get_userxp($user_id) {
 	}
 
 	// get total likes, comments and posts
-	$numtotal_query = @mysqli_query($dblink, "SELECT total_posts, total_comments, total_likes, lvl, total_xp FROM users USE INDEX (user_id) WHERE user_id='$user_id';");
-	$numtotal_row = mysqli_fetch_assoc($numtotal_query);
+	// $numtotal_query = @mysqli_query($dblink, "SELECT total_posts, total_comments, total_likes, lvl, total_xp FROM users USE INDEX (user_id) WHERE user_id='$user_id';");
+	// $numtotal_row = mysqli_fetch_assoc($numtotal_query);
 
 	//add total XP. 1 Like = 1XP. 1 comment = 2XP. 1 post = 10XP.
-	$myXP = $numtotal_row['total_likes'] + ($numtotal_row['total_comments'] * 2) + ($numtotal_row['total_posts'] * 10); //likes + (comments * 2 XP) + (posts * 10 XP);
+	$myXP = $Rows['total_likes'] + ($Rows['total_comments'] * 2) + ($Rows['total_posts'] * 10); //likes + (comments * 2 XP) + (posts * 10 XP);
 	
 	$startXP = 0; // Level 1 Start XP
 	$endXP = 20;  // Level 1 End XP
 	$increaseXP =40;   // Increase by extra how many per level?
-	$lvlMultiplier = 40; // Multiply by how many per level? (1- easy / 100- hard)
+	$lvlMultiplier = 50; // Multiply by how many per level? (1- easy / 100- hard)
 	//max 52980 to reach lvl 100 with multiplier = 20
 	//max 77480 to reach lvl 100 with multiplier = 30
 	//max 101980 to reach lvl 100 with multiplier = 40
-	// $myXP = 1100;
+	//max 126480 to reach lvl 100 with multiplier = 50
+	// $myXP = 126480;
 
 	/* Calculate Level */
 	$myLevel = 0;
@@ -465,7 +485,7 @@ function iu_get_userxp($user_id) {
 	//echo 'percent: '.$myPercent.' level: '.$myLevel.' Progress: '.$myCurrentXP.'/'.$toNextLevel;
 
 	//only update if there's a change (to prevent unnecessary update table overhead)
-	if($myXP != $numtotal_row['total_xp']){
+	if($myXP != $Rows['total_xp']){
 		//Update lvl and total_xp in users table
 		$updatelevel_query = @mysqli_query($dblink, "UPDATE users SET lvl = '$myLevel' WHERE user_id='$user_id';");
 		$updatexp_query = @mysqli_query($dblink, "UPDATE users SET total_xp = '$myXP' WHERE user_id='$user_id';");
@@ -582,7 +602,8 @@ function iu_read_more($s, $l, $e = '&hellip;', $isHTML = true) {
 	return $output;
 }
 
-
+// Formats large numbers. 
+// Example: 1,234 = 1.2k or 123,456 = 123.4k
 function iu_format_number($input){
 	$suffixes = array('', 'k', 'M', 'B');
 	$suffixIndex = 0;

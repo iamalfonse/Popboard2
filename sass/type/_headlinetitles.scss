@@ -1,13 +1,25 @@
 .headertitle {
+	@include make-sm-column(10);
+
+	@media (min-width: $screen-sm-min) {
+		float: right;
+	}
+	float: right;
+	width: 100%;
 	padding: 10px 1%;
 	margin: 0 auto 20px;
 	text-align: center;
 	background: darken(#687991, 8%);
 	// @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.2), 0 1px 0px rgba(255,255,255,0.2));
 	// border-radius: 4px;
+
+	h2,
+	h3 {
+		color: lighten(#687991, 25%);;
+	}
 }
 
 .sectiontitle {
-	color: #6b6b6b;
+	// color: #6b6b6b;
 	margin: 0;
 }

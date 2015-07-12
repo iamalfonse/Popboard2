@@ -12,7 +12,7 @@
                                         <thead>
                                             <tr style='background:#E9E9E9;'>
                                                 <td style='padding:10px 10px;'>
-                                                   <img src='http://www.importunderground.com/images/email/header_bg.jpg' alt='Import Underground' />
+                                                   <img src='<?= $__site['url']; ?>/images/email/header_bg.jpg' alt='<?= $__site['name']; ?>' />
                                                 </td>
                                             </tr>
                                         </thead>
@@ -20,14 +20,14 @@
                                             <tr>
                                                 <td style='padding:20px 20px;'>
                                                     <h3>Please Confirm Your Email</h3>
-                                                    <p>Before you can post on Import Underground, we need to confirm your email.</p>
+                                                    <p>Before you can post on <?= $__site['name']; ?>, we need to confirm your email.</p>
                                                     <p>Please click on the link below to activate your account.</p>
-                                                    <p><a href='http://importunderground.com/success?email=".$new_email."&key=".$key."' >Confirm Email</a></p>
+                                                    <p><a href='<?= $__site['url']; ?>/success?email=".$new_email."&key=".$key."' >Confirm Email</a></p>
                                                 </td>
                                             <tr>
                                                 <td style='padding:20px 20px;'>
                                                     <p>If the link above does not work, copy and paste this URL into your browser window.</p>
-                                                    <p><a href='http://importunderground.com/success?email=".$new_email."&key=".$key."' >http://importunderground.com/success?email=".$new_email."&key=".$key."</a></p>
+                                                    <p><a href='<?= $__site['url']; ?>/success?email=".$new_email."&key=".$key."' ><?= $__site['url']; ?>/success?email=".$new_email."&key=".$key."</a></p>
                                                 </td>
                                             <tr>
                                                 <td style='padding:20px 20px;'>
@@ -36,7 +36,7 @@
                                             </tr>
                                             <tr style='background:#262626;'>
                                                 <td style='padding:20px 20px; '>
-                                                   <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 Import Underground | <a href='http://www.importunderground.com/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='http://www.importunderground.com/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='http://www.importunderground.com/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
+                                                   <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 <?= $__site['name']; ?> | <a href='<?= $__site['url']; ?>/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='<?= $__site['url']; ?>/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='<?= $__site['url']; ?>/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
                                                 </td>
                                             </tr>
                                         </tbody>

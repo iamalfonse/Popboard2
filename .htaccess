@@ -49,6 +49,9 @@ RewriteRule ^setup(\/)?$ setup.php [NC,L]
 # Handle requests for "setupsubmit"
 RewriteRule ^setupsubmit(\/)?$ setupsubmit.php [NC,L]
 
+# Handle requests for "home"
+RewriteRule ^home(\/)?(\&start)?$ posts.php?category=general$2 [NC,L]
+
 # Handle requests for "posts" (This is the main Blog Wall area)
 RewriteRule ^posts(\/)?([A-Za-z0-9\-]+)?\/?(\&start)?$ posts.php?category=$2$3 [NC,L]
 
@@ -57,9 +60,6 @@ RewriteRule ^post\/([0-9]+)\/([A-Za-z0-9\-]+)$ post.php?post_id=$1&title=$2 [NC,
 
 # Handle requests for "submitcomment/id/posturl"
 RewriteRule ^submitcomment\/([0-9]+)\/([A-Za-z0-9\-]+)$ submitcomment.php?post_id=$1&title=$2 [NC,L]
-
-# Handle requests for "home"
-RewriteRule ^home(\/)?(\&start)?$ posts.php?category=general$2 [NC,L]
 
 # Handle requests for "categories"
 RewriteRule ^categories(\/)?$ categories.php [NC,L]
@@ -113,7 +113,7 @@ RewriteRule ^invites(\/)?$ invites.php [NC,L]
 RewriteRule ^update_invite(\/)?$ update_invite.php [NC,L]
 
 # Handle requests for "createpost"
-RewriteRule ^createpost(\/)?$ createpost.php [NC,L]
+RewriteRule ^createpost(\/)?$ index.php [NC,L]
 
 # Handle requests for "submitpost"
 RewriteRule ^submitpost(\/)?$ submitpost.php [NC,L]

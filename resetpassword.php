@@ -42,7 +42,7 @@ if(empty($_POST['email']) || empty($_POST['key'])){
 
 			// //send out a 'You reset your password' email
 			$to = $confirm_info[email];
-			$subject = "You've Reset Your Import Underground Password";
+			$subject = "You've Reset Your {$__site['name']} Password";
 			$message = "
 				<html>
 				<head>
@@ -58,25 +58,25 @@ if(empty($_POST['email']) || empty($_POST['key'])){
 					<thead>
 						<tr style='background:#E9E9E9;'>
 							<td style='padding:10px 10px;'>
-							   <img src='http://www.importunderground.com/images/email/header_bg.jpg' alt='Import Underground' />
+							   <img src='{$__site['url']}/images/email/header_bg.jpg' alt='{$__site['name']}' />
 							</td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td style='padding:20px 20px;'>
-								<h3>Your Import underground password has been reset.</h3>
-								<p>You can now <a href='http://importunderground.com/'>log in</a> and start posting again.</p>
+								<h3>Your {$__site['name']} password has been reset.</h3>
+								<p>You can now <a href='{$__site['name']}/'>log in</a> and start posting again.</p>
 							</td>
 						</tr>
 						<tr>
 							<td style='padding:20px 20px;'>
-								<p style='background-color:#F2F3F6;padding: 20px;'>Sent by ImportUnderground.com. Did you recieve this in error? If so, please ignore it.</p>
+								<p style='background-color:#F2F3F6;padding: 20px;'>Sent by {$__site['name']}. Did you recieve this in error? If so, please ignore it.</p>
 							</td>
 						</tr>
 						<tr style='background:#262626;'>
 							<td style='padding:20px 20px; '>
-							   <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 Import Underground | <a href='http://www.importunderground.com/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='http://www.importunderground.com/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='http://www.importunderground.com/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
+							   <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 {$__site['name']} | <a href='{$__site['url']}/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='{$__site['url']}/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='{$__site['url']}/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
 							</td>
 						</tr>
 					</tbody>
@@ -89,7 +89,7 @@ if(empty($_POST['email']) || empty($_POST['key'])){
 			$headers ="MIME-Version: 1.0" . "\r\n";
 			$headers .= "X-Mailer: PHP/" .phpversion() ."\n";
 			$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-			$headers .= "From: Import Underground <support@importunderground.com>";
+			$headers .= "From: {$__site['name']} <{$__site['email']}>";
 			mail($to, $subject, $message, $headers);
 
 			//delete the forgotpassword row

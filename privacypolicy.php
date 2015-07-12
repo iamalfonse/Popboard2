@@ -19,11 +19,11 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
-	<title>Import Underground | Privacy Policy</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
-	<meta name="description" content="Post and discuss about Import Cars">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
+	<title>Privacy Policy <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
 </head>
 <body class="privacypolicy">
 
@@ -95,7 +95,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 
 				<h2>Terms and Conditions</h2>
 
-				<p>Please also visit our <a href="/terms">Terms and Conditions</a> section establishing the use, disclaimers, and limitations of liability governing the use of our website at http://www.importunderground.com/terms</p>
+				<p>Please also visit our <a href="/terms">Terms and Conditions</a> section establishing the use, disclaimers, and limitations of liability governing the use of our website at <?= $__site['url']; ?>/terms</p>
 
 				<h2>Your Consent</h2>
 
@@ -111,11 +111,11 @@ if (isset( $_COOKIE['login_cookie'] )) {
 
 				<p>If there are any questions regarding this privacy policy you may contact us using the information below.</p>
 
-				<p>http://www.importunderground.com<br />
+				<p><?= $__site['url']; ?><br />
 				160 Maritime Terrace<br />
 				Hercules, CA 94547<br />
 				USA<br />
-				<a href="mailto:support@importunderground.com">support@importunderground.com</a></p>
+				<a href="mailto:<?= $__site['email']; ?>"><?= $__site['email']; ?></a></p>
 			</div>
 			
 		</div><!--#right-->

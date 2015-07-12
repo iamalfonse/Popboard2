@@ -35,17 +35,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | Setup Your Profile</title>
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
+	<title>Setup Your Profile | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
 	<link href="/stylesheets/jcrop.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="setup">
 <div id="top">
 	<div class="logomenu">
-		<h1><a href="/">Import Underground</a></h1>
+		<h1><a href="/"><?= $__site['name']; ?></a></h1>
 	</div>
 </div>
 <?php //include("top.php"); ?>

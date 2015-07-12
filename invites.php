@@ -21,12 +21,11 @@ if (isset( $_COOKIE['login_cookie'] )) {
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-	
-	<title>Import Underground | Invites Pending</title>
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title>Invites Pending | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="invites">
 

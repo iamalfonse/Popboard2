@@ -1,9 +1,11 @@
 /*============ LEFT ===============*/
 #left {
-	@extend %gd3;
+	// @extend %gd3;
+	@include make-sm-column(2);
 	clear: left;
 	// width: 18%;
 	margin: 0px 0 0;
+	padding: 0;
 	// background:#262626;
 	background:#394263;
 	float: left;
@@ -24,7 +26,9 @@
 		margin: 20px 0 0 0;
 		color:#ccc;
 	}
-
+	a {
+		color: #ccc;
+	}
 	.leftbuttons {
 		margin: 0;
 		clear: both;
@@ -41,6 +45,7 @@
 			// border-bottom: 1px solid #222222;
 		    // border-top: 1px solid #333333;
 			// @include gradient(#292929, #252525);
+			// transition: background $animation-speed, color $animation-speed;
 
 			&:hover {
 				color:#fff;
@@ -56,24 +61,25 @@
 		&.logout span {
 			height:25px;
 			width:25px;
+			font-size: 2rem;
 			margin-right: 10px;
-			vertical-align: -8px;
+			vertical-align: -3px;
 			display: inline-block;
 		}
 
 
-		&.profile span {
-			background: url("../images/icons.png") no-repeat scroll -6px -6px transparent;
-		}
-		&.createpost span {
-			background: url("../images/icons.png") no-repeat scroll -6px -56px transparent;
-		}
-		&.myposts span {
-			background: url("../images/icons.png") no-repeat scroll -6px -100px transparent;
-		}
-		&.logout span {
-			background: url("../images/icons.png") no-repeat scroll -6px -146px transparent;
-		}
+		// &.profile span {
+		// 	background: url("../images/icons.png") no-repeat scroll -6px -6px transparent;
+		// }
+		// &.createpost span {
+		// 	background: url("../images/icons.png") no-repeat scroll -6px -56px transparent;
+		// }
+		// &.myposts span {
+		// 	background: url("../images/icons.png") no-repeat scroll -6px -100px transparent;
+		// }
+		// &.logout span {
+		// 	background: url("../images/icons.png") no-repeat scroll -6px -146px transparent;
+		// }
 
 	}
 

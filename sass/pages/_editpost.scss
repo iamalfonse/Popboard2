@@ -1,0 +1,49 @@
+#editpost {
+    @include make-sm-column(10);
+    @media (min-width: $screen-sm-min) {
+        float: right;
+    }
+	width: 100%;
+	position: relative;
+	margin: 20px auto 0;
+	padding: 20px;
+	background: none repeat scroll 0 0 #fff;
+	@include clearfix();
+
+	.closebtn {
+    	float: right;
+    	padding: 6px 10px;
+    	font-size: 1.2rem;
+    	border-radius: 2px;
+
+    	&:hover {
+    		background: darken(#F3F3F3, 10%);
+    	}
+    }
+
+    .catselect {
+    	width: 50%;
+    	display: block;
+    }
+
+    label {
+    	&.inputtitle,
+		&.inputmessage {
+			//margin:20px 0 0 0;
+		}
+    }
+    .groupname {
+    	color: $color-blue;
+    	margin: 0 auto 10px;
+    }
+
+    .submitbtn,
+	.note {
+		float: left;
+	}
+	.note {
+		margin: 10px 0 0 20px;
+		font-size: 1rem;
+		color: #8D8D8D;
+	}
+}

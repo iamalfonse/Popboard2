@@ -1,0 +1,17 @@
+/*==================================== MY WALL ===================*/
+
+#blogtopwall {
+	height:80px;
+	width:800px;
+	border:#BBB;
+	border-bottom:#BBB thin solid;
+	@include gradient(#f7f7f7, #eeeeee);
+	border-radius: 10px;
+}
+.blogtitlewall {
+	font-size:3rem;
+	color: #666;
+	margin:20px 0 0 0;
+	padding:20px 0 0 60px;
+	text-shadow: 0 1px 1px #fff;
+}

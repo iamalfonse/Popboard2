@@ -11,9 +11,6 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	$r = mysqli_query($dblink, "SELECT * FROM users WHERE username='$username' AND session_hash = '$session_hash'");
 	$Rows = mysqli_fetch_assoc($r);
 
-} else {
-	header("Location: /");
-	exit;
 }
 
 

@@ -35,11 +35,11 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | <?= $catDisplayname ?></title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
-	<meta name="description" content="Import Underground | <?= $catDisplayname ?> ">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title><?= $catDisplayname ?> | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $catDisplayname ?> | <?= $__site['name']; ?>">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 
 <body class='posts'>
@@ -72,7 +72,7 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 			<div class="sideWrap sidePost">
 			<? if(isset($_COOKIE['login_cookie'])){ ?>
 			
-				<h3><?= $catDisplayname ?></h3>
+				<!-- <h3><?= $catDisplayname ?></h3> -->
 				<a class="submitbtn createpostbtn" href="/createpost?c=<?= $catname ?>">Create New Post</a>
 			
 			<? }else { ?>
@@ -106,7 +106,7 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 		<div class="startWrap">
 			<div class="step1">
 				<h1>Hi <?= $Rows['displayname'] ?>!</h1>
-				<h2>Welcome to Import Underground</h2>
+				<h2>Welcome to <?= $__site['name']; ?></h2>
 				<p>Create and share your posts with other auto enthusiasts just like you. Check out some of the other categories, join a group or create your own, see the top posts, or look for upcoming events near you.</p>
 				<button class="btn nextstep">Next</button>
 			</div>

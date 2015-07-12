@@ -8,7 +8,8 @@
 }
 
 .logomenu {
-	@extend %gw;
+	// @extend %gw;
+	@extend .container;
 	position: relative;
 	// width: 1250px;
 	height: 45px;
@@ -16,13 +17,14 @@
 
 	h1 {
 		float: left;
-		margin: 2px 20px 0 0px;
-		padding: 0;
+		margin: 0 20px 0 0;
+		padding: 12px 0 0;
 
 		a {
 			background: url(../images/logo.png) no-repeat;
+			background-size: 120px auto;
 			text-indent: -9999px;
-			height: 40px;
+			height: 30px;
 			width: 120px;
 			float: left;
 		}
@@ -41,10 +43,17 @@
 	float: left;
 	position: relative;
 	padding: 2px 10px;
-	margin: 8px 10% 0px;
+	margin: 8px auto 0px;
 	overflow: hidden;
 	background: #ccc;
 	border-radius: 5px;
+
+	@media (min-width: $screen-sm-min) {
+		margin: 8px 2% 0px;
+	}
+	@media (min-width: $screen-lg-min) {
+		margin: 8px 8% 0px;
+	}
 
 	.userLvl,
 	.nextLvl {
@@ -120,9 +129,17 @@
 	display: block;
 	width: 30px;
 	height: 30px;
+	padding: 7px;
+	color: #aaa;
+	font-size: 1.6rem;
 	border: 1px solid #aaa;
 	cursor: pointer;
-	border-radius: 4px;
+	border-radius:  $border-radius;
+	transition: background $animation-speed;
+	
+	&:hover {
+		background: darken(#fff,5%);
+	}
 
 	.invitecount,
 	.unread {
@@ -134,7 +151,7 @@
 		min-width: 22px;
 		color: #fff;
 		text-align: center;
-		background: $red;
+		background: $color-red;
 		border-radius: 20px;
 	}
 
@@ -146,8 +163,8 @@
 	ul {
 		display: none;
 		position: absolute;
-		top: 40px;
-		left: -300px;
+		top: 46px;
+		right: 0;
 		width: 360px;
 		padding: 6px 10px;
 		background: lighten($bg-color, 40%);
@@ -161,17 +178,22 @@
 			display: block;
 			position: absolute;
 			top: -20px;
-			right: 35px;
+			right: 5px;
 			@include triangle(20px,lighten($bg-color, 40%),up);
 		}
 	}
 	li {
+		font-family: $font-family;
 		margin: 4px 0;
-		font-size: 1.2rem;
+		padding: 4px 0;
+		color: #555;
+		font-size: 1rem;
+		font-weight: normal;
 		clear: both;
 	}
 	span {
-		font-size: 1.2rem;
+		font-size: 1rem;
+		font-weight: bold;
 		color: #999;
 		float: right;
 	}
@@ -184,33 +206,14 @@
 	button {
 		display: none;
 	}
-
-	.viewbtn {
-		display: block;
-		text-align: center;
-		padding: 4px 0;
-		margin: 20px auto 0;
-		color: #ccc;
-		border: 1px solid #586A74;
-		// background: lighten(#2C353A, 20%);
-		@include gradient(lighten(#586A74, 5%),#586A74);
-		@include box-shadow(inset 0 1px 0px rgba(255,255,255,0.3));
-		border-radius: 4px;
-		&:hover {
-			color: #fff;
-			@include gradient(#586A74,lighten(#586A74, 5%));
-		}
-	}
 }
 .top-invites {
 	margin: 8px 0px 0 0px;
-	background: url('../images/topicons.png') no-repeat -234px 6px;
-	@include gradient(#fff, #efefef, image, "url('../images/topicons.png') no-repeat -234px 6px");
 }
 .top-notifications {
 	margin: 8px 0px 0 20px;
-	background: url('../images/topicons.png') no-repeat -174px 6px;
-	@include gradient(#fff, #efefef, image, "url('../images/topicons.png') no-repeat -174px 6px");
+	padding: 5.5px;
+	font-size: 1.8rem;
 }
 
 .mainNav {
@@ -225,12 +228,14 @@
 	// background: #9DBE20; // lime green
 
 	ul {
-		@extend %gw;
+		// @extend %gw;
+		@extend .container;
 		// width: 1250px;
 		margin: 0 auto;
 	}
 	li {
-		@extend %gd2;
+		// @extend %gd2;
+		@include make-sm-column(2);
 		display: block;
 		float: left;
 		height: 100%;
@@ -249,7 +254,8 @@
 			}
 		}
 		a {
-			@extend %gd12;
+			// @extend %gd12;
+			@include make-sm-column(12);
 			display: block;
 			height: 100%;
 			// width: 146px;

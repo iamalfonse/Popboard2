@@ -113,7 +113,7 @@ if (isset($_POST['submit'])) {
  
                         //let's send the email
                         $to = $new_email;
-                        $subject = "Activate your Import Underground account";
+                        $subject = "Activate your {$__site['name']} account";
                         $message = "
                                     <html>
                                     <head>
@@ -129,7 +129,7 @@ if (isset($_POST['submit'])) {
                                         <thead>
                                             <tr style='background:#E9E9E9;'>
                                                 <td style='padding:10px 10px;'>
-                                                   <img src='http://www.importunderground.com/images/email/header_bg.jpg' alt='Import Underground' />
+                                                   <img src='{$__site['url']}/images/email/header_bg.jpg' alt='{$__site['keywords']}' />
                                                 </td>
                                             </tr>
                                         </thead>
@@ -137,23 +137,23 @@ if (isset($_POST['submit'])) {
                                             <tr>
                                                 <td style='padding:20px 20px;'>
                                                     <h3>Please Confirm Your Email</h3>
-                                                    <p>Before you can post on Import Underground, we need to confirm your email.</p>
+                                                    <p>Before you can post on {$__site['name']}, we need to confirm your email.</p>
                                                     <p>Please click on the link below to activate your account.</p>
-                                                    <p><a href='http://importunderground.com/success?email=".$new_email."&key=".$key."' >Confirm Email</a></p>
+                                                    <p><a href='{$__site['url']}/success?email=".$new_email."&key=".$key."' >Confirm Email</a></p>
                                                 </td>
                                             <tr>
                                                 <td style='padding:20px 20px;'>
                                                     <p>If the link above does not work, copy and paste this URL into your browser window.</p>
-                                                    <p><a href='http://importunderground.com/success?email=".$new_email."&key=".$key."' >http://importunderground.com/success?email=".$new_email."&key=".$key."</a></p>
+                                                    <p><a href='{$__site['url']}/success?email=".$new_email."&key=".$key."' >{$__site['url']}/success?email=".$new_email."&key=".$key."</a></p>
                                                 </td>
                                             <tr>
                                                 <td style='padding:20px 20px;'>
-                                                    <p style='background-color:#F2F3F6;padding: 20px;'>Sent by ImportUnderground.com. Did you recieve this in error? If so, please ignore it.</p>
+                                                    <p style='background-color:#F2F3F6;padding: 20px;'>Sent by {$__site['name']}. Did you recieve this in error? If so, please ignore it.</p>
                                                 </td>
                                             </tr>
                                             <tr style='background:#262626;'>
                                                 <td style='padding:20px 20px; '>
-                                                   <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 Import Underground | <a href='http://www.importunderground.com/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='http://www.importunderground.com/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='http://www.importunderground.com/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
+                                                   <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 {$__site['keywords']} | <a href='{$__site['url']}/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='{$__site['url']}/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='{$__site['url']}/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -166,15 +166,15 @@ if (isset($_POST['submit'])) {
                         $headers ="MIME-Version: 1.0" . "\r\n";
                         $headers .= "X-Mailer: PHP/" .phpversion() ."\n";
                         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-                        $headers .= "From: Import Underground <support@importunderground.com>";
+                        $headers .= "From: {$__site['name']} <{$__site['email']}>";
                         mail($to, $subject, $message, $headers);
 
-                        // send another mail to support@importunderground.com to tell who registered
+                        // send another mail to support@email.com to tell who registered
                         $headers2 ="MIME-Version: 1.0" . "\r\n";
                         $headers2 .= "X-Mailer: PHP/" .phpversion() ."\n";
                         $headers2 .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-                        $headers2 .= "From: User Registered <noreply@importunderground.com>";
-                        mail('support@importunderground.com',$display_username.' Registered for Import Underground','New User Registered',$headers2);
+                        $headers2 .= "From: User Registered <noreply@".strtolower($__site['name']).".com>";
+                        mail($__site['email'],$display_username." Registered for {$__site['name']}","New User Registered",$headers2);
 
                         /* Successful registration!  Now redirect the user to the success page. */
                         header("Location: /success?activate=1"); 
@@ -201,11 +201,11 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-    <title>Import Underground | Sign Up</title>
-    <meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups, JDM">
-    <meta name="description" content="Import Underground is a social network for all auto enthusiasts. Create or join a group and share your thoughts with people like you.">
-    <link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <title>Sign Up | <?= $__site['keywords']; ?></title>
+    <meta name="keywords" content="<?= $__site['keywords']; ?>">
+    <meta name="description" content="<?= $__site['description']; ?>">
+    <link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body>
 

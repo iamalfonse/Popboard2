@@ -1,0 +1,63 @@
+/*---------- BUTTONS ----------*/
+
+
+.btn {
+	display: block;
+	cursor: pointer;
+	margin: 10px 0px;
+	padding: 8px 20px;
+	color: #fff;
+	outline: none;
+	font-weight: bold;
+	font-size: 1.4rem;
+	text-align: center;
+	text-decoration: none;
+	border: 0 none;
+	border-radius: $border-radius;
+	background: #50a6cb;
+	transition: background $animation-speed;
+
+	&:hover {
+		color: #fff;
+		background: #3f94b8;
+	}
+}
+
+.editpostbtn { //button container (not an actual button)
+	position: absolute;
+	top: 10px;
+	right: 140px;
+}
+.submitbtn {
+	@extend .btn;
+}
+
+.deletepostbtn {  //button container (not an actual button)
+	position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.deletebtn {
+	@extend .btn;
+	margin: 0;
+	background: $color-red;
+
+	&:hover {
+		background: darken($color-red, 5%);
+	}
+}
+
+.createpostbtn {
+	@extend .btn;
+	background: #d4ce1e;
+
+	&:hover {
+		background: darken(#d4ce1e, 5%);
+	}
+
+}
+.viewbtn {
+	@extend .btn;
+	padding: 4px 0;
+	margin: 20px auto 0;
+}

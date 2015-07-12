@@ -25,11 +25,11 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | Groups</title>
-	<meta name="keywords" content="">
-	<meta name="description" content="Search and join your favorite car groups in your area">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title>Groups | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="groups">
 	<?php include("top.php"); ?>
@@ -57,92 +57,102 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				<? } ?>
 				<!-- <div class="searchGroups">
 					<input id="groupSearch" class="inputGroupSearch" type="text" placeholder="Search Groups..." />
-					<button class="button1 searchbtn">Search</button>
+					<button class="searchbtn">Search</button>
 				</div> -->
 			</div>
 
 			<?
 				$groupsQuery1 = @mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC");
 				$groupsnr = mysqli_num_rows($groupsQuery1);
-				if(isset($_GET['p'])){
-					$pagenum = mysqli_real_escape_string($dblink, preg_replace("/[^0-9]/i", "", $_GET['p']));
-				}else {
-					$pagenum = 1;
-				}
-				$itemsPerPage = 10; 
-				$lastPage = ceil($groupsnr / $itemsPerPage);
 
-				// Be sure URL variable $pagenum(page number) is no lower than page 1 and no higher than $lastpage
-				if ($pagenum < 1) { // If it is less than 1
-					$pagenum = 1; // force if to be 1
-				} else if ($pagenum > $lastPage) { // if it is greater than $lastpage
-					$pagenum = $lastPage; // force it to be $lastpage's value
-				}
-				$centerPages = "";
-				$sub1 = $pagenum - 1;
-				$sub2 = $pagenum - 2;
-				$add1 = $pagenum + 1;
-				$add2 = $pagenum + 2;
-				if ($pagenum == 1) {
-					$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
-					$centerPages .= '<a href="/groups?p=' . $add1 . '">' . $add1 . '</a>';
-				} else if ($pagenum == $lastPage) {
-					$centerPages .= '<a href="/groups?p=' . $sub1 . '">' . $sub1 . '</a>';
-					$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
-				} else if ($pagenum > 2 && $pagenum < ($lastPage - 1)) {
-					$centerPages .= '<a href="/groups?p=' . $sub2 . '">' . $sub2 . '</a>';
-					$centerPages .= '<a href="/groups?p=' . $sub1 . '">' . $sub1 . '</a>';
-					$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
-					$centerPages .= '<a href="/groups?p=' . $add1 . '">' . $add1 . '</a>';
-					$centerPages .= '<a href="/groups?p=' . $add2 . '">' . $add2 . '</a>';
-				} else if ($pagenum > 1 && $pagenum < $lastPage) {
-					$centerPages .= '<a href="/groups?p=' . $sub1 . '">' . $sub1 . '</a>';
-					$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
-					$centerPages .= '<a href="/groups?p=' . $add1 . '">' . $add1 . '</a>';
-				}
-				$limit = 'LIMIT ' .($pagenum - 1) * $itemsPerPage .',' .$itemsPerPage; 
+				//check if user has a group
+				if($groupsnr > 0){
 
-				$groupQuery2 = mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC $limit");
-				$groupsRow1 = mysqli_fetch_assoc($groupQuery2);
-
-				$paginationDisplay = ""; // Initialize the pagination output variable
-				// This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
-				if ($lastPage != "1"){
-					// This shows the user what page they are on, and the total number of pages
-					$paginationDisplay .= '<span class="pageIndex">Page <strong>' . $pagenum . '</strong> of ' . $lastPage. '</span>';
-					// If we are not on page 1 we can place the Back button
-					if ($pagenum != 1) {
-						$previous = $pagenum - 1;
-						$paginationDisplay .=  '<a class="prev" href="/groups?p=' . $previous . '"> Back</a>';
+					if(isset($_GET['p'])){
+						$pagenum = mysqli_real_escape_string($dblink, preg_replace("/[^0-9]/i", "", $_GET['p']));
+					}else {
+						$pagenum = 1;
 					}
-					// Lay in the clickable numbers display here between the Back and Next links
-					$paginationDisplay .= '<span class="pageNumbers">' . $centerPages . '</span>';
-					// If we are not on the very last page we can place the Next button
-					if ($pagenum != $lastPage) {
-						$nextPage = $pagenum + 1;
-						$paginationDisplay .=  '<a class="next" href="/groups?p=' . $nextPage . '"> Next</a>';
+					$itemsPerPage = 10; 
+					$lastPage = ceil($groupsnr / $itemsPerPage);
+
+					// Be sure URL variable $pagenum(page number) is no lower than page 1 and no higher than $lastpage
+					if ($pagenum < 1) { // If it is less than 1
+						$pagenum = 1; // force if to be 1
+					} else if ($pagenum > $lastPage) { // if it is greater than $lastpage
+						$pagenum = $lastPage; // force it to be $lastpage's value
 					}
+					$centerPages = "";
+					$sub1 = $pagenum - 1;
+					$sub2 = $pagenum - 2;
+					$add1 = $pagenum + 1;
+					$add2 = $pagenum + 2;
+					if ($pagenum == 1) {
+						$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
+						$centerPages .= '<a href="/groups?p=' . $add1 . '">' . $add1 . '</a>';
+					} else if ($pagenum == $lastPage) {
+						$centerPages .= '<a href="/groups?p=' . $sub1 . '">' . $sub1 . '</a>';
+						$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
+					} else if ($pagenum > 2 && $pagenum < ($lastPage - 1)) {
+						$centerPages .= '<a href="/groups?p=' . $sub2 . '">' . $sub2 . '</a>';
+						$centerPages .= '<a href="/groups?p=' . $sub1 . '">' . $sub1 . '</a>';
+						$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
+						$centerPages .= '<a href="/groups?p=' . $add1 . '">' . $add1 . '</a>';
+						$centerPages .= '<a href="/groups?p=' . $add2 . '">' . $add2 . '</a>';
+					} else if ($pagenum > 1 && $pagenum < $lastPage) {
+						$centerPages .= '<a href="/groups?p=' . $sub1 . '">' . $sub1 . '</a>';
+						$centerPages .= '<span class="pagNumActive">' . $pagenum . '</span>';
+						$centerPages .= '<a href="/groups?p=' . $add1 . '">' . $add1 . '</a>';
+					}
+					$limit = 'LIMIT ' .($pagenum - 1) * $itemsPerPage .',' .$itemsPerPage; 
+
+					$groupsQuery2 = @mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC");
+					$groupsRow1 = mysqli_fetch_assoc($groupsQuery2);
+
+					$paginationDisplay = ""; // Initialize the pagination output variable
+					// This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
+					if ($lastPage != "1"){
+						// This shows the user what page they are on, and the total number of pages
+						$paginationDisplay .= '<span class="pageIndex">Page <strong>' . $pagenum . '</strong> of ' . $lastPage. '</span>';
+						// If we are not on page 1 we can place the Back button
+						if ($pagenum != 1) {
+							$previous = $pagenum - 1;
+							$paginationDisplay .=  '<a class="prev" href="/groups?p=' . $previous . '"> Back</a>';
+						}
+						// Lay in the clickable numbers display here between the Back and Next links
+						$paginationDisplay .= '<span class="pageNumbers">' . $centerPages . '</span>';
+						// If we are not on the very last page we can place the Next button
+						if ($pagenum != $lastPage) {
+							$nextPage = $pagenum + 1;
+							$paginationDisplay .=  '<a class="next" href="/groups?p=' . $nextPage . '"> Next</a>';
+						}
+					}
+					iu_get_groups($groupsRow1, $groupsQuery2);
+
+					// TODO: Finish pagination for groups
+
+					// $start = 0 + (($pagenum == 1 ? 0 : $pagenum) * 6);
+					// $end = 6 * ($pagenum == 0 ? 1 : $pagenum) + 6;
+					// echo $start." ".$end;
+					// $groupsQuery1  = @mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC LIMIT $start, $end");
+					// $groupsRow1 = mysqli_fetch_assoc($groupsQuery1);
+		
+					// iu_get_groups($groupsRow1, $groupsQuery1);
+
+					?>
+					<div class="paginate">
+						<p><?php echo $paginationDisplay; ?></p>
+					</div>
+					<?
+
+				}else { //user is not in a group
+					echo "<h2>You are not in any groups.</h2>";
 				}
-				iu_get_groups($groupsRow1, $groupQuery2);
-
-
-
-				// TODO: Finish pagination for groups
-
-				// $start = 0 + (($pagenum == 1 ? 0 : $pagenum) * 6);
-				// $end = 6 * ($pagenum == 0 ? 1 : $pagenum) + 6;
-				// echo $start." ".$end;
-				// $groupsQuery1  = @mysqli_query($dblink, "SELECT * FROM groups INNER JOIN user_groups USING (group_id) WHERE (groups.group_id = user_groups.group_id && user_groups.user_id = '{$Rows['user_id']}') ORDER BY group_id ASC LIMIT $start, $end");
-				// $groupsRow1 = mysqli_fetch_assoc($groupsQuery1);
-	
-				// iu_get_groups($groupsRow1, $groupsQuery1);
+				
 			?>
 			
 				
-			<div class="paginate">
-				<p><?php echo $paginationDisplay; ?></p>
-			</div>
-		</div>
+		</div><!-- #right -->
 
 	</div>
 <?php include("scripts.php"); ?>

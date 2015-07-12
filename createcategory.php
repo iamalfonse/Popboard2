@@ -24,9 +24,9 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | Create Category</title>
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title>Create Category | <?= $__site['name']; ?></title>
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="createcategory">
 
@@ -36,7 +36,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 		<?php include("left.php"); ?>
 
 		<div id="right">
-			<div class="right-content">
+			<div class="headertitle">
 				<h3 class="sectiontitle">Create New Category</h3>
 			</div>
 			<div class="errorContainer">

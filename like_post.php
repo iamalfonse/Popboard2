@@ -52,11 +52,11 @@ include("config.php");
 			iu_send_notification($likesRow['user_id'], $likesRow5['user_id'], 'like', '/post/'.$likesPostid.'/'.$posturl);
 		}
 
-		echo "<span class='liked'>Likes</span> ".$likesNumrows4['likes'];
+		echo "<span class='liked icon-favorite'></span> ".$likesNumrows4['likes'];
 	}else {
-
+		$liked = false;
 		if(isset($_COOKIE['login_cookie'])){ //if loggeed in
-			$liked = false;
+			
 			// check to see if you liked the post before
 			if($likesNumrows2 > 0 && $likesRow2['liked'] == 0){
 				//update table to like your post again
@@ -86,9 +86,9 @@ include("config.php");
 		$likesQuery4 = @mysqli_query($dblink, "SELECT likes FROM posts WHERE id = '$likesPostid'");
 		$likesNumrows4 = mysqli_fetch_assoc($likesQuery4);
 		if($liked == true){
-			echo "<span class='liked'>Likes</span> ".$likesNumrows4['likes'];
+			echo "<span class='liked icon-favorite'></span> ".$likesNumrows4['likes'];
 		}else {
-			echo "<span class=''>Likes</span> ".$likesNumrows4['likes'];
+			echo "<span class='icon-favorite'></span> ".$likesNumrows4['likes'];
 		}
 		
 		

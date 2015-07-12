@@ -1,0 +1,80 @@
+@font-face {
+	font-family: 'popboard';
+	src:url('../fonts/popboard.eot?a01pax');
+	src:url('../fonts/popboard.eot?#iefixa01pax') format('embedded-opentype'),
+		url('../fonts/popboard.ttf?a01pax') format('truetype'),
+		url('../fonts/popboard.woff?a01pax') format('woff'),
+		url('../fonts/popboard.svg?a01pax#popboard') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'popboard';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-favorite:before {
+	content: "\e291";
+}
+.icon-favorite-o:before {
+	content: "\e292";
+}
+.icon-map-marker:before {
+	content: "\e2c8";
+}
+.icon-search:before {
+	content: "\e2ca";
+}
+.icon-view:before {
+	content: "\e306";
+}
+.icon-notifications:before {
+	content: "\e24a";
+}
+.icon-star:before {
+	content: "\e260";
+}
+.icon-file-text:before {
+	content: "\e922";
+}
+.icon-user:before {
+	content: "\e971";
+}
+.icon-logout:before {
+	content: "\e9b6";
+}
+.icon-home:before {
+	content: "\e902";
+}
+.icon-categories:before {
+	content: "\e92e";
+}
+.icon-address-book:before {
+	content: "\e944";
+}
+.icon-calendar:before {
+	content: "\e953";
+}
+.icon-comment:before {
+	content: "\e96b";
+}
+.icon-users:before {
+	content: "\e972";
+}
+.icon-user-add:before {
+	content: "\e973";
+}
+.icon-user-delete:before {
+	content: "\e974";
+}

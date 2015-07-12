@@ -46,7 +46,7 @@ p.error {
 	margin: 20px 0 20px;
 	padding: 10px 1%;
 	line-height: 14px;
-	color: $red;
+	color: $color-red;
 	text-align: center;
 	z-index: 5;
 	background: #fff;
@@ -141,15 +141,15 @@ img.avatar {
 // white square showing lvl under avatar
 .lvl {
 	position: relative;
-	padding: 3px 8px;
+	padding: 0 8px;
 	width: 100%;
 	text-align: center;
 	font-weight: bold;
-	color: #444;
+	color: #555;
 	background: #fff;
 	border: 2px solid #fff;
-	border-radius: 4px;
-	@include box-shadow(inset 0 0 5px rgba(0,0,0,0.3));
+	border-radius: $border-radius;
+	// @include box-shadow(inset 0 0 5px rgba(0,0,0,0.3));
 	p {
 		margin: 0;
 	}

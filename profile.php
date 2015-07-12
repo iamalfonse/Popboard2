@@ -32,12 +32,12 @@ if($userprofile == ''){
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
 	<link href="/stylesheets/jcrop.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
-	<title>Import Underground | <?= $Rows['displayname'] ?></title>
-	<meta name="keywords" content="Import Underground <?= $Rows['displayname'] ?> Profile, Import Underground Profile, Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
-	<meta name="description" content="Import Underground | <?= $Rows['displayname'] ?>'s Profile">
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
+	<title><?= $Rows['displayname'] ?> | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['name']; ?> <?= $Rows['displayname'] ?> Profile, <?= $__site['name']; ?>">
+	<meta name="description" content="<?= $Rows['displayname'] ?>'s Profile | <?= $__site['description']; ?>">
 </head>
 <body class="profile">
 
@@ -164,7 +164,7 @@ if($userprofile == ''){
 							<h3>Profile Info</h3>
 							<div class="update-profileimg">
 								<p><strong>Update Profile Image</strong></p>
-								<p class="updatephoto"><span class="submitbtn uploadphoto">Upload Photo<input id="profileimg" type="file" name="profileimg" value="Upload a Photo"/></span></p>
+								<p class="updatephoto"><span class="btn uploadphoto">Upload Photo<input id="profileimg" type="file" name="profileimg" value="Upload a Photo"/></span></p>
 								<input type="hidden" name="MAX_FILE_SIZE" value="<?= $max_file_size ?>">
 							</div>
 							<div class="update-bio">
@@ -179,7 +179,7 @@ if($userprofile == ''){
 								<p><strong>Car</strong></p>
 								<p><input type="text" class="userinput" name="car" value="<?= $Rows['car']; ?>"/></p>
 							</div>
-							<input type="submit" name="submitUserInfo" class="submitbtn" value="Update Profile Info">
+							<input type="submit" name="submitUserInfo" class="btn" value="Update Profile Info">
 						</form>
 					</div>
 

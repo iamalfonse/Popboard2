@@ -1,6 +1,7 @@
 /*---------SETUP-----------*/
 .selectSetup {
-	@extend %gd12;
+	// @extend %gd12;
+	@include make-sm-column(12);
 	// width: 100%;
 	padding: 50px 0;
 	@include clearfix();
@@ -12,7 +13,8 @@
 		margin: 20px 20%;
 	}
 	ul {
-		@extend %gd7;
+		// @extend %gd7;
+		@include make-sm-column(7);
 		float: none;
 		// width: 60%;
 		margin: 0 auto 20px;
@@ -32,7 +34,7 @@
 		
 
 		&.active {
-			background: $blue;
+			background: $color-blue;
 		}
 		
 	}

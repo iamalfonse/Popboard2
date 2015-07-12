@@ -5,7 +5,8 @@
 	background: #2C353A;
 }
 .footerWrap {
-	@extend %gw;
+	// @extend %gw;
+	@extend .container;
 	// width: 1250px;
 	margin: 0 auto;
 	padding: 20px 0;

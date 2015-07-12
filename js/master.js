@@ -42,7 +42,7 @@ $(document).ready(function(){
 		$('body').addClass('openOverlay');
 		var createpostH = $('#createpost').height();
 		var overlay = $('.createpostOverlay');
-		overlay.height(createpostH + 200);
+		overlay.height($(document).height());
 	})
 	.on('click', '#createpost .closebtn, .createpostOverlay', function(){
 		$('body').removeClass('openOverlay');

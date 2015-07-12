@@ -13,7 +13,14 @@ if (isset( $_COOKIE['login_cookie'] )) {
 		if (isset($_POST["submit"])) { 
 			/* Check to see if a file has been uploaded. */ 
 			if (is_uploaded_file($_FILES['newfile']['tmp_name'])) {
-				$dest_filepath = "/Users/alfonsesurigao/Desktop/Websites/Popboard/images/userimages"; 
+				// $dest_filepath = "/Users/alfonsesurigao/Desktop/Websites/Popboard/images/userimages"; 
+				$environment = $__site['environment'];
+				if($environment == 'local'){
+					$dest_filepath = "~/Dropbox/Popboard2/images/userimages"; 
+				}else if($environment == 'production' || $environment == 'staging'){
+					$dest_filepath = "/images/userimages";
+				}
+				
 				$full_dest_path = $dest_filepath . "/" . $_FILES['newfile']['name'];
 				/* This will return 1 on success. */ 
 				$retval = move_uploaded_file($_FILES['newfile']['tmp_name'], $full_dest_path);

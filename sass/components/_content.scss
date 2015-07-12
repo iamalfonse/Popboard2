@@ -1,6 +1,7 @@
 /*==================== CONTENT =========================*/
 #content {
-	@extend %gw;
+	// @extend %gw;
+	@extend .container;
 	clear: both;
 	// width:1250px;
 	margin: 0 auto;

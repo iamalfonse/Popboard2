@@ -1,14 +1,15 @@
 // Add UI colors here
 // Example Base Colors
-$white: #ffffff;
-$black: #000000;
-$gray: #eaeaea;
-$red: #e24547;
-$orange: #f18c2c;
-$blue: #42a7dd;
-$green: #78ca45;
-$yellow: #ffff00;
-$purple: #a132a8;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray: #eaeaea;
+$color-grey: $color-gray;
+$color-red: #e24547;
+$color-orange: #f18c2c;
+$color-blue: #42a7dd;
+$color-green: #78ca45;
+$color-yellow: #e2dc2f;
+$color-purple: #a132a8;
 $primary: #1ABC9C;
 $warning: #F1C40F;
 $default: #BDC3C7;
@@ -93,6 +94,9 @@ $btn-hover: #f18c2c;
 $btn-text-color: #fff;
 $btn-padding: .3em 0;
 
+// Animation
+$animation-speed: 0.25s;
+
 // Grid Spacing / Use for global spacing
 $top: auto;
 $right: 1%;
@@ -110,3 +114,45 @@ $gd-count: 12;
 $start-width: 1250px;
 $mid-lr: 750px;
 $mobile-lr: 480px;
+
+
+
+//---------- BOOSTRAP GRID ----------
+// spacer
+$spacing: 1.5rem;
+$gutter: 3rem;
+$grid-spacing: 30px;
+// max width of PSD layout
+$screen-max:		1440px;
+
+// Media queries breakpoints
+$screen-xs-min:		480px;
+$screen-sm-min:		768px;
+$screen-md-min:		992px;
+$screen-lg-min:		1200px;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:		($screen-sm-min - 1);
+$screen-sm-max:		($screen-md-min - 1);
+$screen-md-max:		($screen-lg-min - 1);
+$screen-lg-max: 	($screen-max - 1);
+
+// Grid system
+
+// Number of columns in the grid.
+$grid-columns:			12;
+// Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:		$grid-spacing;
+
+$grid-float-breakpoint:			$screen-sm-min;
+$grid-float-breakpoint-max:		($grid-float-breakpoint - 1);
+
+
+//== Container sizes
+
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-sm:		(720px + $grid-gutter-width);
+$container-md:		(940px + $grid-gutter-width);
+$container-lg:		(1140px + $grid-gutter-width);
+

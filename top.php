@@ -20,6 +20,9 @@
 		$r  = mysqli_query($dblink, "SELECT * FROM users WHERE username='$username' AND session_hash = '$session_hash'");
 		$Rows = mysqli_fetch_assoc($r);
 		$topgroupid = $Rows['group_id'];
+	}else {
+		// logged out. set 
+		$Rows['user_id'] = '';
 	}
 
 	// print_r($url);
@@ -39,26 +42,26 @@
 ?>
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-15746792-8', 'importunderground.com');
-  ga('send', 'pageview');
+  // ga('create', 'UA-15746792-8', 'importunderground.com');
+  // ga('send', 'pageview');
 
 </script>
 
 <div id="top">
 	<div class="logomenu">
 		<div class="mobilemenu"></div>
-		<h1><a href="/">Import Underground</a></h1>
+		<h1><a href="/"><?= $__site['name']; ?></a></h1>
 		<? 
 		if(isset( $_COOKIE['login_cookie']) && $url1 != 'setup' ){ // show notifications and XP if logged in and not in setup
-			iu_get_userxp($Rows['user_id']);
+			iu_get_userxp($Rows);
 				
 		?>
-			<div class="top-notifications">
+			<div class="top-notifications icon-notifications">
 				<?
 					// get logged in user id
 					$notify_userid = $Rows['user_id'];
@@ -99,7 +102,7 @@
 				$getInvitesRows = mysqli_fetch_assoc($getInvitesQuery);
 				$invite_count = $getInvitesRows['invitecount'];
 		?>
-				<div class="top-invites">
+				<div class="top-invites icon-user-add">
 
 					<? if($invite_count >= 1 && $invite_count < 11){ //show number of invites pending ?>
 					<span class="invitecount"><?= $invite_count ?></span>
@@ -131,7 +134,7 @@
 ?>
 <nav class="mainNav">
 	<ul>
-		<li class="nav-home <? if($url1 == ''){ echo 'active'; } ?>"><a href="/"><i></i><span>Home</span></a></li>
+		<li class="nav-home <? if($url1 == ''){ echo 'active'; } ?>"><a href="/home"><i></i><span>Home</span></a></li>
 		<li class="nav-categories <? if($url1 == 'categories' || $url1 == 'posts'){ echo 'active'; } ?>"><a href="/categories"><i></i><span>Categories</span></a></li>
 		<li class="nav-groups <? if($url1 == 'groups' || ($url1== 'group' && $url2 != $topgroupurl)){ echo 'active'; } ?>"><a href="/groups"><i></i><span>Groups</span></a></li>
 		<li class="nav-topposts <? if($url1 == 'topposts'){ echo 'active'; } ?>"><a href="/topposts"><i></i><span>Top Posts</span></a></li>

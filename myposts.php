@@ -36,9 +36,9 @@ if($sortby=='newest' || $sortby==''){
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | My Posts</title>
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title>My Posts | <?= $__site['name']; ?></title>
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="mywall">
 	<input type="hidden" id="sortby" value="<?= $sortby?>" />
@@ -55,7 +55,7 @@ if($sortby=='newest' || $sortby==''){
 					echo "<p class='error'>You don't have permission to delete that post. Ain't nobody got time fo dat!</p>";
 				}
 			?>
-			<div class="right-content">
+			<div class="headertitle">
 				<h3 class="sectiontitle"><?= $sort ?></h3>
 			</div>
 <?php

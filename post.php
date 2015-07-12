@@ -10,7 +10,11 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	/* GET LOGGED IN USER INFORMATION*/
 	$query  = mysqli_query($dblink, "SELECT * FROM users WHERE username='$username' AND session_hash = '$session_hash'");
 	$Rows = mysqli_fetch_assoc($query);
+}else {
+	// logged out. set 
+	$Rows['user_id'] = '';
 }
+
 
 /* This will tell us to display an error message */
 $have_error = false;
@@ -34,11 +38,37 @@ $blogtitle = iu_cleaner_url($Row['blog_title']);
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
-	<title>Import Underground | <?= $Row['blog_title']; ?></title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
-	<meta name="description" content="Import Underground | <?= $Row['blog_title']; ?> ">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
+	<link rel="canonical" href="<?= $__site['url']; ?>/post/<?= $Row['id']; ?>/<?= $blogtitle; ?>" />
+
+	<title> <?= $Row['blog_title']; ?> | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['name']; ?> | <?= $Row['blog_title']; ?> ">
+
+
+	<!-- facebook -->
+	<meta property="og:title" content="<?= $Row['blog_title']; ?> | <?= $__site['name']; ?>" />
+	<meta property="og:url" content="<?= $__site['url']; ?>/post/<?= $Row['id']; ?>/<?= $blogtitle; ?>" />
+	<meta property="og:site_name" content="<?= $__site['name']; ?>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="<?= $__site['url']; ?>/images/og-image.gif" />
+	<meta property="og:image:url" content="<?= $__site['url']; ?>/images/og-image.gif" />
+	<meta property="og:image:secure_url" content="<?= $__site['url']; ?>/images/og-image.gif" />
+	<meta property="og:image:type" content="image/gif" />
+	<meta property="og:image:width" content="1500" />
+	<meta property="og:image:height" content="1500" />
+	<meta property="og:description" content="<?= iu_convert_image_links(iu_read_more($Row['blog_message'], 200, '...Read More</a>')); ?>" />
+
+	<!-- twitter -->
+	<meta name="twitter:account_id" content="<?= $__site['twitter-url']; ?>" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@<?= strtolower($__site['name']); ?>" />
+	<meta name="twitter:title" content="<?= $Row['blog_title']; ?> | <?= $__site['name']; ?>" />
+	<meta name="twitter:description" content="<?= iu_convert_image_links(iu_read_more($Row['blog_message'], 200, '...Read More</a>')); ?>" />
+	<meta name="twitter:image:src" content="https://recurly.com/img/og-image.gif" />
+	<meta name="twitter:image:width" content="1500" />
+	<meta name="twitter:image:height" content="1500" />
 </head>
 <body class='comments'>
 
@@ -50,12 +80,12 @@ $blogtitle = iu_cleaner_url($Row['blog_title']);
 
 		<div id='right'>
 
-<?	
-// If this post has been deleted by the post user
-if($Row['deleted']=='1'){ //
-	echo "<h2>Uh oh! This post has been deleted.</h2>";
-}else{ 
-?>
+		<?	
+		// If this post has been deleted by the post user
+		if($Row['deleted']=='1'){ //
+			echo "<h2>Uh oh! This post has been deleted.</h2>";
+		}else{ 
+		?>
 			<div class='postitem'>
 				<div class="postuser">
 					<a href="/profile/<?= $Row['username'] ?>"><? iu_get_avatar_pic($Row['email']); ?></a>
@@ -63,31 +93,33 @@ if($Row['deleted']=='1'){ //
 						<p>Lvl <?= trim($Row['lvl']); ?> </p>
 					</div>
 				</div>
-				<div class='posttop'>
-					<h3 class='posttitle' id="<?= $Row['id']; ?>"><?= $Row['blog_title']; ?></h3>
-					<p class='username'>Posted by: <a href="/profile/<?= $Row['username']; ?>"><?= $postusername; ?></a> <?= iu_time_elapsed_string($Row['post_date']); ?></p>
-				</div>
-				<div class='postbottom'>
-					<div class='blogmessage'><?= iu_convert_image_links(iu_convert_video_links(iu_linkusername($Row['blog_message']))) ?></div>
-					<div class='counters'>
-						<? 
-						//get the number of likes for a post
-						$getPostsQuery3 = @mysqli_query($dblink, "SELECT likes FROM posts WHERE id = '{$Row['id']}'");
-						$getPostsRow3 = mysqli_fetch_assoc($getPostsQuery3);
-						
-						//used to check if user has already liked a post
-						$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id,liked FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
-						$getPostsRow4 = mysqli_fetch_assoc($getPostsQuery4);
+				<div class="postcontent-wrap">
+					<div class='posttop'>
+						<h3 class='posttitle' id="<?= $Row['id']; ?>"><?= $Row['blog_title']; ?></h3>
+						<p class='username'>Posted by: <a href="/profile/<?= $Row['username']; ?>"><?= $postusername; ?></a> <?= iu_time_elapsed_string($Row['post_date']); ?></p>
+					</div>
+					<div class='postbottom'>
+						<div class='blogmessage'><?= iu_convert_image_links(iu_convert_video_links(iu_linkusername($Row['blog_message']))) ?></div>
+						<div class='counters'>
+							<? 
+							//get the number of likes for a post
+							$getPostsQuery3 = @mysqli_query($dblink, "SELECT likes FROM posts WHERE id = '{$Row['id']}'");
+							$getPostsRow3 = mysqli_fetch_assoc($getPostsQuery3);
+							
+							//used to check if user has already liked a post
+							$getPostsQuery4 = @mysqli_query($dblink, "SELECT user_id,liked FROM likes WHERE likes.user_id = '{$Rows['user_id']}' AND likes.post_id = '{$Row['id']}'");
+							$getPostsRow4 = mysqli_fetch_assoc($getPostsQuery4);
 
-						//show likes and determine if user liked the post already and user is logged in
-						if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie']) && $getPostsRow4['liked'] == 1 ){
-							echo "<div class='likes'><span class='liked'>Likes</span> {$getPostsRow3['likes']}</div>";
-						}else{
-							echo "<div class='likes'><span>Likes</span> {$getPostsRow3['likes']}</div>";
-						}
+							//show likes and determine if user liked the post already and user is logged in
+							if($getPostsRow4['user_id'] == $Rows['user_id'] && isset($_COOKIE['login_cookie']) && $getPostsRow4['liked'] == 1 ){
+								echo "<div class='likes'><span class='liked icon-favorite'></span> {$getPostsRow3['likes']}</div>";
+							}else{
+								echo "<div class='likes'><span class='icon-favorite'></span> {$getPostsRow3['likes']}</div>";
+							}
 
-						
-						?>
+							
+							?>
+						</div>
 					</div>
 				</div>
 				
@@ -158,17 +190,15 @@ if($Row['deleted']=='1'){ //
 						<textarea class='commentinput' name='comment' placeholder='Your comment here...'></textarea>
 						<input type='hidden' name='postid_num' value='$postid' >
 						<input type='hidden' name='title' value='$titleurl' >
-						<input type='submit' name='submitcomment' class='button1 submitbtn' value='Submit Comment'/>
+						<input type='submit' name='submitcomment' class='submitbtn' value='Submit Comment'/>
 				  	</form>
 				 </div>";
 		} else {
-			echo "<p class='logintocomment' >To post comments, please Sign In.</p>";
+			echo "<p class='logintocomment' >To post comments, please <a class='btn' href='/signin'>Sign In</a>.</p>";
 		}
-	?>
-
-<? } ?>
+	} ?>
 		</div><!-- #right -->
-	</div><!-- #bottom -->
+	</div><!-- #content -->
 
 <?php include("scripts.php"); ?>
 <script type="text/javascript" src="/js/post.js"></script>

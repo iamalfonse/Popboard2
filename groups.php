@@ -25,11 +25,11 @@ if (isset( $_COOKIE['login_cookie'] )) {
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | Groups</title>
-	<meta name="keywords" content="">
-	<meta name="description" content="Search and join your favorite car groups in your area">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<title>Groups | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="groups">
 	<?php include("top.php"); ?>
@@ -57,7 +57,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				<? } ?>
 				<!-- <div class="searchGroups">
 					<input id="groupSearch" class="inputGroupSearch" type="text" placeholder="Search Groups..." />
-					<button class="button1 searchbtn">Search</button>
+					<button class="searchbtn">Search</button>
 				</div> -->
 			</div>
 

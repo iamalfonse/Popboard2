@@ -1,0 +1,147 @@
+/*============= COMMENT SECTION =============*/
+
+p.logintocomment {
+	float: right;
+	width: 88%;
+	color:#333;
+	margin:20px 0 20px 0px;
+	clear:both;
+}
+
+#commentstop {
+	float: right;
+	width: 88%;
+	margin: 0px 0 20px 0;
+	//width:760px;
+	//border-bottom: #aaa thin solid;
+	border-radius: $border-radius;
+	//@include gradient(#f9f9f9, #e6e6e6);
+
+	h3 {
+		color: #555;
+		margin: 0;
+		font-weight: 400;
+		padding: 5px 0 5px 0px;
+		border-top: 1px solid lighten($bg-color, 10%);
+		//text-shadow: 0 1px 1px #fff;
+		@include box-shadow(0 -1px 0 darken($bg-color, 10%));
+	}
+
+}
+	
+#commentsarea {
+	float: right;
+	width: 88%;
+	overflow: auto;
+	padding: 10px 0;
+	margin: 0px 0 20px 0;
+	border-radius: 0 0 5px 5px;
+
+	.comment {
+		clear: both;
+		//overflow: hidden;
+	}
+	
+	.commentpic {
+		float: left;
+		width: 8%;
+		margin: 20px 0 0;
+
+		img {
+			width: 100%;
+			border: 2px solid #fff;
+			@include box-shadow(0 1px 2px #999);
+		}
+	}
+	.lvl {
+		text-align: center;
+		font-size: 1rem;
+		padding: 2px 0;
+	}
+
+	// img.commentarrow {
+	// 	width: 15px;
+	// 	float: left;
+	// 	margin: 50px 0 0 10px;
+	// 	z-index: 1;
+	// }
+	.usercomment-top,
+	.usercomment {
+		position: relative;
+		width: 88%;
+		float: right;
+		background: #fff;
+	}
+	.usercomment-top {
+		margin: 20px 0 0 0;
+		padding: 10px;
+		border-bottom: 1px solid #e2e2e3;
+		border-radius: 5px 5px 0 0;
+		@include clearfix();
+
+		&:before {
+			content: " ";
+			position: absolute;
+			left: -18px;
+			top: 14px;
+			display: block;
+			@include triangle(18px, #f3f3f3, left);
+		}
+	}
+	h4 {
+		display:block;
+		float: left;
+		color: #555;
+		font-size: 1.4rem;
+		margin: 5px 0 0 0;
+		a {
+			//color: #428BB3;
+			margin: 0 10px 0 0;
+		}
+		span {
+			font-size: 1rem;
+			font-weight: 200;
+			color: #999;
+		}
+	}
+	.reply {
+		float: right;
+		width: 30px;
+		height: 24px;
+		cursor: pointer;
+		background: url(../images/reply.png) no-repeat;
+	
+	}
+	.usercomment {
+		margin: 0px 0 20px 0;
+		padding: 10px;
+		color: #444;
+		//@include box-shadow(inset -2px 0px 2px rgba(0,0,0,0.15));
+		border-radius: 0 0 $border-radius $border-radius;
+	}
+}
+
+#addcomment {
+	clear: both;
+	width: 88%;
+	float: right;
+	background: none repeat scroll 0 0 #fff;
+    padding: 10px 20px;
+    border-radius: $border-radius;
+    // @include box-shadow(0 1px 5px rgba(0, 0, 0, 0.5));
+}
+.addcommentp {
+	margin: 0px 0 10px 0;
+}
+.commentinput {
+	width: 100%;
+	height: 100px;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+	margin: 0;
+	padding: 5px;
+	background: white;
+	border-radius: $border-radius;
+	// @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.15) inset);
+}
+

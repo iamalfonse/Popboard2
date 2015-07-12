@@ -18,11 +18,11 @@ include("config.php");
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="icon" type="image/png" href="/images/favicon.png">
-	<title>Import Underground | Register</title>
-	<meta name="keywords" content="Import Underground, Imports, Racing, Tuner, Cars, Car Meets, Underground, Street, Pictures, Events, Meets, Groups, Car Groups">
-	<meta name="description" content="Sign up now to create your own Import Underground account and share and discuss with other car enthusiasts">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
+	<title>Register | <?= $__site['name']; ?></title>
+	<meta name="keywords" content="<?= $__site['keywords']; ?>">
+	<meta name="description" content="<?= $__site['description']; ?>">
 </head>
 <body class="registration">
 
@@ -71,7 +71,7 @@ include("config.php");
 
 			        //send out a welcome email
                     $to = $confirm_info[email];
-                    $subject = "Thanks for joining Import Underground!";
+                    $subject = "Thanks for joining {$__site['name']}!";
                     $message = "
                                 <html>
                                 <head>
@@ -87,18 +87,18 @@ include("config.php");
                                     <thead>
                                         <tr style='background:#E9E9E9;'>
                                             <td style='padding:10px 10px;'>
-                                               <img src='http://www.importunderground.com/images/email/header_bg.jpg' alt='Import Underground' />
+                                               <img src='{$__site['url']}/images/email/header_bg.jpg' alt='{$__site['keywords']}' />
                                             </td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <table width='100%' style='font-family: helvetica-neue, arial;border-collapse: collapse;height: 370px;margin: 0;padding: 0; background-image: url(http://www.importunderground.com/images/email/regsuccess_bg.jpg); background-color: #000; background-repeat: no-repeat; background-position: center top;' border='0'>
+                                                <table width='100%' style='font-family: helvetica-neue, arial;border-collapse: collapse;height: 370px;margin: 0;padding: 0; background-image: url({$__site['url']}/images/email/regsuccess_bg.jpg); background-color: #000; background-repeat: no-repeat; background-position: center top;' border='0'>
                                                     <tbody>
                                                         <tr>
                                                             <td style='vertical-align:top;padding:20px;'>
-                                                                 <h1 style='color:#ffffff;text-shadow:0 1px  #333;'>Welcome to Import Underground</h1>
+                                                                 <h1 style='color:#ffffff;text-shadow:0 1px  #333;'>Welcome to {$__site['name']}</h1>
                                                                 <h3 style='color: #ffffff;'>Thanks for joining our growing community!</h3>
                                                             </td>
                                                         </tr>
@@ -110,23 +110,23 @@ include("config.php");
                                             <td style='padding:20px 20px;'>
                                                 <p>We're excited that you've decided to become part of our online community of car enthusiasts. We have many more features coming in the near future and hope that you enjoy your time on the site.</p>
                                                 <p></p>
-                                                <p>You can log in <a href='http://www.importunderground.com'>here</a> and <a href='http://www.importunderground.com/createpost'>create your first post</a>.</p>
-                                                <p>Also, don't forget to <a href='http://www.importunderground.com/profile'>update your profile</a> and <a href='http://www.importunderground.com/myposts'>manage your posts</a>.</p>
+                                                <p>You can log in <a href='{$__site['url']}'>here</a> and <a href='{$__site['url']}/createpost'>create your first post</a>.</p>
+                                                <p>Also, don't forget to <a href='{$__site['url']}/profile'>update your profile</a> and <a href='{$__site['url']}/myposts'>manage your posts</a>.</p>
                                             </td>
                                         <tr>
                                             <td style='padding:20px 20px;'>
-                                               <p>If you have any questions, comments, concerns or suggestions please email them to <a href='mailto:support@importunderground.com'>support@importunderground.com</a></p>
+                                               <p>If you have any questions, comments, concerns or suggestions please email them to <a href='mailto:{$__site['email']}'>{$__site['email']}</a></p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style='padding:20px 20px;'>
                                                 <p>Regards,</p>
-                                               <p>-Import Underground Team</p>
+                                               <p>-{$__site['name']} Team</p>
                                             </td>
                                         </tr>
                                         <tr style='background:#262626;'>
                                             <td style='padding:20px 20px; '>
-                                               <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 Import Underground | <a href='http://www.importunderground.com/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='http://www.importunderground.com/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='http://www.importunderground.com/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
+                                               <p style='color: #cccccc;font-size: 12px;text-align:center;'> &copy;2014 {$__site['keywords']} | <a href='{$__site['url']}/privacypolicy' style='color:#ccc'>Privacy Policy</a> | <a href='{$__site['url']}/terms' style='color:#ccc'>Terms and Conditions</a> | <a href='{$__site['url']}/unsubscribe?email=$to' style='color:#ccc'>Unsubscribe</a></p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -139,7 +139,7 @@ include("config.php");
                     $headers ="MIME-Version: 1.0" . "\r\n";
                     $headers .= "X-Mailer: PHP/" .phpversion() ."\n";
                     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-                    $headers .= "From: Import Underground <support@importunderground.com>";
+                    $headers .= "From: {$__site['name']} <{$__site['email']}>";
                     mail($to, $subject, $message, $headers);
 
 			        //delete the confirm row  

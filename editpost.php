@@ -34,10 +34,10 @@ if(isset($editpostRows['group_id'])){
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Import Underground | Edit Post</title>
+	<title>Edit Post | <?= $__site['name']; ?></title>
 	<link href="/stylesheets/cleditor.css" rel="stylesheet" type="text/css" />
-	<link href="/stylesheets/<?= $stylesheet; ?>.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 </head>
 <body class="editpost">
 
@@ -47,9 +47,8 @@ if(isset($editpostRows['group_id'])){
 		<?php include("left.php"); ?>
 
 		<div id="right">
-			<div class="right-content">
-	        	<h3 class="sectiontitle">Edit Post</h3>
-				<div class="clear"></div>
+			<div class="headertitle">
+				<h3 class="sectiontitle">Edit Post</h3>
 			</div>
 			<div class="errorContainer">
 			<?php
@@ -64,7 +63,7 @@ if(isset($editpostRows['group_id'])){
 				}
 			?>
 			</div>
-			<div id="postcomment">
+			<div id="editpost">
 				<?php
 					// check to make sure that this user is the user who posted this post (security check)
 					if($username == $editpostRows['username']){

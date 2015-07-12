@@ -1,0 +1,25 @@
+.tooltip {
+	position: relative;
+	.tooltip-note {
+		display: block;
+		position: absolute;
+		top: -40px;
+		left: 50%;
+		// height: 22px;
+		padding: 2px 4px;
+		font-size: 1.2rem;
+		background: #fff;
+		border-radius: 2px;
+		@include box-shadow(0 2px 5px rgba(0,0,0,0.4));
+		&:before{
+			content: " ";
+			display: block;
+			position: absolute;
+			top: 22px;
+			left: 40%;
+			z-index: 1;
+			@include triangle(14px, #fff, down);
+		}
+		
+	}
+}

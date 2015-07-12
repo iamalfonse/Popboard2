@@ -1,15 +1,23 @@
 /* ------- CATEGORIES Section ------- */
 .category-list {
+
 	li {
-		@extend %gd4;
+		// @extend %gd4;
+		@include make-sm-column(4);
 		// width: 31.333%;
-		margin: 0 1% 20px;
-		padding: 10px 1%;
-		display: block;
-		float: left;
-		background: #fff;
-		border-radius: 5px;
+		
+		// float: left;
+		
 		// @include box-shadow(0 1px 3px rgba(0,0,0,0.3));
+
+		a {
+			display: block;
+			margin: 0 auto 20px;
+			padding: 1.5rem;
+			
+			background: #fff;
+			border-radius: 5px;
+		}
 	}
 	.catimg {
 		width: 100%;
