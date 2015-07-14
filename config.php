@@ -161,8 +161,8 @@ function iu_get_posts($Rows, $Row, $QueryResult, $category='', $page ='',$subpag
 					</p>
 					
 					<? if($urlpage == 'myposts'){ //only show if inside of myposts section ?>
-						<p class='editpostbtn'><a class="submitbtn" href='/editpost/<?= $Row['id'] ?>/<?=$blogtitle?>'>Edit Post</a></p>
-						<p class='deletepostbtn'><a class="deletebtn" href='deletepost/<?= $Row['id']?>/<?=$blogtitle?>'>Delete Post</a></p>
+						<p class='editpostbtn'><a class="submitbtn small" href='/editpost/<?= $Row['id'] ?>/<?=$blogtitle?>'>Edit Post</a></p>
+						<p class='deletepostbtn'><a class="deletebtn small" href='deletepost/<?= $Row['id']?>/<?=$blogtitle?>'>Delete Post</a></p>
 					<? } ?>
 				</div>
 				<div class='postbottom'>

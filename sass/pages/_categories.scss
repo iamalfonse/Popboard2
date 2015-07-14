@@ -4,19 +4,21 @@
 	li {
 		// @extend %gd4;
 		@include make-sm-column(4);
-		// width: 31.333%;
-		
-		// float: left;
-		
-		// @include box-shadow(0 1px 3px rgba(0,0,0,0.3));
 
 		a {
 			display: block;
 			margin: 0 auto 20px;
 			padding: 1.5rem;
-			
 			background: #fff;
-			border-radius: 5px;
+			border-radius: $border-radius;
+			transition: transform $animation-speed, box-shadow $animation-speed;
+
+			@include clearfix();
+
+			&:hover {
+				box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+				transform: translateY(-0.5rem);
+			}
 		}
 	}
 	.catimg {
@@ -37,5 +39,12 @@
 			color: #333;
 			text-align: center;
 		}
+
+		&.cat-posts,
+		&.cat-comments {
+			float: left;
+			margin: 0 1rem 0 0;
+		}
+		
 	}
 }

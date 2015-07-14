@@ -28,6 +28,12 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 	header('Location: /posts/general');
 	exit;
 }
+
+// Get Posts
+$QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (category = '$category' AND posts.group_id is NULL AND posts.deleted = '0') ORDER BY id DESC LIMIT 0, 6");
+$Row = mysqli_fetch_assoc($QueryResult);
+$num_rows = mysqli_num_rows($QueryResult);
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,19 +55,15 @@ if($pageurl == '/posts/' || $pageurl == '/posts' ){
 	<div id="content">
 		<?php include("left.php"); ?>
 
-	    <div id="right">
+	    <div id="right" class="<?= $num_rows == 0 ? 'noposts' : ''; ?>">
 
 	    	<div class="headertitle">
 	    		<h2><?= $catDisplayname ?></h2>
 	    	</div>
 			<?php
 				//show posts
-				$QueryResult = @mysqli_query($dblink, "SELECT username, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (category = '$category' AND posts.group_id is NULL AND posts.deleted = '0') ORDER BY id DESC LIMIT 0, 6");
-				$Row = mysqli_fetch_assoc($QueryResult);
-				$num_rows = mysqli_num_rows($QueryResult);
-				
 				if($num_rows == 0){
-					echo "<h2>Sorry, there are no posts here.</h2>";
+					echo "<div class='posterror'><h2>Sorry, there are no posts here.</h2></div>";
 				}else {
 					//display initial posts
 					iu_get_posts($Rows, $Row, $QueryResult);

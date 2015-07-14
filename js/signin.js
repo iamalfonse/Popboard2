@@ -14,7 +14,8 @@ $(document).ready(function(){
 
 			return false;
 		}
-		// TODO: Do client side validation and show error
+		// TODO: Do client side/server ajax request validation and show error
+		
 		
 		
 	});

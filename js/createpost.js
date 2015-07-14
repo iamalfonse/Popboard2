@@ -26,6 +26,10 @@ $('document').ready(function(){
       if(title == '' || message.length == 0 ){
         event.preventDefault();
         $('.errorContainer').html('').prepend('<p class="error">Title and Message cannot be left blank.</p>');
+      
+        
+          $("html, body").animate({ scrollTop: 0 }, 300);
+          return false;
       }
 
 

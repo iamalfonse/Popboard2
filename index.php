@@ -66,15 +66,15 @@ if($errmsg=='1'){
 		<h3><span>New to <?= $__site['name']; ?>?</span> Sign up for free!</h3>
 		<p class="signup"><a class="btn signupbtn" href="/register">Sign Up Now</a></p>
 	</div>
-	<!-- <div id="bgslider" >
-		<div class="active image slide1" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-		<div class="image slide2" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-		<div class="image slide3" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-		<div class="image slide4" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-		<div class="image slide5" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-		<div class="image slide6" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-		<div class="image slide7" /><p class="photocred">Photo by: <a href="http://instagram.com/deejsfc">David Frias</a></p></div>
-	</div> -->
+	<ul id="bgslider" >
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 </div><!--#content-->
 <!-- <div class="homeAbout">
 	<div class="homeAboutWrap">

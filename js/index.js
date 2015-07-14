@@ -1,19 +1,30 @@
 $(document).ready(function(){
 	
-	// $('#bgslider').hide();
-    
-	// $('#bgslider').fadeIn(1500);//fade the background back in once all the images are loaded
-	// run every 7s
-	// setInterval('cycleImages()', 7000);
+
+
+	// var rotateEvery = 5; //seconds
+	// var images = [
+	//     "../images/bgslide_02.jpg",
+	//     "../images/bgslide_03.jpg",
+	//     "../images/bgslide_04.jpg",
+	//     "../images/bgslide_05.jpg",
+	//     "../images/bgslide_06.jpg",
+	//     "../images/bgslide_07.jpg",
+	//     "../images/bgslide_01.jpg"
+	// ];
+	// var curImage = 0;
+	// setInterval(delayFunction, rotateEvery * 1000);
+
+	// function delayFunction() {
+	//     if (curImage == images.length) {
+	//         curImage = 0;
+	//     }
+	//     $('#bgslider').fadeOut(1000, function() {
+	//         $(this).css("background-image", 'url(' + images[curImage] + ')').fadeIn(1000);
+	//         curImage++;
+	//     });
+
+	// }
 
 });//end document.ready
 
-// function cycleImages(){
-// 	var $active = $('#bgslider .active');
-// 	var $next = ($('#bgslider .active').next().length > 0) ? $('#bgslider .active').next() : $('#bgslider .image:first');
-// 	$next.css('z-index',2); //move the next image up the pile
-// 	$active.fadeOut(1500,function(){ //fade out the top image
-// 		$active.css('z-index',1).show().removeClass('active'); //reset the z-index and unhide the image
-// 		$next.css('z-index',3).addClass('active'); //make the next image the top one
-// 	});
-// }

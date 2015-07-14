@@ -4,14 +4,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title><?= $title; ?></title>
-	<meta name="keywords" content="<?= $__site['keywords']; ?>">
-	<meta name="description" content="<?= $__site['description']; ?>">
+	<title><?= isset($title) == true ? $title : $__site['name']; ?></title>
+	<meta name="keywords" content="<?= isset($keywords) == true ? $keywords : $__site['keywords']; ?>">
+	<meta name="description" content="<?= isset($description) == true ? $description : $__site['description']; ?>">
 	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
 
 	<!-- facebook -->
-	<meta property="og:title" content="<?= $Row['blog_title']; ?> | <?= $__site['name']; ?>" />
+	<meta property="og:title" content="<? if isset($Row['blog_title']){ echo $__site['blog_title'].' | '.$__site['name'];}else{echo $__site['name'];} ?>" />
 	<meta property="og:url" content="<?= $__site['url']; ?><?= iu_get_page_url(); ?>" />
 	<meta property="og:site_name" content="<?= $__site['name']; ?>" />
 	<meta property="og:type" content="website" />

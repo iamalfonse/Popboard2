@@ -21,12 +21,16 @@
 		color: #fff;
 		background: #3f94b8;
 	}
+
+	&.small {
+		padding: 4px 10px;
+	}
 }
 
 .editpostbtn { //button container (not an actual button)
 	position: absolute;
 	top: 10px;
-	right: 140px;
+	right: 110px;
 }
 .submitbtn {
 	@extend .btn;

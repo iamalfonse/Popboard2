@@ -4,6 +4,7 @@
 	@media (min-width: $screen-sm-min) {
 		float: right;
 	}
+
 	float: right;
 	width: 100%;
 	padding: 10px 1%;
@@ -12,6 +13,10 @@
 	background: darken(#687991, 8%);
 	// @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.2), 0 1px 0px rgba(255,255,255,0.2));
 	// border-radius: 4px;
+
+	.noposts & {
+		@include make-sm-column(12);
+	}
 
 	h2,
 	h3 {

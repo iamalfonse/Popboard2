@@ -221,7 +221,7 @@
 	position: relative;
 	overflow: hidden;
 	height: 70px;
-	background: #2c353a;
+	background: #272E45;
 	transition: filter 0.5s ease;
 	// background: #a8cba1;
 	//background: #272B32; //gray
@@ -241,10 +241,11 @@
 		height: 100%;
 		overflow: hidden;
 		margin: 0 auto;
+		transition: background $animation-speed;
 
 		&:hover,
 		&.active {
-			background: lighten(#272B32, 10%);
+			background: lighten(#272E45, 5%);
 
 			i {
 				@include opacity(1);
@@ -265,14 +266,13 @@
 			font-weight: normal;
 			font-size: 1.2rem;
 			color: #848e92;
-			// border:1px solid darken(#363A45, 20%);
-			// @include gradient(lighten(#363A45, 5%), #363A45);
-			// border-radius: 4px;
-			// @include box-shadow(inset 0 1px 0px lighten(#363A45, 10%));
-
+			text-shadow: 0 none;
+			transition: transform $animation-speed, text-shadow $animation-speed;
+			
 			&:hover {
 				color: #fff;
-				// @include gradient(#363A45, lighten(#363A45, 5%));
+				text-shadow: 0 0 3px rgba(0,0,0,1);
+				transform: translateY(-0.5rem);
 			}
 		}
 		i {
@@ -280,7 +280,8 @@
 			width: 30px;
 			height: 30px;
 			margin: 0 auto;
-			background: url(../images/menu-icons.png) no-repeat;
+			font-size: 2.5rem;
+			// background: url(../images/menu-icons.png) no-repeat;
 			@include opacity(0.5);
 		}
 		span {

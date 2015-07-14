@@ -49,8 +49,8 @@ if (isset( $_COOKIE['login_cookie'] )) {
 								<!-- <div class="catimg <?= $catRows['category']?>" <? if(isset($catRows['catimg'])){ ?> style="background: url() no-repeat center center;" <? } ?>></div> -->
 								<h3><?= $catRows['cat_displayname']; ?></h3>
 								<p class="desc"><?= $catRows['description']; ?></p>
-								<p>Posts: <?= $catRows['num_posts']; ?></p>
-								<p>Comments: <?= $catRows['num_comments']; ?></p>
+								<p class="cat-posts"><i class="icon-file-text"></i> <?= $catRows['num_posts']; ?></p>
+								<p class="cat-comments"><i class="icon-comment"></i> <?= $catRows['num_comments']; ?></p>
 							</a>
 						</li>
 				<?

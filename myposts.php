@@ -29,6 +29,25 @@ if($sortby=='newest' || $sortby==''){
 }else if($sortby=='groupposts'){
 	$sort = 'Group Posts';
 }
+
+if($sortby == 'newest'|| $sortby == '') { //sort by newest
+		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.group_id IS NULL ORDER BY id DESC LIMIT 0, 6";
+	$subpage = '';
+}else if($sortby == 'oldest'){ //sort by oldest
+	$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.group_id IS NULL ORDER BY id ASC LIMIT 0, 6";
+	$subpage = '';
+}else if($sortby == 'groupposts'){
+	$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND (posts.group_id='{$Rows['group_id']}' AND posts.category='general') ORDER BY id DESC LIMIT 0, 6";
+	$subpage = 'groupposts';
+}
+$page = 'myposts';
+
+// Get posts
+$QueryResult = @mysqli_query($dblink, $SQLString);
+$Row = mysqli_fetch_assoc($QueryResult);
+$num_rows = mysqli_num_rows($QueryResult);
+
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,7 +68,7 @@ if($sortby=='newest' || $sortby==''){
 
 		<?php include("left.php"); ?>
 		
-		<div id="right">
+		<div id="right" class="<?= $num_rows == 0 ? 'noposts' : ''; ?>">
 			<?
 				if($errmsg == '1'){
 					echo "<p class='error'>You don't have permission to delete that post. Ain't nobody got time fo dat!</p>";
@@ -58,31 +77,17 @@ if($sortby=='newest' || $sortby==''){
 			<div class="headertitle">
 				<h3 class="sectiontitle"><?= $sort ?></h3>
 			</div>
-<?php
+			
 
-	if($sortby == 'newest'|| $sortby == '') { //sort by newest
-		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.group_id IS NULL ORDER BY id DESC LIMIT 0, 6";
-		$subpage = '';
-	}else if($sortby == 'oldest'){ //sort by oldest
-		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND posts.group_id IS NULL ORDER BY id ASC LIMIT 0, 6";
-		$subpage = '';
-	}else if($sortby == 'groupposts'){
-		$SQLString = "SELECT username, displayname, email, lvl, blog_title, blog_message, user_id, id, post_date FROM users INNER JOIN posts USING (user_id) WHERE (username = '$username' AND deleted='0') AND (posts.group_id='{$Rows['group_id']}' AND posts.category='general') ORDER BY id DESC LIMIT 0, 6";
-		$subpage = 'groupposts';
-	}
-	$page = 'myposts';
-	
-	$QueryResult = @mysqli_query($dblink, $SQLString);
-	$Row = mysqli_fetch_assoc($QueryResult);
-	$num_rows = mysqli_num_rows($QueryResult);
-				
-	if($num_rows == 0){
-		echo "<h2>You haven't created any posts yet.</h2>";
-	}else {
-		//display initial posts
-		iu_get_posts($Rows, $Row, $QueryResult, '', $page, $subpage);
-	}
-?>
+			<?php
+				// show posts
+				if($num_rows == 0){
+					echo "<div class='posterror'><h2>You haven't created any posts yet.</h2></div>";
+				}else {
+					//display initial posts
+					iu_get_posts($Rows, $Row, $QueryResult, '', $page, $subpage);
+				}
+			?>
 
 		</div><!-- #right -->
 		<aside id="side">

@@ -128,6 +128,7 @@ if($userprofile == ''){
 						<div class="lvl">
 							<p>Lvl <? if($Rows['lvl'] == NULL){echo "0";}else{ echo $Rows['lvl'];} ?></p>
 						</div>
+						<p class="bio"><?= $Rows['bio'];?></p>
 						<p class="showbgSelector">Update Background</p>
 					</div>
 					<div class="userinfo">
@@ -140,8 +141,7 @@ if($userprofile == ''){
 						</p>
 						<p class="email"><span class="icon"></span><strong>E-mail:</strong> <?= $Rows['email'] ?></p>
 						<p class="joindate"><span class="icon"></span><strong>Joined on:</strong> <?= iu_readable_date($Rows['joindate']); ?></p>
-						<p class="bio"><strong>Bio</strong></p>
-						<p class="bio"><?= $Rows['bio'];?></p>
+						
 						<div class="posts">
 							<p class="postcount"><?= iu_format_number($Rows['total_posts']); ?></p>
 							<div class="icon"></div>

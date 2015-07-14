@@ -19,6 +19,30 @@
 	}
 }
 
+p.error {
+	position: relative;
+	margin: 20px 0 20px;
+	padding: 10px;
+	font-size: 1.4rem;
+	line-height: 1.8rem;
+	color: $color-red;
+	text-align: center;
+	z-index: 5;
+	background: #fff;
+
+	&:after {
+		content: " ";
+		display: block;
+		position: absolute;
+		right: 2rem;
+		top: 1.2rem;
+		height: 14px;
+		width: 14px;
+		cursor: pointer;
+		background: url('../images/mini-icons.png') no-repeat -40px -150px;
+	}
+}
+
 #createpost {
 	@include make-sm-column(6);
 
@@ -58,7 +82,7 @@
     	float: right;
     	padding: 6px 10px;
     	font-size: 1.2rem;
-    	border-radius: 2px;
+    	border-radius: $border-radius;
 
     	&:hover {
     		background: darken(#F3F3F3, 10%);

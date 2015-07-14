@@ -121,7 +121,7 @@
 						<li><a class='viewbtn' href='/invites'>View All Pending Invites</a></li>
 					</ul>
 				</div>
-		<?		
+		<?
 			} 
 		}// end of if(isset$_COOKIE['login_cookie'])
 		//iu_calculate_GP($Rows['user_id']); ?>
@@ -134,14 +134,14 @@
 ?>
 <nav class="mainNav">
 	<ul>
-		<li class="nav-home <? if($url1 == ''){ echo 'active'; } ?>"><a href="/home"><i></i><span>Home</span></a></li>
-		<li class="nav-categories <? if($url1 == 'categories' || $url1 == 'posts'){ echo 'active'; } ?>"><a href="/categories"><i></i><span>Categories</span></a></li>
-		<li class="nav-groups <? if($url1 == 'groups' || ($url1== 'group' && $url2 != $topgroupurl)){ echo 'active'; } ?>"><a href="/groups"><i></i><span>Groups</span></a></li>
-		<li class="nav-topposts <? if($url1 == 'topposts'){ echo 'active'; } ?>"><a href="/topposts"><i></i><span>Top Posts</span></a></li>
+		<li class="nav-home <? if($url1 == ''){ echo 'active'; } ?>"><a href="/home"><i class="icon-home"></i><span>Home</span></a></li>
+		<li class="nav-categories <? if($url1 == 'categories' || $url1 == 'posts'){ echo 'active'; } ?>"><a href="/categories"><i class="icon-categories"></i><span>Categories</span></a></li>
+		<li class="nav-groups <? if($url1 == 'groups' || ($url1== 'group' && $url2 != $topgroupurl)){ echo 'active'; } ?>"><a href="/groups"><i class="icon-users"></i><span>Groups</span></a></li>
+		<li class="nav-topposts <? if($url1 == 'topposts'){ echo 'active'; } ?>"><a href="/topposts"><i class="icon-star"></i><span>Top Posts</span></a></li>
 		<? if( isset($_COOKIE['login_cookie']) ){ ?>
-			<li class="nav-mygroup <? if($url2 == $topgroupurl){ echo 'active'; } ?>"><a href="/mygroups"><i></i><span>My Groups</span></a></li>
+			<li class="nav-mygroup <? if($url2 == $topgroupurl){ echo 'active'; } ?>"><a href="/mygroups"><i class="icon-address-book"></i><span>My Groups</span></a></li>
 		<? } ?>
-		<li class="nav-events <? if($url1 == 'events'){ echo 'active'; } ?>"><a href="/events"><i></i><span>Events</span></a></li>
+		<li class="nav-events <? if($url1 == 'events'){ echo 'active'; } ?>"><a href="/events"><i class="icon-calendar"></i><span>Events</span></a></li>
 	</ul>
 </nav>
 <? }

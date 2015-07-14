@@ -3088,6 +3088,94 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/pages\/index\/bgslide_01.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.01628e+07,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_01.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_01.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/bgslide_02.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4.17455e+06,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_02.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_02.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/bgslide_03.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 9.69521e+06,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_03.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_03.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/bgslide_04.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2.16868e+06,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_04.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_04.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/bgslide_05.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 8.30411e+06,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_05.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_05.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/bgslide_06.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4.17855e+06,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_06.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_06.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/bgslide_07.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.33759e+07,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/bgslide_07.jpg",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/bgslide_07.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pages\/index\/gradient.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1852,
+		"inputAbbreviatedPath": "\/images\/pages\/index\/gradient.png",
+		"outputAbbreviatedPath": "\/images\/pages\/index\/gradient.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/profilebg_01.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

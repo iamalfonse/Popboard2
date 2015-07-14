@@ -42,13 +42,16 @@
 			width: 90px;
 			margin: 0 auto;
 			p {
+				color: #555;
 				margin: 0;
+				text-shadow: none;
 			}
 		}
+		p,
 		h3 {
 			margin: 10px auto;
 			color: #fff;
-			text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+			text-shadow: 0 1px 1px rgba(0,0,0,0.25);
 		}
 		.showbgSelector {
 			position: absolute;

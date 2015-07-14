@@ -46,7 +46,6 @@ $blogtitle = iu_cleaner_url($Row['blog_title']);
 	<meta name="keywords" content="<?= $__site['keywords']; ?>">
 	<meta name="description" content="<?= $__site['name']; ?> | <?= $Row['blog_title']; ?> ">
 
-
 	<!-- facebook -->
 	<meta property="og:title" content="<?= $Row['blog_title']; ?> | <?= $__site['name']; ?>" />
 	<meta property="og:url" content="<?= $__site['url']; ?>/post/<?= $Row['id']; ?>/<?= $blogtitle; ?>" />

@@ -41,30 +41,7 @@ span {
 	}
 }
 
-p.error {
-	position: relative;
-	margin: 20px 0 20px;
-	padding: 10px 1%;
-	line-height: 14px;
-	color: $color-red;
-	text-align: center;
-	z-index: 5;
-	background: #fff;
-	@include box-shadow(0 1px 3px rgba(0,0,0,0.2));
-	border-radius: 4px;
 
-	&:after {
-		content: " ";
-		display: block;
-		position: absolute;
-		right: 1%;
-		top: 10px;
-		height: 14px;
-		width: 14px;
-		cursor: pointer;
-		background: url('../images/mini-icons.png') no-repeat -40px -150px;
-	}
-}
 iframe {
 	width: 100%;
 	border: 0 none;

@@ -9,9 +9,14 @@ p.logintocomment {
 }
 
 #commentstop {
+	@include make-sm-column(10);
+    @media (min-width: $screen-sm-min) {
+        float: right;
+    }
 	float: right;
 	width: 88%;
 	margin: 0px 0 20px 0;
+	padding: 0;
 	//width:760px;
 	//border-bottom: #aaa thin solid;
 	border-radius: $border-radius;
@@ -31,7 +36,7 @@ p.logintocomment {
 	
 #commentsarea {
 	float: right;
-	width: 88%;
+	width: 100%;
 	overflow: auto;
 	padding: 10px 0;
 	margin: 0px 0 20px 0;
@@ -67,6 +72,10 @@ p.logintocomment {
 	// }
 	.usercomment-top,
 	.usercomment {
+		@include make-sm-column(10);
+	    @media (min-width: $screen-sm-min) {
+	        float: right;
+	    }
 		position: relative;
 		width: 88%;
 		float: right;
@@ -85,7 +94,7 @@ p.logintocomment {
 			left: -18px;
 			top: 14px;
 			display: block;
-			@include triangle(18px, #f3f3f3, left);
+			@include triangle(18px, #fff, left);
 		}
 	}
 	h4 {
@@ -122,11 +131,16 @@ p.logintocomment {
 }
 
 #addcomment {
+	@include make-sm-column(10);
+    @media (min-width: $screen-sm-min) {
+        float: right;
+    }
 	clear: both;
 	width: 88%;
 	float: right;
-	background: none repeat scroll 0 0 #fff;
+	margin: 0 auto 4rem;
     padding: 10px 20px;
+    background: none repeat scroll 0 0 #fff;
     border-radius: $border-radius;
     // @include box-shadow(0 1px 5px rgba(0, 0, 0, 0.5));
 }
