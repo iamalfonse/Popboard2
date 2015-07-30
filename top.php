@@ -1,5 +1,6 @@
 <?php
-	
+	// include("config.php");
+
 	$pageURL = $_SERVER["REQUEST_URI"];
 	$url1 = '';
 	$url2 = '';

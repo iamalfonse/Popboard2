@@ -1,3 +1,4 @@
+<?
 include("config.php");
 
 if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in

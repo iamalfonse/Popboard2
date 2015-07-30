@@ -27,21 +27,11 @@
 	}
 	
 	$max_file_size = 512000; //500kb
-
+	$title = 'Setup';
 ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-	<meta content="width=device-width, user-scalable=yes" name="viewport" />
-	<title>Setup Your Profile | <?= $__site['name']; ?></title>
-	<meta name="keywords" content="<?= $__site['keywords']; ?>">
-	<meta name="description" content="<?= $__site['description']; ?>">
-	<link href="/stylesheets/<?= $stylesheet; ?>.css?<?= $__site['filedate']; ?>" rel="stylesheet" type="text/css" />
-	<link href="/stylesheets/jcrop.css" rel="stylesheet" type="text/css" />
-	<link rel="shortcut icon" type="image/png" href="/images/favicon.png?<?= $__site['filedate']; ?>">
-</head>
+
+<?php include("_includes/global-head.php"); ?>
+
 <body class="setup">
 <div id="top">
 	<div class="logomenu">
@@ -71,25 +61,25 @@
 					<div class="profileImg">
 						<?//= iu_get_avatar_pic($Rows['email']); ?>
 						<img class="avatarImg" src="/images/me.jpg" />
-						<p><span class="submitbtn uploadphoto">Upload Photo<input id="profileimg" type="file" name="profileimg" value="Upload a Photo"/></span></p>  
+						<p><span class="btn uploadphoto">Upload Photo<input id="profileimg" type="file" name="profileimg" value="Upload a Photo"/></span></p>  
 						<!-- <p>or</p>
 						<p>Use your Gravatar Image</p> -->
 					</div>
 				</li>
 				<li class="editBio">
-					<h3>Bio</h3>
+					<label>Bio</label>
 					<p><input type="text" name="bio" value="" placeholder="Tell us about yourself" maxlength="120"/></p>
 				</li>
 				<li class="enterBirthday">
-					<h3><span class="red">*</span> Birthday</h3>
+					<label><span class="red">*</span> Birthday</label>
 				</li>
 				<li class="enterLocation">
-					<h3>Location</h3>
+					<label>Location</label>
 					<p><input type="text" name="location" value="" placeholder="Where are you located?" maxlength="60"/></p>
 				</li>
-				<li class="enterCar">
-					<h3>Car</h3>
-					<p><input type="text" name="car" value="" placeholder="What car do you drive?" maxlength="30"/></p>
+				<li class="enterWebsite">
+					<label>Website</label>
+					<p><input type="text" name="website" value="" placeholder="http://" maxlength="60"/></p>
 				</li>
 			</ul>
 			<input class="submitbtn" type="submit" name="submitSetup" value="Submit" />
@@ -107,8 +97,8 @@
 		<div id="preview-pane">
 			<div class="preview-container"></div>
 		</div>
-		<button class="submitbtn jcropConfirm">Use Photo</button>
-		<button class="submitbtn jcropCancel">Cancel</button>
+		<button class="btn jcropConfirm">Use Photo</button>
+		<button class="btn jcropCancel">Cancel</button>
 		<input type="hidden" id="x" name="x" value="0" />
 		<input type="hidden" id="y" name="y" value="0" />
 		<input type="hidden" id="w" name="w" value="90" />

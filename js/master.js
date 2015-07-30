@@ -6,10 +6,7 @@ $(document).ready(function(){
 	// }
 
 	//error window handling
-	$('body').on('click', '.btn.cancel', function(){
-		$('.error-overlay').remove();
-	})
-	.on('click', '.btn.confirm', function(){
+	$('body').on('click', '.btn.confirm', function(){
 		var linkurl = $(this).attr('href');
 		window.location = linkurl;
 	})
@@ -40,14 +37,13 @@ $(document).ready(function(){
 	.on('click','.createpostbtn', function(e){
 		e.preventDefault();
 		$('body').addClass('openOverlay');
-		var createpostH = $('#createpost').height();
 		var overlay = $('.createpostOverlay');
-		overlay.height($(document).height());
+		overlay.height($(document).height() + 100);
 	})
 	.on('click', '#createpost .closebtn, .createpostOverlay', function(){
 		$('body').removeClass('openOverlay');
 	});
-	
+
 
 	// reply to comments
 	$('.reply').click(function(){
@@ -115,7 +111,21 @@ update_notifications = function(){
 		}
 	});
 }
-
+showError = function(error){
+	var body = $('body');
+	body.append('<div class="error-overlay"></div><div class="error-container"><p>'+error+'</p><button class="btn cancel">Close</button></div>');
+	
+	setTimeout(function(){
+		body.addClass('openOverlay').on('click', '.btn.cancel', function(){
+			body.removeClass('openOverlay');
+			setTimeout(function(){
+				$('.error-overlay, .error-container').remove();
+			},1000);
+			
+		})
+	},50);
+	return false;
+};	
 show_delete_dialogue = function(linkurl){
 	$('body').append('<div class="error-overlay"><div class="error-container"><p>Are you sure you want to do delete your post?</p><button class="btn cancel">Cancel</button><button class="btn confirm" href="'+linkurl+'">Confirm</button></div></div>');
 };

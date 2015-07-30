@@ -14,7 +14,7 @@
 	&.groupsetupsection,
 	&.profilesection {
 		// @extend %gd9;
-		@include make-sm-column(9);
+		@include make-sm-column(10);
 		// width: 82%;
 		padding: 20px 0 20px 3%;
 	}

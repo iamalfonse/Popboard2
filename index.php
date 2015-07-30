@@ -76,19 +76,45 @@ if($errmsg=='1'){
 		<li></li>
 	</ul>
 </div><!--#content-->
-<!-- <div class="homeAbout">
-	<div class="homeAboutWrap">
-		<ul>
-			<li>
-
-			</li>
-		</ul>
+<div class="homeabout">
+	<div class="homeabout__wrap container">
+		<div class="homeabout__content row">
+			<div class="col-md-4">
+				<h1>Image Here</h1>
+			</div>
+			<div class="col-md-8">
+				<h1>One Main Board</h1>
+				<p>With <?= $__site['name'] ?>, you can post anything on the main board for <strong><em>everyone</em></strong> to see.</p>
+				<p>There are no users to follow, just posts.</p>
+			</div>
+		</div>
+		<div class="homeabout__content row">
+			<div class="col-md-8">
+				<h1>Your Own Categories</h1>
+				<p>Want to create a board about cats who love dogs? Or how about a board for comic book collections?</p>
+				<p>With <?= $__site['name'] ?>, it's easy to create a public board for everyone to view and post to it.</p>
+			</div>
+			<div class="col-md-4">
+				<h1>Image Here</h1>
+			</div>
+		</div>
+		<div class="homeabout__content row">
+			<div class="col-md-4">
+				<h1>Image Here</h1>
+			</div>
+			<div class="col-md-8">
+				<h1>Your Own Groups</h1>
+				<p>Create your own public or private groups and invite others to post to it.</p>
+				<p>Public groups can be viewed by everyone, but only members can post to it. Private groups can only be viewed by members.</p>
+			</div>
+		</div>	
+		
 	</div>
-</div> -->
+</div>
 <footer class="footer">
 	<div class="footerWrap">
 		<div class="copyright">
-			<p>&copy; 2013-<?= date("Y") ?> <?= $__site['name'] ?> | All Rights Reserved | Created by Undr</p>
+			<p>&copy; 2013-<?= date("Y") ?> <?= $__site['name'] ?> | All Rights Reserved | Created by <a href="http://www.undr.io">Undr</a></p>
 		</div>
 		<div class="links">
 			<p><a href="/terms">Terms and Conditions</a> | <a href="/privacypolicy">Privacy Policy</a></p>

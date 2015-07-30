@@ -48,123 +48,148 @@ if($userprofile == ''){
 		<?php include("left.php"); ?>
 	
     	<div id="right" class="profilesection">
-    		<div id="myprofile">
     		<?
 			
+			//----------------------if you're looking at someone else's profile------------------
+			if($userprofile && ($userprofile != $username )){
+				
 				//get user profile's info
 				$userProfileQuery1  = mysqli_query($dblink, "SELECT * FROM users USE INDEX (user_id) WHERE username='$userprofile'");
-				$Rows = mysqli_fetch_assoc($userProfileQuery1);
+				$userProfileRow1 = mysqli_fetch_assoc($userProfileQuery1);
 				$userProfileNum_rows = mysqli_num_rows($userProfileQuery1);
-
-				$max_file_size = 512000; //500kb
-
-				if($userProfileNum_rows == 1){ //if this user exists
-
-					//used to check if this is your profile
-					$is_myprofile = false;
-					if($userprofile == $username ){
-						$is_myprofile = true;
-					}
-
-					// //check if user is in a group
-					// if($Rows['group_id'] != NULL || $Rows['group_id'] != ''){
-					// 	//get group name of user
-					// 	$userProfileQuery5 = @mysqli_query($dblink, "SELECT groupname, group_url FROM groups WHERE group_id={$Rows['group_id']}");
-					// 	$userProfileRow5 = mysqli_fetch_assoc($userProfileQuery5);
-					// }
-
-					// TODO: Do a query to grab the user's groups (from 'user_groups' table) and create a new 'tab' to display those groups that they belong in
-			?>
-						<div class="userprofile <?=$Rows['profilebg'] ?>">
-
-							<div class="profileinfo">
-								<div class="profileinfo__avatar">
-									<?php iu_get_avatar_pic($Rows['email']); ?>
-									<div class="lvl">
-										<p>Lvl <? if($Rows['lvl'] == NULL){echo "0";}else{ echo $Rows['lvl'];} ?></p>
-									</div>
-								</div>
-								<div class="profileinfo__info">
-									<h3><?= $Rows['displayname'] ?></h3>
-									<p class="bio"><?= $Rows['bio'];?></p>
-									<p class="location"><span class="icon-map-marker"></span> <?= $Rows['location']; ?></p>
-									<p class="website"><span class="icon-sphere"></span> <a href="//<?= iu_remove_http($Rows['website']); ?>" target="_blank"><?= iu_remove_http($Rows['website']); ?></a></p>
-								</div>
-								<? if($is_myprofile){ ?>
-									<p class="showbgSelector">Update Background</p>
-								<? } ?>
-							</div>
-							<div class="metainfo">
-								<div class="posts">
-									<p class="postcount"><?= iu_format_number($Rows['total_posts']); ?></p>
-									<div class="icon icon-file-text"></div>
-									<p>Posts</p>
-								</div>
-								<div class="comments">
-									<p class="commentcount"><?= iu_format_number($Rows['total_comments']); ?></p>
-									<div class="icon icon-comment"></div>
-									<p>Comments</p>
-								</div>
-								<div class="likes">
-									<p class="likescount"><?= iu_format_number($Rows['total_likes']); ?></p>
-									<div class="icon icon-favorite"></div>
-									<p>Likes</p>
-								</div>
-							</div>
-							
-						</div>
-						<div class="userinfo">
-							
-							<!-- <p class="group"><span class="icon"></span><strong>Group:</strong> 
-								<? if($Rows['group_id'] != NULL || $Rows['group_id'] != ''){// if user is in a group ?>
-									<a href="/group/<?= $userProfileRow5['group_url'] ?>"><?= $userProfileRow5['groupname']; ?></a>
-								<? } ?>
-							</p> -->
-							<p class="email"><span class="icon"></span><strong>E-mail:</strong> <?= $Rows['email'] ?></p>
-							<p class="joindate"><span class="icon"></span><strong>Joined on:</strong> <?= iu_readable_date($Rows['joindate']); ?></p>
-							
-							
-						</div>
 				
-			<?	
-				}else { //no profile  
+
+				if($userProfileNum_rows == 1){ //if there's a user in the database
+
+					//get group info for user
+					if($userProfileRow1['group_id'] != NULL || $userProfileRow1['group_id'] != ''){
+						//get group name of user
+						$userProfileQuery5 = @mysqli_query($dblink, "SELECT groupname, group_url FROM groups WHERE group_id={$userProfileRow1['group_id']}");
+						$userProfileRow5 = mysqli_fetch_assoc($userProfileQuery5);
+					}
+			?>
+			
+				<div id="myprofile">
+					<div class="userpic <?=$userProfileRow1['profilebg'] ?>">
+						<?php iu_get_avatar_pic($userProfileRow1['email']); ?>
+						<h3><?= $userProfileRow1['displayname'] ?></h3>
+						<div class="lvl">
+							<p>Lvl <? if($userProfileRow1['lvl'] == NULL){echo "0";}else{ echo $userProfileRow1['lvl'];} ?></p> 
+						</div>
+					</div>
+					<div class="userinfo">
+						<p class="location"><span class="icon"></span><strong>Location:</strong> <?= $userProfileRow1['location']; ?></p>
+						<p class="car"><span class="icon"></span><strong>Car:</strong> <?= $userProfileRow1['car']; ?></p>
+						<p class="group"><span class="icon"></span><strong>Group:</strong> 
+							<? if($userProfileRow1['group_id'] != NULL || $userProfileRow1['group_id'] != ''){// if user is in a group ?>
+								<a href="/group/<?= $userProfileRow5['group_url'] ?>"><?= $userProfileRow5['groupname']; ?></a>
+							<? } ?>
+						</p>
+						<p class="joindate"><span class="icon"></span><strong>Joined on:</strong> <?= iu_readable_date($userProfileRow1['joindate']); ?></p>
+						<p class="bio"><strong>Bio</strong></p>
+						<p class="bio"><?= stripslashes($userProfileRow1['bio']); ?></p>
+						
+						<div class="posts">
+							<p class="postcount"><?= $userProfileRow1['total_posts']; ?></p>
+							<div class="icon icon-file-text"></div>
+							<p>Posts</p>
+						</div>
+						<div class="comments">
+							<p class="commentcount"><?= $userProfileRow1['total_comments']; ?></p>
+							<div class="icon icon-comment"></div>
+							<p>Comments</p>
+						</div>
+						<div class="likes">
+							<p class="likescount"><?= $userProfileRow1['total_likes']; ?></p>
+							<div class="icon icon-favorite"></div>
+							<p>Likes</p>
+						</div>
+						
+					</div>
+				</div>
+			<?	}else { //no profile  
 					echo "<h2>Profile Not Found</h2>";
 				}
-			?>
+
+	    	}else{ //----------------------------else show your own profile---------------------
+
+				//check if user is in a group
+				if($Rows['group_id'] != NULL || $Rows['group_id'] != ''){
+					//get group name of user
+					$userProfileQuery5 = @mysqli_query($dblink, "SELECT groupname, group_url FROM groups WHERE group_id={$Rows['group_id']}");
+					$userProfileRow5 = mysqli_fetch_assoc($userProfileQuery5);
+				}
+				$max_file_size = 512000; //500kb
+    		?>
 				
-
-			<? 
-				// TODO: Create a table 'usersettings' which keeps track of personal settings
-				// TODO: Do a query to get user's settings
-			?>
-
-			<? 
-				if($is_myprofile){
-			?>
+				<div id="myprofile">
+					<div class="userpic <?=$Rows['profilebg'] ?>">
+						<?php iu_get_avatar_pic($Rows['email']); ?>
+						<h3><?= $Rows['displayname'] ?></h3>
+						<div class="lvl">
+							<p>Lvl <? if($Rows['lvl'] == NULL){echo "0";}else{ echo $Rows['lvl'];} ?></p>
+						</div>
+						<p class="bio"><?= $Rows['bio'];?></p>
+						<p class="showbgSelector">Update Background</p>
+					</div>
+					<div class="userinfo">
+						<p class="location"><span class="icon"></span><strong>Location:</strong> <?= $Rows['location']; ?></p>
+						<p class="car"><span class="icon"></span><strong>Car:</strong> <?= $Rows['car']; ?></p>
+						<p class="group"><span class="icon"></span><strong>Group:</strong> 
+							<? if($Rows['group_id'] != NULL || $Rows['group_id'] != ''){// if user is in a group ?>
+								<a href="/group/<?= $userProfileRow5['group_url'] ?>"><?= $userProfileRow5['groupname']; ?></a>
+							<? } ?>
+						</p>
+						<p class="email"><span class="icon"></span><strong>E-mail:</strong> <?= $Rows['email'] ?></p>
+						<p class="joindate"><span class="icon"></span><strong>Joined on:</strong> <?= iu_readable_date($Rows['joindate']); ?></p>
+						
+						<div class="posts">
+							<p class="postcount"><?= iu_format_number($Rows['total_posts']); ?></p>
+							<div class="icon icon-file-text"></div>
+							<p>Posts</p>
+						</div>
+						<div class="comments">
+							<p class="commentcount"><?= iu_format_number($Rows['total_comments']); ?></p>
+							<div class="icon icon-comment"></div>
+							<p>Comments</p>
+						</div>
+						<div class="likes">
+							<p class="likescount"><?= iu_format_number($Rows['total_likes']); ?></p>
+							<div class="icon icon-favorite"></div>
+							<p>Likes</p>
+						</div>
+					</div>
+					
 					<div class="updateprofile">
 						<form action="/updateprofile"  enctype="multipart/form-data" method="post">
 							<h3>Profile Info</h3>
 							<div class="update-profileimg">
-								<label><strong>Update Profile Image</strong></label>
+								<p><strong>Update Profile Image</strong></p>
 								<p class="updatephoto"><span class="btn uploadphoto">Upload Photo<input id="profileimg" type="file" name="profileimg" value="Upload a Photo"/></span></p>
 								<input type="hidden" name="MAX_FILE_SIZE" value="<?= $max_file_size ?>">
 							</div>
 							<div class="update-bio">
-								<label><strong>Bio</strong></label>
-								<input type="text" class="userinput" name="bio" value="<?= $Rows['bio']; ?>" maxlength="140">
+								<p><strong>Bio</strong></p>
+								<input type="text" id="profileinfo" class="userinput" name="bio" value="<?= $Rows['bio']; ?>">
 							</div>
 							<div class="enterLocation">
-								<label><strong>Location</strong></label>
-								<input type="text" class="userinput" name="location" value="<?= $Rows['location']; ?>" maxlength="60"/>
+								<p><strong>Location</strong></p>
+								<p><input type="text" class="userinput" name="location" value="<?= $Rows['location']; ?>"/></p>
 							</div>
-							<div class="enterWebsite">
-								<label><strong>Website</strong></label>
-								<input type="text" class="userinput" name="website" value="<?= $Rows['website']; ?>" placeholder="http://" maxlength="60" />
+							<div class="enterCar">
+								<p><strong>Car</strong></p>
+								<p><input type="text" class="userinput" name="car" value="<?= $Rows['car']; ?>"/></p>
 							</div>
 							<input type="submit" name="submitUserInfo" class="btn" value="Update Profile Info">
 						</form>
 					</div>
 
+					<? 
+						// TODO: Create a table 'usersettings' which keeps track of personal settings
+					
+						// TODO: Do a query to get user's settings
+
+					?>
 					<div class="profileSettings">
 						<form action="/updateprofilesettings" method="post">
 							<h3>Settings</h3>
@@ -189,19 +214,19 @@ if($userprofile == ''){
 								?>
 							</div>
 						<form>
-					</div>	
+					</div>
+				</div>
 		<?
 			}
 		?>
-			</div><!-- #myprofile -->
-    	</div> <!-- #right -->
+    	</div>
 	</div>
-
-<? if($is_myprofile){ ?>
 	<div class="profilebgOverlay hide">
 		<div class="profilebgWrap">
 			<div class="closex">Close</div>
-			
+			<div class="">
+
+			</div>
 			<h3>Select a background</h3>
 			<ul class="bgselect">
 				<li class="default"></li>
@@ -241,32 +266,25 @@ if($userprofile == ''){
 			</ul>
 		</div>
 	</div>
-
-	<div class="jcropOverlay">
-		<div class="jcropContainer">
-			<p>Crop your profile picture</p>
-			<div class="mainImg"></div>
-			<div id="preview-pane">
-				<div class="preview-container"></div>
-				<p>Preview</p>
-			</div>
-			<button class="submitbtn jcropConfirm">Use Photo</button>
-			<button class="submitbtn jcropCancel">Cancel</button>
-			<input type="hidden" id="x" name="x" value="0" />
-			<input type="hidden" id="y" name="y" value="0" />
-			<input type="hidden" id="w" name="w" value="90" />
-			<input type="hidden" id="h" name="h" value="90" />
-		</div>
-	</div>
-<? } ?>
-<img id="gallery"></div>
-
 <?php include("scripts.php"); ?>
 <script src="/js/ajaxfileupload.js" type="text/javascript"></script>
 <script src="/js/jquery.Jcrop.js" type="text/javascript"></script>
 <script src="/js/profile.js" type="text/javascript"></script>
-
-
-<input type="hidden" id="pageprofile" name="pageprofile" value="<?= $userprofile; ?>" />
+<div class="jcropOverlay">
+	<div class="jcropContainer">
+		<p>Crop your profile picture</p>
+		<div class="mainImg"></div>
+		<div id="preview-pane">
+			<div class="preview-container"></div>
+			<p>Preview</p>
+		</div>
+		<button class="submitbtn jcropConfirm">Use Photo</button>
+		<button class="submitbtn jcropCancel">Cancel</button>
+		<input type="hidden" id="x" name="x" value="0" />
+		<input type="hidden" id="y" name="y" value="0" />
+		<input type="hidden" id="w" name="w" value="90" />
+		<input type="hidden" id="h" name="h" value="90" />
+	</div>
+</div>
 </body>
 </html>

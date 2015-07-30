@@ -39,6 +39,15 @@
 .icon-view:before {
 	content: "\e306";
 }
+.icon-chevron_left:before {
+	content: "\e207";
+}
+.icon-chevron_right:before {
+	content: "\e208";
+}
+.icon-close:before {
+	content: "\e209";
+}
 .icon-notifications:before {
 	content: "\e24a";
 }
@@ -57,6 +66,9 @@
 .icon-home:before {
 	content: "\e902";
 }
+.icon-pencil:before {
+	content: "\e905";
+}
 .icon-categories:before {
 	content: "\e92e";
 }
@@ -65,6 +77,9 @@
 }
 .icon-calendar:before {
 	content: "\e953";
+}
+.icon-reply:before {
+	content: "\e967";
 }
 .icon-comment:before {
 	content: "\e96b";
@@ -77,4 +92,10 @@
 }
 .icon-user-delete:before {
 	content: "\e974";
+}
+.icon-user-check:before {
+	content: "\e975";
+}
+.icon-sphere:before {
+	content: "\e9c9";
 }

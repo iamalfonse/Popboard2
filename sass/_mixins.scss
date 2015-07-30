@@ -58,60 +58,60 @@
 }
 
 // Grid Wrap
-@mixin grid-wrap ($t:$top, $r:$right, $b:$bottom, $l:$left, $gw-width: $start-width, $gw-margin: $auto){
-	%gw {
-		// overflow: hidden;
-		width: $gw-width;
-		margin: $gw-margin;
-		padding:$t $r $b $l;
-	}
-}
+// @mixin grid-wrap ($t:$top, $r:$right, $b:$bottom, $l:$left, $gw-width: $start-width, $gw-margin: $auto){
+// 	%gw {
+// 		// overflow: hidden;
+// 		width: $gw-width;
+// 		margin: $gw-margin;
+// 		padding:$t $r $b $l;
+// 	}
+// }
 
-// Grid
-@mixin grid ($mobile: false, $t:$top, $r:$right, $b:$bottom, $l:$left, $selector: $gd-selector, $gd-float: left, $gd-clear: none){
-	@if $mobile == false {
-		%gd {
-			float:$gd-float;
-			clear:$gd-clear;
-			margin:$t $r $b $l;
-		}
-		@for $i from 1 through $gd-count {
-			#{$selector}gd#{$i} {width: (100 / $gd-count * $i - $r - $l); @extend %gd;}
-		}
-		// @for $i from 1 through $gd-count {
+// // Grid
+// @mixin grid ($mobile: false, $t:$top, $r:$right, $b:$bottom, $l:$left, $selector: $gd-selector, $gd-float: left, $gd-clear: none){
+// 	@if $mobile == false {
+// 		%gd {
+// 			float:$gd-float;
+// 			clear:$gd-clear;
+// 			margin:$t $r $b $l;
+// 		}
+// 		@for $i from 1 through $gd-count {
+// 			#{$selector}gd#{$i} {width: (100 / $gd-count * $i - $r - $l); @extend %gd;}
+// 		}
+// 		// @for $i from 1 through $gd-count {
 
-		// 	@for $j from 1 through ($gd-count - $i) {
-		// 		#{$selector}g#{$i}-offset-#{$j} {
-		// 			width: (100 / $gd-count * $i - $r - $l); 
-		// 			margin-left: (100% / $gd-count * $j);
-		// 		}
-		// 	}
+// 		// 	@for $j from 1 through ($gd-count - $i) {
+// 		// 		#{$selector}g#{$i}-offset-#{$j} {
+// 		// 			width: (100 / $gd-count * $i - $r - $l); 
+// 		// 			margin-left: (100% / $gd-count * $j);
+// 		// 		}
+// 		// 	}
 			
-		// }
-	}
-	@else {
-		%gd {
-			float:none;
-			clear:both;
-			margin:$t $r $b $l;
-			width: 100% - $r - $l;
-		}
-		@for $i from 1 through $gd-count {
-			#{$selector}gd#{$i} {@extend %gd;}
-		}
-	}
-}
+// 		// }
+// 	}
+// 	@else {
+// 		%gd {
+// 			float:none;
+// 			clear:both;
+// 			margin:$t $r $b $l;
+// 			width: 100% - $r - $l;
+// 		}
+// 		@for $i from 1 through $gd-count {
+// 			#{$selector}gd#{$i} {@extend %gd;}
+// 		}
+// 	}
+// }
 
-// Custom Grid $mobile, $t, $r, $b, $l, $selector, $gd-class, $gd-float, $gd-clear
-@mixin grid-custom ($mobile: false, $gw: false, $gw-class: '', $gw-width: $start-width, $gw-margin: $auto, $t:$top, $r:$right, $b:$bottom, $l:$left, $selector: $gd-selector, $gd-float: left, $gd-clear: none){
-	@if $gw == true {
-		@include grid-wrap($t, $r, $b, $l, $gw-width, $gw-margin);
-		@include grid($mobile);
-	}
-	@else {
-		@include grid($mobile);
-	}
-}
+// // Custom Grid $mobile, $t, $r, $b, $l, $selector, $gd-class, $gd-float, $gd-clear
+// @mixin grid-custom ($mobile: false, $gw: false, $gw-class: '', $gw-width: $start-width, $gw-margin: $auto, $t:$top, $r:$right, $b:$bottom, $l:$left, $selector: $gd-selector, $gd-float: left, $gd-clear: none){
+// 	@if $gw == true {
+// 		@include grid-wrap($t, $r, $b, $l, $gw-width, $gw-margin);
+// 		@include grid($mobile);
+// 	}
+// 	@else {
+// 		@include grid($mobile);
+// 	}
+// }
 
 @mixin alpha(){
 	clear: left;
@@ -270,50 +270,50 @@
 }
 
 // Custom Drop Downs needs JS for full support
-@mixin drop-down ($dd-default-w: $dd-default-w, $dd-h: $dd-h, $dd-margin: $dd-margin, $dd-t-padding: $dd-t-padding, $dd-t-color: $select-t-color, $dd-f-weight: $dd-f-weight, $dd-f-size: $dd-f-size){
-	span.selectW {
-		width: $dd-default-w;
-		margin: $dd-margin;
-		height: $dd-h;
-		position:relative;
-		display:block;
-	    padding:0;
-	}
-	span.selectIner {
-		margin:0;
-		z-index:1;
-		width: 100%;
-		display: block;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow:ellipsis;
-		position:absolute;
-		height: $dd-h;
-		line-height:$dd-h;
-		padding: $dd-t-padding;
-		font-weight: $dd-f-weight;
-		color: $dd-t-color;
-		font-size: $dd-f-size;
-		@include gradient( $select-gradent-to, $select-gradent-from, image, url('../images/arrow.png') no-repeat 96% 7px);
-		border:$ui-border;
-		@include border-radius(5px);
-	}
-	select.allSelect {
-		width: 100%;
-		height: $dd-h;
-		position:absolute;
-		left: 0;
-		z-index:2;
-		padding:0;
-		margin:0;
-		border:0 none;
-		float:none;
-		opacity:0;
-		cursor: pointer;
-		filter: alpha(opacity=00);
-		-webkit-appearance: menulist-button;
-	}
-}
+// @mixin drop-down ($dd-default-w: $dd-default-w, $dd-h: $dd-h, $dd-margin: $dd-margin, $dd-t-padding: $dd-t-padding, $dd-t-color: $select-t-color, $dd-f-weight: $dd-f-weight, $dd-f-size: $dd-f-size){
+// 	span.selectW {
+// 		width: $dd-default-w;
+// 		margin: $dd-margin;
+// 		height: $dd-h;
+// 		position:relative;
+// 		display:block;
+// 	    padding:0;
+// 	}
+// 	span.selectIner {
+// 		margin:0;
+// 		z-index:1;
+// 		width: 100%;
+// 		display: block;
+// 		white-space: nowrap;
+// 		overflow: hidden;
+// 		text-overflow:ellipsis;
+// 		position:absolute;
+// 		height: $dd-h;
+// 		line-height:$dd-h;
+// 		padding: $dd-t-padding;
+// 		font-weight: $dd-f-weight;
+// 		color: $dd-t-color;
+// 		font-size: $dd-f-size;
+// 		@include gradient( $select-gradent-to, $select-gradent-from, image, url('../images/arrow.png') no-repeat 96% 7px);
+// 		border:$ui-border;
+// 		@include border-radius(5px);
+// 	}
+// 	select.allSelect {
+// 		width: 100%;
+// 		height: $dd-h;
+// 		position:absolute;
+// 		left: 0;
+// 		z-index:2;
+// 		padding:0;
+// 		margin:0;
+// 		border:0 none;
+// 		float:none;
+// 		opacity:0;
+// 		cursor: pointer;
+// 		filter: alpha(opacity=00);
+// 		-webkit-appearance: menulist-button;
+// 	}
+// }
 
 //Custom dropdown without JS
 @mixin dropdown($dd-default-w: $dd-default-w, $dd-h: $dd-h, $dd-margin: $dd-margin, $dd-t-padding: $dd-t-padding, $dd-t-color: $select-t-color, $dd-f-weight: $dd-f-weight, $dd-f-size: $dd-f-size) {

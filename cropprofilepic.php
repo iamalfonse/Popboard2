@@ -1,6 +1,6 @@
 <?php
 	
-	include 'config.php';
+	include("config.php");
 
 	$x = mysqli_real_escape_string($dblink, $_GET['xvalue']);
 	$y = mysqli_real_escape_string($dblink, $_GET['yvalue']);

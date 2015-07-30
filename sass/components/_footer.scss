@@ -2,7 +2,7 @@
 .footer {
 	padding: 0;
 	color: #ccc;
-	background: #2C353A;
+	background: darken($bg-color,70%);
 }
 .footerWrap {
 	// @extend %gw;

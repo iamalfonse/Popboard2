@@ -22,22 +22,25 @@ if (get_magic_quotes_gpc()) {
 
 include 'dbparams.php';
 
-// TODO: Get geolocation ip address to grab location of user. Useful for keywords
+// TODO: Get geolocation ip address to grab location of user. 
+// Useful for meta keywords for SEO or for banning users
 // http://www.ipinfodb.com
-function iu_get_geolocation() {
-
+function iu_get_user_ip() {
+	$user_ip = $_SERVER['REMOTE_ADDR'];
+	return $user_ip;
 }
+
 
 $stylesheet = 'style1';
 $__site = [ //used primarily for the <head> section
 	'environment' => 'local', // other values: 'production', 'staging', 'local'
-	'name' => 'Popboard',
-	'email' => 'support@popboard.com',
-	'url' => 'http://www.popboard.com',
-	'keywords' => 'Popboard, social, social network',
-	'description' => 'Sign up now to create your own Popboard account and post pictures, videos, share stories, like, create private and public groups, and discuss with others',
-	'facebook-url' => 'https://www.facebook.com/popboard',
-	'twitter-url' => 'https://www.twiiter.com/popboard',
+	'name' => 'Hipboard',
+	'email' => 'support@hipboard.com',
+	'url' => 'http://www.hipboard.com',
+	'keywords' => 'Hipboard, social, social network',
+	'description' => 'Sign up now to create your own Hipboard account and post pictures, videos, share stories, like, create private and public groups, and discuss with others',
+	'facebook-url' => 'https://www.facebook.com/hipboard',
+	'twitter-url' => 'https://www.twiiter.com/hipboard',
 	'filedate' => '20150709' // update this if you need to bust the cache on css files
 ];
 
@@ -528,6 +531,16 @@ function iu_convert_image_links($text) {
 	$imageEmbed = preg_replace_callback("/<p>\<img(?:.+)?src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\/?\>(.*)?<\/p>/i", 'iu_convert_image_callback', $text);
 
 	return $imageEmbed;
+}
+
+function iu_remove_http($url) {
+   $disallowed = array('http://', 'https://');
+   foreach($disallowed as $d) {
+      if(strpos($url, $d) === 0) {
+         return str_replace($d, '', $url);
+      }
+   }
+   return $url;
 }
 
 // how to output '' days ago, '' hours ago, etc. Must use DateTime() format. ex: 2013-05-29 00:00:00

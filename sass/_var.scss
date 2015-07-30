@@ -1,23 +1,8 @@
 // Add UI colors here
 // Example Base Colors
-$color-white: #ffffff;
-$color-black: #000000;
-$color-gray: #eaeaea;
-$color-grey: $color-gray;
 $color-red: #e24547;
-$color-orange: #f18c2c;
 $color-blue: #42a7dd;
-$color-green: #78ca45;
 $color-yellow: #e2dc2f;
-$color-purple: #a132a8;
-$primary: #1ABC9C;
-$warning: #F1C40F;
-$default: #BDC3C7;
-$danger: #E74C3C;
-$success: #2ECC71;
-$inverse: #34495E;
-$info: #3498DB;
-// $bg-color: #687991;
 $bg-color: #EAEDF1;
 
 // DONT CHANGE VARIABLE NAMES BELOW THIS POINT 
@@ -43,8 +28,8 @@ $body-font-family: $font-family;
 $body-font-size: 1.6em;
 
 // Elements
-$link: #226B93;
-$link-hover: darken($link,20%);
+$link: #3b8ebc;
+$link-hover: darken($link,10%);
 $ui-border: 1px solid #555;
 
 // Spacing
@@ -75,9 +60,6 @@ $input-focus-border-color: #e24547;
 
 // Custom select drop down
 $select-t-color: #757474;
-$select-gradent-to: #fff; 
-$select-gradent-from: #e7e7e7;
-$select-gradent-default: #fff;
 
 $dd-default-w: 100%;
 $dd-h: 36px;
@@ -88,33 +70,8 @@ $dd-f-weight: normal;
 $dd-f-size: 1em;
 $dd-bg: #ccc;
 
-// Main btnAll Default
-$btn-color: #e24547;
-$btn-hover: #f18c2c;
-$btn-text-color: #fff;
-$btn-padding: .3em 0;
-
 // Animation
 $animation-speed: 0.25s;
-
-// Grid Spacing / Use for global spacing
-$top: auto;
-$right: 1%;
-$bottom: auto;
-$left: 1%;
-
-// Grid Selector: 
-// Use '%' for silent/placeholder selector and '.' for normal selector
-$gd-selector: '%';
-
-// Set grid count default 12
-$gd-count: 12;
-
-// Braking Points
-$start-width: 1250px;
-$mid-lr: 750px;
-$mobile-lr: 480px;
-
 
 
 //---------- BOOSTRAP GRID ----------

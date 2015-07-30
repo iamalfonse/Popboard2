@@ -110,7 +110,8 @@ if(!empty($_FILES[$fileElementName]['error'])){
 			// sample filename: 1140732936c4e.jpg
 
 			// $ext = pathinfo($_FILES[$fileElementName]['name'], PATHINFO_EXTENSION);
-			$ext = ($ext == 'jpeg' ? 'jpg' : pathinfo($_FILES[$fileElementName]['name'], PATHINFO_EXTENSION));
+			$ext = '';
+			$ext = $ext == 'jpeg' ? 'jpg' : pathinfo($_FILES[$fileElementName]['name'], PATHINFO_EXTENSION);
 			$now = time();
 			while(file_exists($uploadFileUrl = $uploadsDirectory.$now.substr(md5($_FILES[$fileElementName]['name']), 2, 3).'.'.$ext)){
 			    $now++;
@@ -171,7 +172,7 @@ if(!empty($_FILES[$fileElementName]['error'])){
 			imagealphablending($new, false);
 			imagesavealpha($new, true);
 		}
-		imagecopyresampled($new, $img, 0, 0, $x, 0, $width, $height, $w, $h);
+		imagecopyresampled($new, $img, 0, 0, 0, 0, $width, $height, $w, $h);
 
 		switch($type){
 			case 'gif': imagegif($new, $uploadFileUrl); break;

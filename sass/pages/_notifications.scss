@@ -71,26 +71,34 @@
 	}
 	.notificationtype {
 		position: absolute;
-		top: 16px;
+		top: 12px;
 		right: 10px;
 		width: 20px;
 		height: 20px;
-		background: url('../images/mini-icons.png') no-repeat;
+		color: #ccc;
+		font-family: 'popboard';
+		font-size: 1.8rem;
+		text-align: center;
+		// background: url('../images/mini-icons.png') no-repeat;
 		
 		&.like {
-			background-position: 0 -60px;
+			@extend .icon-favorite;
 		}
 		&.comment,
 		&.mentionpost {
-			background-position: 0 -90px;
+			@extend .icon-comment;
+			font-size: 1.5rem;
 		}
 		&.joined {
-			background-position: 2px -30px;
+			@extend .icon-user-add;
+		}
+		&.accepted {
+			@extend .icon-user-check;
 		}
 	}
 }
 
 .load-notifications {
-	margin: 0 auto;
-	border: 1px solid darken(#2394C3, 15%);
+	margin: 5rem auto;
+	// border: 1px solid darken(#2394C3, 15%);
 }

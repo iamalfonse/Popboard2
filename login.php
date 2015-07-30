@@ -69,7 +69,7 @@ if (isset($_POST['login'])) {
             /* Try to find a row in the user's table with both a matching username and
              * encrypted password. If we have a match then that is a successful authentication.
              */
-            $results  = @mysqli_query($dblink, "SELECT user_id, username FROM users WHERE (username='$form_username' or email = '$form_username') AND passwd='$password' AND active='1'");
+            $results  = @mysqli_query($dblink, "SELECT user_id, username FROM users WHERE (username='$form_username' or email = '$form_username') AND passwd='$password' ");
 
             /* Getting the number of rows will tell us whether this was a success or not.
              * If number of rows = 0, then there were no matches, and therefore failed.

@@ -22,10 +22,16 @@ if(isset($_GET['groupurl'])){ // get groupurl if posting from your group
 	$cpGroupName = $cpGroupRow['groupname'];
 	
 	$grouppermission = true;
+
+	// TODO: Update this to check under user_groups table instead of from $Rows (users table)
 	if($Rows['group_id'] != $cpGroupRow['group_id']){ //if this is not your group (i.e. you don't have permission to post)
 		$grouppermission = false;
 	}
 }
+
+
+// TODO: Make it so that there are different types of posts.
+//	for example: Blog/Write post, video post (allow them to add a comment), picture post (with comment), etc.
 
 ?>
 <div class="createpostOverlay">
@@ -89,6 +95,8 @@ if(isset($_GET['groupurl'])){ // get groupurl if posting from your group
 			<input type="text" id="posttitle" name="posttitle" maxlength="50" class='inputtitle userinput' />
 			<label class='inputtitle' for="postmessage">Message</label>
 			<textarea id="postmessage" name="postmessage" rows="5" cols="50" class='inputmessage'></textarea>
+			<div id="results"></div>
+			<div id="loading_indicator">loading...</div>
 			<input type="submit" name="submitpost" value="Submit Post" class="submitbtn" id="postsubmit"/>
 			<p class="note">You can embed Youtube and Vimeo videos by simply copy and pasting the url</p>
 		</form>

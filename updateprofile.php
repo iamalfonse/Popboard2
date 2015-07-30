@@ -28,8 +28,9 @@ if (isset( $_COOKIE['login_cookie'] )) {
 		
 		$bioValue = mysqli_real_escape_string($dblink, $_POST['bio']);
 		$location = mysqli_real_escape_string($dblink, $_POST['location']);
-		$car = mysqli_real_escape_string($dblink, $_POST['car']);
+		$website = mysqli_real_escape_string($dblink, $_POST['website']);
 
+		$session_good = false;
 		if($session_hash == $updateProfileRow['session_hash'] ){
 			$session_good = true;
 		}	
@@ -47,7 +48,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				$email = $updateProfileRow['email'];
 
 				if($location != ''){//if user set a location
-					$updateProfileQuery2  = mysqli_query($dblink, "UPDATE users SET bio='$bioValue', location='$location', car='$car' WHERE email='".$email."';");
+					$updateProfileQuery2  = mysqli_query($dblink, "UPDATE users SET bio='$bioValue', location='$location', website='$website' WHERE email='".$email."';");
 				}
 			}
 		} else {

@@ -6,7 +6,7 @@
 	// @include make-sm-column(12);
 	position: relative;
 	text-align: center;
-	margin: 40px auto;
+	margin: 80px auto 40px;
 	z-index: 1;
 
 	h2,
@@ -108,13 +108,17 @@
 	}
 }
 
-.homeAbout {
-	width: 100%;
-	background: #687991;
-}
-.homeAboutWrap {
-	height: 400px;
-	width: 1250px;
+.homeabout {
+	background: $bg-color;
+
+	&__wrap,
+	&__content {
+		min-height: 400px;
+
+		// li {
+		// 	@include make-sm-column(4);
+		// }
+	}
 }
 
 .home {

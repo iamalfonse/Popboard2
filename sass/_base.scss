@@ -137,25 +137,25 @@ textarea {
 button {
 	border: 0 none;
 }
-@include drop-down($dd-default-w: 100%, $dd-h: 36px, $dd-margin: $auto, $dd-t-padding: 0 .4em, $dd-t-color: $select-t-color, $dd-f-weight: normal, $dd-f-size: 1em);
+// @include drop-down($dd-default-w: 100%, $dd-h: 36px, $dd-margin: $auto, $dd-t-padding: 0 .4em, $dd-t-color: $select-t-color, $dd-f-weight: normal, $dd-f-size: 1em);
 // Btn
-%btnAll {
-	font-size:1.4rem;
-	line-height:1rem;
-	padding:$btn-padding;
-	margin:0 auto;
-	border:0 none;
-    color: $btn-text-color;
-    width: 100%;
-    font-weight: normal;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    text-decoration: none;
-    border-radius: $border-radius;
-    background:$btn-color;
-	&:hover {
-		cursor:pointer;
-		background:$btn-hover;
-	}
-}
+// %btnAll {
+// 	font-size:1.4rem;
+// 	line-height:1rem;
+// 	padding:$btn-padding;
+// 	margin:0 auto;
+// 	border:0 none;
+//     color: $btn-text-color;
+//     width: 100%;
+//     font-weight: normal;
+//     cursor: pointer;
+//     display: block;
+//     position: relative;
+//     text-decoration: none;
+//     border-radius: $border-radius;
+//     background:$btn-color;
+// 	&:hover {
+// 		cursor:pointer;
+// 		background:$btn-hover;
+// 	}
+// }

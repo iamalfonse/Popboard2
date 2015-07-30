@@ -15,26 +15,35 @@ if (isset( $_COOKIE['login_cookie'] )) { //if user is logged in
 	exit;
 }
 
-if(isset($_GET['profilebg'])){
+if(isset($_GET['profilebg']) && isset($_GET['userprofile'])){
 	$profilebg = mysqli_real_escape_string($dblink, strtolower($_GET['profilebg']));
+	$userprofile = mysqli_real_escape_string($dblink, strtolower($_GET['userprofile']));
 }
 
 //get user lvl
 $userlvl = $Rows['lvl'];
 
-// make sure user lvl is high enough to use the background
-if(($userlvl < 10) && (strpos($profilebg, 'radial-') !== false)){
-	echo "0";
-	return;
-}else if(($userlvl < 15) && (strpos($profilebg, 'bgimg') !== false)){
-	echo "0";
-	return;
-}else{
-	// User meets requirements, go ahead and change bg
-	// update background color/img
-	$updateProfileBGQuery  = mysqli_query($dblink, "UPDATE users SET profilebg='$profilebg' WHERE username='$username' AND session_hash = '$session_hash'");
-	echo "1";
+// make sure this user has permission to change the background
+if($username == $userprofile){
+
+	// make sure user lvl is high enough to use the background
+	if(($userlvl < 10) && (strpos($profilebg, 'radial-') !== false)){
+		echo "0";
+		return;
+	}else if(($userlvl < 15) && (strpos($profilebg, 'bgimg') !== false)){
+		echo "0";
+		return;
+	}else{
+		// User meets requirements, go ahead and change bg
+		// update background color/img
+		$updateProfileBGQuery  = mysqli_query($dblink, "UPDATE users SET profilebg='$profilebg' WHERE username='$username' AND session_hash = '$session_hash'");
+		echo "1";
+	}
+
+}else {
+	echo "2";
 }
+
 
 
 

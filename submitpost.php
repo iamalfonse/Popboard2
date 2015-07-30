@@ -1,6 +1,8 @@
 <?php
 include("config.php");
 
+// TODO: Add a date column(last_posted) to the users table to check if the user has posted in the last 30 secs to prevent spam posts
+
 /* This will tell us to display an error message */
 $have_error = false;
 $errmsg     = "";

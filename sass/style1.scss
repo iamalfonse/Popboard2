@@ -1,12 +1,12 @@
 @charset "UTF-8";
-@import "fontface","var","mixins","base";
 
-// TODO: Make this only have @imports and @includes
+@import "var";
+@import "mixins";
+@import "base";
 
-@include grid-wrap(0,0,0,0);
-@include grid();
-@include dropdown();
+@include dropdown(); // to style dropdowns
 
+@import "fonts/proxima-nova";
 @import "fonts/popboard";
 
 @import "grid/grid-framework";

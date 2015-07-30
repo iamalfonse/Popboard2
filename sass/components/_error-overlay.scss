@@ -4,31 +4,43 @@
 	width:100%;
 	top:0;
 	left:0;
-	background:#333;
+	opacity: 0;
 	background:rgba(0,0,0,0.75);
-	z-index: 9999;
+	z-index: 1000;
+	transition: all 0.5s;
 
-	.error-container {
-		position: absolute;
-		top: 40%;
-		left: 50%;
-		width: 500px;
-		padding: 20px;
-		margin: 0 0 0 -250px;
-		//min-height:120px;
-		overflow: hidden;
-		background: #fff;
-		background:rgba(255,255,255,1);
-		border-radius: 4px;
-		@include box-shadow(0 0 15px rgba(0,0,0,0.4));
-
-		p {
-			margin: 0 0 10px;
-		}
-		.cancel,
-		.confirm {
-			float: left;
-			margin: 0 20px 0 0;
-		}
+	.openOverlay & {
+		opacity: 1;
 	}
 }
+.error-container {
+	position: fixed;
+	top: 30%;
+	left: 50%;
+	width: 500px;
+	padding: 20px;
+	margin: 0 0 0 -250px;
+	//min-height:120px;
+	overflow: hidden;
+	opacity: 0;
+	z-index: 1001;
+	background: #fff;
+	border-radius: 4px;
+	@include box-shadow(0 0 15px rgba(0,0,0,0.4));
+	transition: all $animation-speed;
+
+	.openOverlay & {
+		top: 40%;
+		opacity: 1;
+	}
+
+	p {
+		margin: 0 0 10px;
+	}
+	.cancel,
+	.confirm {
+		float: left;
+		margin: 0 20px 0 0;
+	}
+}
+

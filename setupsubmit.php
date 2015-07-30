@@ -25,7 +25,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 		// $profileimg = mysqli_real_escape_string($dblink, $_POST['profileimg']);
 		$bio = mysqli_real_escape_string($dblink, $_POST['bio']);
 		$location = mysqli_real_escape_string($dblink, $_POST['location']);
-		$car = mysqli_real_escape_string($dblink, $_POST['car']);
+		$website = mysqli_real_escape_string($dblink, $_POST['website']);
 
 		if($have_birthdate){
 
@@ -44,7 +44,7 @@ if (isset( $_COOKIE['login_cookie'] )) {
 				if($session_hash == $Row['session_hash']){
 
 					//add user setup to DB
-					$r2 = mysqli_query($dblink, "UPDATE users SET bio='$bio', birthdate='$birthdate', location='$location', car='$car', setup='1'  WHERE username='$username'");
+					$r2 = mysqli_query($dblink, "UPDATE users SET bio='$bio', birthdate='$birthdate', location='$location', website='$website', setup='1'  WHERE username='$username'");
 					header("Location: /home&start");
 					exit;
 				}

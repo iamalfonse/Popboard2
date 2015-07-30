@@ -2,33 +2,74 @@
 /*---------MY PROFILE-----------*/
 #myprofile {
 	// @extend %gd8;
-	@include make-sm-column(8);
+	// @include make-sm-column(12);
 
-	@media (min-width: $screen-sm-min) {
-		float: none;
-	}
+	// @media (min-width: $screen-sm-min) {
+	// 	float: none;
+	// }
 	
-	// width: 500px;
-	margin: 20px auto 0;
+	margin: 0px auto 0;
 	padding: 0px;
-	// background-color: #f3f3f3;
 	overflow: auto;
-	border-radius: 5px;
+	// border-radius: 5px;
 
-	.userpic{
+	.userprofile {
 		position: relative;
 		width: 100%;
+		height: 18rem;
 		margin: 0 auto 0 0;
-		padding: 40px 10px;
+		padding: 0;
 		text-align: center;
 		background: #2C353A;
-		overflow: hidden;
+		// overflow: hidden;
+		@include clearfix();
 		@extend %profile-bg-colors;
+		
+		.showbgSelector {
+			position: absolute;
+			right: 10px;
+			bottom: -30px;
+			font-size: 1rem;
+			color: #333;
+			padding: 2px 5px;
+			cursor: pointer;
+			background: rgba(255,255,255,0.5);
+			border-radius: 2px;
+			@include transition(all 0.5s ease);
+		}
+	}
+
+	.profileinfo {
+		width: 100%;
+		height: 100%;
+		@include make-sm-column(8);
+		display: flex;
+		align-items: center;
+		overflow: hidden;
 
 		&:hover {
 			.showbgSelector {
 				bottom: 0px;
 			}
+		}
+
+		&__avatar,
+		&__info {
+			float: left;
+			// padding: 20px;
+		}
+
+		&__avatar {
+			@include make-sm-column(3);
+
+			// @media (min-width: $screen-sm-min) {
+			// }
+		}
+		&__info {
+			@include make-sm-column(9);
+
+			// @media (min-width: $screen-sm-min) {
+			// }
 		}
 
 		img {
@@ -41,8 +82,10 @@
 		.lvl {
 			width: 90px;
 			margin: 0 auto;
+			background: none;
+			box-shadow: none;
 			p {
-				color: #555;
+				color: #fff;
 				margin: 0;
 				text-shadow: none;
 			}
@@ -53,31 +96,30 @@
 			color: #fff;
 			text-shadow: 0 1px 1px rgba(0,0,0,0.25);
 		}
-		.showbgSelector {
-			position: absolute;
-			left: 10px;
-			bottom: -30px;
-			font-size: 1rem;
-			color: #333;
-			padding: 2px 5px;
-			cursor: pointer;
-			background: rgba(255,255,255,0.5);
-			border-radius: 2px;
-			@include transition(all 0.5s ease);
+		.website,
+		.location {
+			margin: 0 auto 0px;
+			font-size: 1.2rem;
+
+			a {
+				color: #fff;
+				&:hover {
+					color: darken(#fff,5%);
+				}
+			}
+		}
+		.location {
+			margin-top: 3rem;
 		}
 	}
-	
 
-	.userinfo {
+	.metainfo {
 		width: 100%;
-		padding: 20px;
-		margin: 0 auto 20px;
-		background-color: #fff;
+		height: 100%;
+		@include make-sm-column(4);
+		background: rgba(255,255,255,0.3);
 		@include clearfix();
-		border-radius: 0 0 5px 5px;
 	}
-	
-
 	.posts,
 	.comments,
 	.likes {
@@ -87,22 +129,25 @@
 		margin: 20px 1%;
 		// min-width: 100px;
 		width: 31.333%;
-		border: 1px solid #dedede;
-		@include gradient(#ffffff, #f2f2f2);
-		border-radius: $border-radius;
-		@include box-shadow(0 2px 0px rgba(0, 0, 0, 0.1));
-	
+
 		.icon {
-			display: block;
+			// display: block;
 			width: 20px;
 			height: 20px;
 			margin: 0 auto;
-			background: url('../images/mini-icons.png') no-repeat;
+			font-size: 2rem;
+			color: #fff;
+			
+			&-favorite {
+				font-size: 2.2rem;
+			}
 		}
+
+		p {
+			color: #fff;
+		}
+
 	}
-	.posts .icon {background-position: 0 -120px;}
-	.comments .icon {background-position: 0 -90px;}
-	.likes .icon {background-position: 0 -60px;}
 	
 	.postcount,
 	.commentcount,
@@ -110,6 +155,18 @@
 		// font-weight: bold;
 		font-size: 2.4rem;
 	}
+	
+
+	.userinfo {
+		width: 100%;
+		padding: 20px;
+		margin: 0 auto 20px;
+		background-color: #fff;
+		@include clearfix();
+		border-radius: 0 0 $border-radius $border-radius;
+	}
+	
+
 
 	p {
 		margin: 10px 0;
@@ -117,16 +174,15 @@
 		font-weight:normal;
 		color:#666;
 
-		&.location,
-		&.car,
 		&.group,
 		&.email,
 		&.joindate {
 			text-align: center;
 			padding: 10px;
 			color: #ccc;
-			@include gradient(lighten(#2e3846,5%), #2e3846);
-			border-radius: 4px;
+			// @include gradient(lighten(#2e3846,5%), #2e3846);
+			background: #2e3846;
+			border-radius: $border-radius;
 			
 			.icon {
 				display: inline-block;
@@ -137,8 +193,6 @@
 				background: url('../images/mini-icons.png') no-repeat;
 			}
 		}
-		&.location .icon {background-position: -40px 0;}
-		&.car .icon {background-position: -40px -30px;}
 		&.group .icon {background-position: -40px -60px;}
 		&.email .icon {background-position: -40px -90px;}
 		&.joindate .icon {background-position: -40px -120px;}
@@ -210,11 +264,6 @@
 	border-radius: 2px;
 }
 
-#fname,
-#lname,
-#profileinfo {
-	width:100%;
-}
 .profilebgOverlay {
 	display: none;
 	position: absolute;
@@ -234,18 +283,23 @@
 	margin: -80px 0 0 -30%;
 	background: #fff;
 	overflow: hidden;
-	border-radius: 5px;
+	border-radius: $border-radius;
 	@include box-shadow(0 1px 5px rgba(0,0,0,0.3));
 	@include clearfix();
 
 	.closex {
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: 1rem;
+		right: 1rem;
 		padding: 4px 8px;
 		color: #555;
 		cursor: pointer;
-		background: #ddd;
+		background: #fff;
+		border-radius: $border-radius;
+
+		&:hover {
+			background: #ddd;
+		}
 	}
 	
 	p,

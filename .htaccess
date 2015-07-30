@@ -56,7 +56,7 @@ RewriteRule ^home(\/)?(\&start)?$ posts.php?category=general$2 [NC,L]
 RewriteRule ^posts(\/)?([A-Za-z0-9\-]+)?\/?(\&start)?$ posts.php?category=$2$3 [NC,L]
 
 # Handle requests for "post/id" (This is the actual post with title)
-RewriteRule ^post\/([0-9]+)\/([A-Za-z0-9\-]+)$ post.php?post_id=$1&title=$2 [NC,L]
+RewriteRule ^post\/([0-9]+)\/?([A-Za-z0-9\-]+)?$ post.php?post_id=$1&title=$2 [NC,L]
 
 # Handle requests for "submitcomment/id/posturl"
 RewriteRule ^submitcomment\/([0-9]+)\/([A-Za-z0-9\-]+)$ submitcomment.php?post_id=$1&title=$2 [NC,L]

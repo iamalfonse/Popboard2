@@ -7,12 +7,11 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		var sidepost = $('.sidePost').offset();
 		var scrollTop = $(document).scrollTop();
-		console.log(scrollTop);
+		// console.log(scrollTop);
 		$('.sidePost').css({'top':scrollTop});
 
 		show_posts();
 
-		
     }); 
 	
 	$('.load-more').click(function(){
