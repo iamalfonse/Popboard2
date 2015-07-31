@@ -69,13 +69,10 @@ $(document).ready(function(){
 	});
 
 	// notifications
-	$('.top-notifications').click(function(){
+	$('.top-notifications').click(function(e){
+
 		$('.top-invites').removeClass('open'); //close invites if open
-		if($(this).hasClass('open')){
-			$(this).removeClass('open');
-		}else {
-			$(this).addClass('open');
-		}
+
 		// remove unread count
 		$(this).find('.unread').detach();
 		// mark all notifications as read
@@ -83,14 +80,20 @@ $(document).ready(function(){
 	});
 
 	// invites
-	$('.top-invites').click(function(){
+	$('.top-invites').click(function(e){
 		$('.top-notifications').removeClass('open'); //close notifications if open
-		if($(this).hasClass('open')){
-			$(this).removeClass('open');
-		}else {
-			$(this).addClass('open');
-		}
 	});
+
+	$(document).mouseup(function(e){
+		var container = $('.top-notifications, .top-invites');
+		if(container.is(e.target)) {
+			container.addClass('open');
+		}
+	    if (!container.is(e.target) && container.has(e.target).length === 0) { // if the target of the click isn't the container... nor a descendant of the container
+	        container.removeClass('open');
+	    }
+	});
+	
 
 });//end document.ready
 

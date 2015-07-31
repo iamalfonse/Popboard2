@@ -316,7 +316,7 @@
 // }
 
 //Custom dropdown without JS
-@mixin dropdown($dd-default-w: $dd-default-w, $dd-h: $dd-h, $dd-margin: $dd-margin, $dd-t-padding: $dd-t-padding, $dd-t-color: $select-t-color, $dd-f-weight: $dd-f-weight, $dd-f-size: $dd-f-size) {
+@mixin dropdown($dd-default-w: $dd-default-w, $dd-h: $dd-h, $dd-margin: $dd-margin, $dd-t-padding: $dd-t-padding, $dd-t-color: $dd-t-color, $dd-f-weight: $dd-f-weight, $dd-f-size: $dd-f-size) {
 	select::-ms-expand {
 	    display: none; //hide arrow in IE10
 	}
@@ -336,10 +336,10 @@
 	    padding: $dd-t-padding;
 	    padding: $dd-t-padding \9;
 	    *background-image: none;
-	    background: url('../images/arrow.png') no-repeat 100% 0px #fff;
-	    @include gradient( #fff, #ddd, image, url(../images/arrow.png) no-repeat 100% 0px);
+	    background: url('../images/arrow.png') no-repeat 100% 0px #f3f3f4;
+	    // @include gradient( #fff, #ddd, image, url(../images/arrow.png) no-repeat 100% 0px);
 	    @include prefix(appearance, none);
-	    @include border-radius(4px);
+	    border-radius: $border-radius;
 
 	    &:focus{
 	        outline: none;

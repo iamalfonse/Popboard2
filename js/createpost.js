@@ -115,7 +115,6 @@ $('document').ready(function(){
                                         $('.next_thumb').addClass('inactive');
                                     }
                                 })
-
                                 .on("click", ".extracted_close", function(){
                                     content_shown = false;
                                     total_images = 0;
@@ -131,8 +130,8 @@ $('document').ready(function(){
                                 console.log('content_shown: ', content_shown);
                             })
                             .fail(function(data) {
-                                console.log( "error", data );
-                                // console.log( "error" );
+                                // console.log( "error", data );
+                                console.log( "-------------error--------------" );
                             });
 
                             

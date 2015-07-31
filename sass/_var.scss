@@ -59,15 +59,14 @@ $input-focus-text-color: #555;
 $input-focus-border-color: #e24547;
 
 // Custom select drop down
-$select-t-color: #757474;
 
 $dd-default-w: 100%;
 $dd-h: 36px;
 $dd-margin: 5px 0 20px;
-$dd-t-padding: 4px .4em;
-$dd-t-color: $select-t-color;
+$dd-t-padding: 4px 0.6rem;
+$dd-t-color: #757474;
 $dd-f-weight: normal;
-$dd-f-size: 1em;
+$dd-f-size: 1.4rem;
 $dd-bg: #ccc;
 
 // Animation
