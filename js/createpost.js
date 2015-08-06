@@ -17,15 +17,15 @@ $('document').ready(function(){
 
     var content_shown = false;
     var timer;
-    var ms = 3000; // milliseconds
+    var ms = 2000; // milliseconds
     
-
     CKEDITOR.replace( 'postmessage', {
+        
         on: {
             instanceReady: function() {
                 // alert( this.name+' is ready' ); 
             },
-            key: function() {
+            key: function(keyevent) {
 
                 clearTimeout(timer);
                 var img_arr_pos = 0;
@@ -33,13 +33,12 @@ $('document').ready(function(){
                 var total_images = 0;
                 // alert( this.name );
 
-                //url to match in the text field
-                var match_url = /\b(https?):\/\/([\-A-Z0-9.]+)(\/[\-A-Z0-9+&@#\/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#\/%=~_|!:,.;]*)?/i;
+                //url to match in the text field (but don't match youtube or vimeo videos)
+                var match_url = /\b(https?):\/\/(?!(www.)?youtu\.?be(.com)?|(www.)?vimeo\.com)([\-A-Z0-9.]+)(\/[\-A-Z0-9+&@#\/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#\/%=~_|!:,.;]*)?/i;
                 // var match_url = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/i;
                 
                 //returns true and continue if matched url is found in text field
                 if (match_url.test(CKEDITOR.instances.postmessage.getData())) {
-                    
                     
 
                     timer = setTimeout(function() {
@@ -126,21 +125,18 @@ $('document').ready(function(){
 
                             },'json')
                             .done(function() {
-                                console.log( "second success" );
                                 console.log('content_shown: ', content_shown);
+                                keyevent.editor.resize( '100%', '350', true );
                             })
                             .fail(function(data) {
                                 // console.log( "error", data );
                                 console.log( "-------------error--------------" );
+                                $("#loading_indicator").hide();
                             });
-
-                            
                         }
+                    }, ms); // end timer
                     
-                    
-                    }, ms);
-                    
-                }
+                } // end url match
             }
         }
     });

@@ -55,14 +55,17 @@ if(isset($_POST["url"]))
 		$image_urls = array();
 		
 		//get all images URLs in the content
-		foreach($get_content->find('img') as $element) 
-		{
-				/* check image URL is valid and name isn't blank.gif/blank.png etc..
-				you can also use other methods to check if image really exist */
-				if(!preg_match('/blank.(.*)/i', $element->src) && filter_var($element->src, FILTER_VALIDATE_URL))
-				{
+		foreach($get_content->find('img') as $element) {
+
+			/* check image URL is valid and name isn't blank.gif/blank.png etc..
+			you can also use other methods to check if image really exist */
+			if(!preg_match('/blank.(.*)/i', $element->src) && filter_var($element->src, FILTER_VALIDATE_URL)){
+				// $image_urls[] =  $element->src;
+				list($width, $height) = getimagesize($element->src); //get size(width/height) of image
+				if($width > 90 && $height > 80){ //only grab images if they're bigger than 90x80 pixels
 					$image_urls[] =  $element->src;
 				}
+			}
 		}
 		
 		//prepare for JSON 

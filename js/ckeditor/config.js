@@ -40,4 +40,9 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;link:Target;';
+
+	//add resize plugin (found in js/plugins/resize)
+	config.extraPlugins = 'resize';
+	config.resize_maxHeight = 350;
+	config.height = 350;
 };

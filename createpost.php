@@ -88,8 +88,7 @@ if(isset($_GET['groupurl'])){ // get groupurl if posting from your group
 					?>
 				</select>
 			<? } ?>
-			<label>Or</label>
-			<p><a href="/createcategory">Create Your Own Category</a></p>
+			
 			<input type="hidden" value="createpost" name="from">
 			<label class='inputtitle' for="posttitle">Title</label>
 			<input type="text" id="posttitle" name="posttitle" maxlength="50" class='inputtitle userinput' />

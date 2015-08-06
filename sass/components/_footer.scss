@@ -13,11 +13,17 @@
 	@include clearfix();
 
 	.copyright {
-		width: 75%;
-		float: left;
+		@media (min-width: $screen-sm-min) {
+
+		}
+		@include make-sm-column(8);
+		// width: 75%;
+		// float: left;
 	}
 	.links {
-		width: 25%;
+		@include make-sm-column(4);
+		// width: 25%;
 		float: left;
+		text-align: right;
 	}
 }

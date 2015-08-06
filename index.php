@@ -118,7 +118,7 @@ if($errmsg=='1'){
 				<p>Create your own public or private groups and invite others to post to it.</p>
 				<p>Public groups can be viewed by everyone, but only members can post to it. Private groups can only be viewed by members.</p>
 			</div>
-		</div>	
+		</div>
 	</div>
 </section>
 

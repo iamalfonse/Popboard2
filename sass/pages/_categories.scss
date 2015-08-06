@@ -1,8 +1,16 @@
 /* ------- CATEGORIES Section ------- */
+
+.createcategory-btn {
+	@include clearfix();
+	
+	.btn {
+		float: right;
+		width: 20%;
+	}
+}
 .category-list {
 
 	li {
-		// @extend %gd4;
 		@include make-sm-column(4);
 
 		a {
@@ -45,6 +53,5 @@
 			float: left;
 			margin: 0 1rem 0 0;
 		}
-		
 	}
 }

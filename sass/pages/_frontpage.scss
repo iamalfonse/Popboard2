@@ -111,6 +111,16 @@
 .homeabout {
 	background: $bg-color;
 
+	&--mainboard {
+		background: #1BBAE1;
+	}
+	&--categories {
+		background: #9A5CB4;
+	}
+	&--groups {
+		background: #58C6BA;
+	}
+
 	&__wrap,
 	&__content {
 		min-height: 400px;
@@ -118,6 +128,16 @@
 		// li {
 		// 	@include make-sm-column(4);
 		// }
+	}
+
+	h1, 
+	p {
+		color: #fff;
+	}
+
+	p {
+		font-size: 1.6rem;
+		line-height: 2.8rem;
 	}
 }
 
