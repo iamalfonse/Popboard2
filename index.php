@@ -2,13 +2,14 @@
 
 include("config.php");
 
+// die(iu_scramble_password('emnalphil02'));
+
 if (isset( $_COOKIE['login_cookie'] )) {
 	iu_check_user_setup(); //make sure user has finished setup
 
 	header('Location: /home');
 	exit;
 }
-
 
 $errmsg = '';
 if(isset($_GET['errmsg'])){
@@ -25,6 +26,8 @@ if($errmsg=='1'){
 	$errmsg = 'You have been temporarily banned. Sorry bro...';
 }else if($errmsg=='5'){
 	$errmsg = 'You must be logged in to be able to do that.';
+}else if($errmsg=='6'){
+	$errmsg = 'Bruhhhh... stop trying to hack. Seriously though.';
 }
 
 
@@ -116,6 +119,36 @@ if($errmsg=='1'){
 			<div class="col-md-7">
 				<h1>Your Own Groups</h1>
 				<p>Create your own public or private groups and invite others to post to it.</p>
+				<p>Public groups can be viewed by everyone, but only members can post to it. Private groups can only be viewed by members.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="homeabout homeabout--levelup">
+	<div class="homeabout__wrap container">
+		<div class="homeabout__content row">
+			<div class="col-md-7">
+				<h1>Level Up</h1>
+				<p>Every time you create a post, make a comment, or get likes for your posts, you gain experience towards your level.</p>
+				<p>Leveling up allows you to unlock certain things such as new profile backgrounds or avatar tokens that show up next to your picture. The higher your level, the more things you unlock.</p>
+			</div>
+			<div class="col-md-5">
+				<h1>Level Up Image Here</h1>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="homeabout homeabout--badges">
+	<div class="homeabout__wrap container">
+		<div class="homeabout__content row">
+			<div class="col-md-5">
+				<h1>Earn Badges Image Here</h1>
+			</div>
+			<div class="col-md-7">
+				<h1>Earn Awesome Badges</h1>
+				<p>Unlock badges by completing certain </p>
 				<p>Public groups can be viewed by everyone, but only members can post to it. Private groups can only be viewed by members.</p>
 			</div>
 		</div>

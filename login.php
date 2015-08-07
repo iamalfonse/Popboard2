@@ -63,8 +63,8 @@ if (isset($_POST['login'])) {
          } else {
             /* Connection is okay... go ahead and try to add user to db. */
 
-            // Sanitize inputs before doing mysql query
-            $password = sha1($form_passwd);
+            // Scramble the shit out of that password before doing mysql query
+            $password = iu_scramble_password($form_passwd);
 
             /* Try to find a row in the user's table with both a matching username and
              * encrypted password. If we have a match then that is a successful authentication.
@@ -86,12 +86,16 @@ if (isset($_POST['login'])) {
             if ($num_rows == '1') {
 	            /* Successful login! */
 
+
+
 	            /* add random hash to make sure that 
 				 * the user has rights to delete, edit,add posts,etc.
 				 * if this hash matches in the database.
+				 * Also store their ip address just in case. (for login auth and for authorities)
 				 */
+	            $user_ip = iu_get_user_ip();
 				$randomHash = md5(rand(0,1000).$form_username);
-	            $results2  = mysqli_query($dblink, "UPDATE users SET session_hash ='$randomHash' WHERE (username='$form_username' or email = '$form_username')");
+	            $results2  = mysqli_query($dblink, "UPDATE users SET session_hash ='$randomHash', session_ip = '$user_ip' WHERE (username='$form_username' or email = '$form_username')");
 	
 				/* Set a COOKIE */
 				$cookie_duration = 3600 * 24 * 365; // 1 year 

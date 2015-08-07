@@ -126,7 +126,7 @@ $('document').ready(function(){
                             },'json')
                             .done(function() {
                                 console.log('content_shown: ', content_shown);
-                                keyevent.editor.resize( '100%', '350', true );
+                                // keyevent.editor.resize( '100%', '350', true );
                             })
                             .fail(function(data) {
                                 // console.log( "error", data );

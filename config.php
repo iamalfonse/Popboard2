@@ -22,12 +22,56 @@ if (get_magic_quotes_gpc()) {
 
 include 'dbparams.php';
 
-// TODO: Get geolocation ip address to grab location of user. 
-// Useful for meta keywords for SEO or for banning users
-// http://www.ipinfodb.com
+
 function iu_get_user_ip() {
-	$user_ip = $_SERVER['REMOTE_ADDR'];
+	$user_ip = $_SERVER['REMOTE_ADDR']; //grab user ip address
+
+	// TODO: Get city location from ip address to grab location of user. 
+	// Useful for meta keywords for SEO or for banning users
+	// http://www.ipinfodb.com
+
 	return $user_ip;
+}
+
+
+function iu_check_ban(){
+	include 'dbparams.php';
+	session_start();
+
+	// TODO: Banning users
+	// Create banned_users table (user_id, ip_address, date_of_ban)
+	// First check if there's a cookie with a ban value stored. If there is no banned value cookie, then run a query to check if user is banned or not.
+	// Check if ip is banned. If user is good, store it in a cookie
+	// if user was banned, update that stored cookie
+	// Storing the ban value in a cookie will prevent MySQL query overhead
+	$ban_session = $_SESSION['banned'];
+
+	if(isset($ban_session)) { //banned session stored locally
+
+		if($ban_session_val == 'awesome') { //user is good
+			return $ban_session_val;
+		}else if($ban_session_val == 'banned'){ //user is a bad, bad person
+			header('Location: /?errmsg=4');
+			exit;
+		}
+	} else { // banned session doesn't exist
+
+		// do a query to check if user is banned
+		$user_ip = iu_get_user_ip();
+		$bancheckQuery = mysqli_query($dblink, "SELECT user_id, banned FROM banned_users WHERE user_ip='$user_ip'");
+		$bancheckResults = mysqli_fetch_assoc($bancheckQuery);
+		$ban_session_val = $bancheckResults['banned'];
+		
+		if($ban_session_val == 0){ // user is good? set session and store it in the db
+
+
+		}else if($ban_session_val == 1) { // else user is banned
+			header('Location: /?errmsg=4');
+			exit;
+		}	
+
+		
+	}
 }
 
 
@@ -46,6 +90,11 @@ $__site = [ //used primarily for the <head> section
 
 //set charset for using with mysqli_real_escape_string();
 mysqli_set_charset($dblink, "utf8");
+
+function iu_scramble_password($password){
+	$scrambled_password = sha1(md5($password.'1337_hella!cray*cray@bruh')); //scramble using that leet salt bruh
+	return $scrambled_password;
+}
 
 function iu_get_page_url() {
 	$pageURL = '';

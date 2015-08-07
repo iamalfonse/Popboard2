@@ -65,18 +65,26 @@ if(isset($_POST['groupurl'])){ // if posting from group post
 // Grab values from form in createpost/editpost.php
 $category  = mysqli_real_escape_string($dblink, $_POST['category']);
 $posttitle  = mysqli_real_escape_string($dblink, trim(htmlspecialchars_decode( htmlentities( $_POST['posttitle'], ENT_NOQUOTES, 'UTF-8', false ), ENT_NOQUOTES )));
-$blogmessage = mysqli_real_escape_string($dblink, trim(htmlspecialchars_decode( htmlentities( $_POST['postmessage'], ENT_NOQUOTES, 'UTF-8', false ), ENT_NOQUOTES )));	
-// $blogmessage = iu_linkusername($blogmessage); // replace @username replies with anchor text (doing this on output now)
+$blogmessage = mysqli_real_escape_string($dblink, trim(htmlspecialchars_decode( htmlentities( $_POST['postmessage'], ENT_NOQUOTES, 'UTF-8', false ), ENT_NOQUOTES )));
 
 //sanitize other html tags that user might have included
 $posttitle = strip_tags($posttitle);
 $blogmessage = strip_tags($blogmessage, '<p><a><br><ul><ol><li><img><b><i><u><blockquote><strike><hr>'); //used for CLeditor (not used in CKeditor)
-// $blogmessage = iu_convert_video_links($blogmessage); //convert youtube and vimeo links to video embeds (doing this on output now)
-// $blogmessage = iu_convert_image_links($blogmessage); //convert images to link to source file (doing this on output now)
 
 if (isset($_POST['submitpost'])) { //============= IF USER SUBMITS BLOG POST ===============================
 
 	$post_date = date("Y-m-d H:i:s"); //get current datetime value. i.e. '2013-10-22 14:45:00'
+
+	// TODO: Check tomake sure category exists
+	$checkCatQuery = mysqli_query($dblink, "SELECT category FROM categories WHERE category='$category'");
+	$checkCatNumRows = mysqli_num_rows($checkCatQuery);
+	// die($checkCatNumRows);
+	if($checkCatNumRows != 1){ //category exists
+		$redirect = iu_get_page_url();
+		header("Location: $redirect/?errmsg=1");
+		exit;
+	}
+
 
 	//make sure it's the correct user posting it by checking their session_hash (security check)
 	if($session_hash == $submitPostRows['session_hash']){

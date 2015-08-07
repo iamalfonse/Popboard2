@@ -97,8 +97,12 @@ if (isset($_POST['submit'])) {
                         $have_error = true;
                         $errmsg = "That email is already in use.  Please select another.";   
                     }else{
+
+                        // Scramble the shit out of that password
+                        $new_pass = iu_scramble_password($new_pass);
+
                         /* Insert new row... */
-                        $r2 = mysqli_query($dblink, "INSERT INTO users(username, displayname, passwd, email, active, joindate) VALUES('$new_username', '$display_username', sha1('$new_pass'), '$new_email', '0', '$joindate')");
+                        $r2 = mysqli_query($dblink, "INSERT INTO users(username, displayname, passwd, email, active, joindate) VALUES('$new_username', '$display_username', '$new_pass', '$new_email', '0', '$joindate')");
                          
                         //user was added to database
                         //get the new user id  

@@ -44,5 +44,4 @@ CKEDITOR.editorConfig = function( config ) {
 	//add resize plugin (found in js/plugins/resize)
 	config.extraPlugins = 'resize';
 	config.resize_maxHeight = 350;
-	config.height = 350;
 };
